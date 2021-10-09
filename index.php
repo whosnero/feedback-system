@@ -11,8 +11,27 @@
     <title>Feedback-System</title>
 </head>
 <body>
-    <article>
-        
+    <header>
+        <div id="header" class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <p id="showhelp">Hilfe anzeigen!</p>
+                </div>
+                <div class="col-6">
+                    <img id="icon" src="IMG/lightningicon1.jpg">
+                </div>
+            </div>
+        </div>
+    </header>
+    <article style="word-wrap:break-word">
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="mainfield" class="col-md-12">
+                        <h1>Willkommen!</h1>
+                        <p>Umfrage erstellen</p>
+                    </div>
+                </div>
+            </div>
     </article>
     <footer>
     

@@ -1,0 +1,22 @@
+* {
+    font-family: sans-serif;
+    background-color: darkslateblue;
+    color: white;
+}
+
+#header {
+    padding-top: 1em;
+}
+
+#showhelp {
+    float: left;
+}
+
+#icon {
+    float: right;
+}
+
+#mainfield {
+    text-align: center;
+    border: 2px solid green;
+}
