@@ -7,6 +7,11 @@
     <title>Feedback-System</title>
 </head>
 <body>
+    <article>
+        
+    </article>
+    <footer>
     
+    </footer>
 </body>
 </html>
