@@ -49,20 +49,19 @@
 .main-code form input[type=number] {
     background: rgb(255, 255, 255);
     border: 0;
- 
     font-family: sans-serif;
     color: rgb(0, 0, 0);
   }
 
  .main-code form input[type=submit] {
-    position: absolute;
+    position: relative; /* fehler liegt bei position, ändere ich später ~kilian */
     top: 0;
-    right: -20%;
+    right: 0;
     bottom: 0;
     border: 0;
     background: none;
     font-size: 16px;
-    padding: 0 20px;
+    padding: 6px 10px;
     background: #6fb968;
     color: rgb(255, 255, 255);
     transition: 0.3s;
@@ -76,8 +75,13 @@
 
 footer {
 	font-size: 1.5em;
+  color: white;
 	position: fixed;
 	bottom: 0;
+}
+
+.copyright {
+  color: white;
 }
 
   
