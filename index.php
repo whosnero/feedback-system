@@ -27,7 +27,7 @@
             <div class="container-fluid">
                 <div id="mainrow" class="row">
                     <div id="mainfield" class="col-md-12">
-                        <h1>Willkommen Tobias!</h1>
+                        <h1>Willkommen Kilian!</h1>
                         <p>Umfrage erstellen</p>
                     </div>
                 </div>
