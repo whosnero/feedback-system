@@ -2,11 +2,11 @@
 <html lang="en">
 
  <head>
-    <!-- Required meta tags -->
+    <!-- required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Favicon (32x32) -->
+    <!-- favicon (32x32) -->
     <link rel="icon" href="assets/img/favicon.png" />
 
     <!-- stylesheets -->
@@ -42,21 +42,15 @@
         
         <!-- footer-->
 		<footer>
-			<span class="copyright">&copy; All Rights Reserved. </span>
-			<script language="JavaScript" text="text/javascript">
-				fyear = new Date().getYear();
-				year = (fyear < 1900 ? fyear += 1900 : fyear);
-				buildyear = 2021;
-				document.write(year > buildyear ? buildyear + " - " + year : buildyear);
-			</script>
+			<script language="JavaScript"> fyear = new Date().getYear(); year = (fyear < 1900 ? fyear += 1900 : fyear); buildyear = 2021; document.write(year > buildyear ? "&copy " + buildyear + " - " + year : "&copy " + buildyear); </script>
 		</footer>
         
 
     <!-- Javascript -->
-     <!-- Bootstrap Bundle with Popper -->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-     <!-- AOS (animations) -->
-     <script src="https://unpkg.com/aos@next/dist/aos.js"></script> <script> AOS.init(); </script>
+        <!-- Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
+        <!-- AOS (animation) -->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script> <script> AOS.init(); </script>
 
     </body>
 
