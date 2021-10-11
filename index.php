@@ -25,7 +25,7 @@
     </header>
     <article style="word-wrap:break-word">
             <div class="container-fluid">
-                <div class="row">
+                <div id="mainrow" class="row">
                     <div id="mainfield" class="col-md-12">
                         <h1>Willkommen!</h1>
                         <p>Umfrage erstellen</p>

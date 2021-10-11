@@ -4,6 +4,10 @@
     color: white;
 }
 
+#mainrow {
+    min-height: 100vh;
+}
+
 #header {
     padding-top: 1em;
 }
