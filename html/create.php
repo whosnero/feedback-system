@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- favicon (32x32) -->
-    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="icon" href="../assets/img/favicon.png" />
 
     <!-- stylesheets -->
         <!-- custom -->
-	    <link rel="stylesheet" href="assets/css/stylesheet.css" />
+	    <link rel="stylesheet" href="../assets/css/stylesheet.css" />
          <!-- animation -->
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <!-- bootstrap -->
@@ -34,15 +34,15 @@
                     </div>
                     <div class="col-md-6 createpoll">
                         <ul>
-                            <li><a href="html/create.php">Create Poll</a></li>
+                            <li><a href="create.php">Create Poll</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <!-- clickable icon redirecting to homepage -->
-                        <a href="index.php"> 
-                            <img class="icon" src="assets/img/favicon-removebg.png" alt="Feedo Logo">
+                        <a href="../index.php">
+                            <img class="icon" src="../assets/img/favicon-removebg.png" alt="Feedo Logo">
                         </a>
                     </div>
                 </div>
