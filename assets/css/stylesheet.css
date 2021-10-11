@@ -62,7 +62,7 @@
     background: none;
     font-size: 16px;
     padding: 6px 10px;
-    background: #6fb968;
+    background: #FEC260;
     color: rgb(255, 255, 255);
     transition: 0.3s;
     border-radius: 50px;
@@ -70,7 +70,7 @@
   }
 
 .main-code form input[type=submit]:hover {
-    background: #59b151;
+    background: #eba12a;
   }
 
 footer {
