@@ -22,14 +22,15 @@
 
     <body>
         
+        <!-- Code section-->
         <section class="main">
             <div class="main-container">
-                <h1 data-aos="zoom-in">Welcome to Feedo!</h1>
+                <h1 data-aos="zoom-in-down">Welcome to Feedo!</h1>
                 <h2 data-aos="fade-up">Whats´s your code?</h2>
 
                 <div data-aos="zoom-in" class="row main-code justify-content-center">
                     <div data-aos="zoom-in">
-                        <form action="sub.php" methode="post">
+                        <form action="?test=1" methode="post">
                             <input type="number" name="code" placeholder="Code" maxlength="10" >
                             <input type="submit" value="Start!"> 
                         </form>
@@ -38,7 +39,8 @@
             </div>
 
         </section>
-        	
+        
+        <!-- footer-->
 		<footer>
 			<span class="copyright">&copy; All Rights Reserved. </span>
 			<script language="JavaScript" text="text/javascript">
