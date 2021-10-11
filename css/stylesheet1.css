@@ -4,8 +4,9 @@
     color: white;
 }
 
-#mainrow {
+#main {
     min-height: 100vh;
+    padding-top: 1em;
 }
 
 #header {
