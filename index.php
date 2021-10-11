@@ -6,11 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<<<<<<< HEAD
     <!-- favicon (32x32) -->
-=======
-    <!-- Favicon (32x32) -->
->>>>>>> 41538c355d8a23efa9379dc1c5db1f9b9c3cfa13
     <link rel="icon" href="assets/img/favicon.png" />
 
     <!-- stylesheets -->
