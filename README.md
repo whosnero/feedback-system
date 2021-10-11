@@ -1,1 +1,1 @@
-# feedback-system
+This repo represents an school project.
