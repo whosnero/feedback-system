@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon (32x32) -->
-    <link href="assets/img/favicon.png" rel="icon" />
+    <link rel="icon" href="assets/img/favicon.png" />
 
     <!-- stylesheets -->
         <!-- custom -->
