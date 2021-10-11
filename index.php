@@ -11,28 +11,22 @@
     <title>Feedback-System</title>
 </head>
 <body>
-    <header>
-        <div id="header" class="container-fluid">
+    <header style="word-wrap:break-word">
+        <div id="main" class="container-fluid">
             <div class="row">
-                <div class="col-6">
+                <div class="col-4">
                     <p id="showhelp">Hilfe anzeigen!</p>
                 </div>
-                <div class="col-6">
+                <div id="mainfield" class="col-4">
+                    <h1>Willkommen!</h1>
+                    <p>Umfrage erstellen</p>
+                </div>
+                <div class="col-4">
                     <img id="icon" src="IMG/lightningicon1.jpg">
                 </div>
             </div>
         </div>
     </header>
-    <article style="word-wrap:break-word">
-            <div class="container-fluid">
-                <div id="mainrow" class="row">
-                    <div id="mainfield" class="col-md-12">
-                        <h1>Willkommen Kilian!</h1>
-                        <p>Umfrage erstellen</p>
-                    </div>
-                </div>
-            </div>
-    </article>
     <footer>
 
     <!--sfa --> 
