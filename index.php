@@ -11,7 +11,7 @@
     <title>Feedback-System</title>
 </head>
 <body>
-    <article style="word-wrap:break-word">
+    <header style="word-wrap:break-word">
         <div id="main" class="container-fluid">
             <div class="row">
                 <div class="col-4">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </article>
+    </header>
     <footer>
     
     </footer>
