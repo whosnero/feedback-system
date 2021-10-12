@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- JUST A DEMO PAGE FOR NOW TO HAVE A SECOND PAGE READY -->
  <head>
     <!-- required meta tags -->
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-6 showhelp">
                         <form action="?test=1" method="get">
-                            <input type="submit" name="help" value="?"> <!-- muss am 13.10 gefixed werden-->
+                            <input type="submit" name="help" value="?"> <!-- muss am 12.10 gefixed werden, needs a toggle feature -->
                         </form>
                     </div>
                     <div class="col-md-6 createpoll">
