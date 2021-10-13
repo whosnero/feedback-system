@@ -1,24 +1,22 @@
 <?php
 
-error_reporting(0);
+error_reporting(0); // disable warnings
 $code = $_POST["code"];
-echo "Code: $code";
 
-  include '../assets/php/db.php';
-  $connection = open();
+/* checks if post got an code */
+if (!isset($code) || $code == null) {
+  header('Location: ../index.php');
+}
 
-  echo "Connected Successfully";
+/* connection to db */
+require_once '../assets/php/db.php';
+$conn = openDB();
 
+$query = "SELECT * FROM survey";
 
+// content foreach
+foreach ($conn->query($query) as $row) {
+  echo "";
+}
 
-  close($connection);
-
-
-?>
-
-<!-- currently working on 
-
-<head>
-  <meta http-equiv='refresh' content='0; URL=index.html'>
-</head>
--->
+closeDB($conn);
