@@ -28,19 +28,9 @@
     <section class="main">
         <div class="main-container container-fluid">
             <div class="row">
-                <!-- will be deleted
-                <div class="col-md-6 showhelp">
-                    <ul>
-                        <a href="help.html">
-                            <li><button data-aos="fade-right" type="submit" name="help">?</button></li>
-                        </a>
-                    </ul>
-                </div>
-                -->
-
                 <div class="col-md-12 createpoll">
                     <ul>
-                        <li><a data-aos="fade-left" href="create.php">Create Poll</a></li>
+                        <li><a data-aos="fade-down" href="create.php">Create Poll</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,17 +49,16 @@
                     <div data-aos="zoom-in" class="row main-code justify-content-center">
                         <form method="post" action="subpages/answer.php" enctype="multipart/form-data">
                             <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10">
-                            <input type="submit" value="Beitreten">
+                            <input type="submit" value="Enter">
                         </form>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <h2 data-aos="fade-up">What´s Feedo? Click <a href="subpages/help.html">here</a> for more!</h2>
+                <div class="col-md-12 whatsfeedo">
+                    <h2 data-aos="zoom-in">What´s Feedo? Click <a href="subpages/help.html">here</a> for more Information!</h2>
                 </div>
             </div>
-
         </div>
 
     </section>
