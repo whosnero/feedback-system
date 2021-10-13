@@ -66,7 +66,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h2 data-aos="fade-up">What´s Feedo? Click <a href="help.html">here</a> for more!</h2>
+                    <h2 data-aos="fade-up">What´s Feedo? Click <a href="subpages/help.html">here</a> for more!</h2>
                 </div>
             </div>
 
