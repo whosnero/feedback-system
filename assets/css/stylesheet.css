@@ -33,74 +33,42 @@
   text-align: center;
 }
 
-.showhelp ul li button {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: none;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 1em;
-  margin-left: 1em;
-  padding: 6px 10px;
-  background: #fec260;
-  color: #a12568;
-  /* transition: 0.3s; */
-  border-radius: 50px;
-}
-
-.showhelp ul li button:hover {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: none;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 1em;
-  margin-left: 1em;
-  padding: 6px 10px;
-  background: #eba12a;
-  color: #a12568;
-  /* transition: 0.3s; */
-  border-radius: 50px;
-}
 
 ul li {
   text-decoration: none;
   list-style-type: none;
 }
 
-.createpoll ul li a {
-  position: fixed;
+.createpoll a {
+  color: #a12568;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
   top: 0;
   right: 0;
   background: none;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
   margin-top: 1em;
   margin-right: 1em;
   padding: 6px 10px;
-  background: #fec260;
-  color: #a12568;
+  background: #FEC260;
   transition: 0.3s;
   border-radius: 50px;
 }
 
 .createpoll a:hover {
-  position: fixed;
+  color: #a12568;
+  font-size: 16px;
+  font-weight: bold;
+  position: absolute;
   top: 0;
   right: 0;
   background: none;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
   margin-top: 1em;
   margin-right: 1em;
   padding: 6px 10px;
   background: #eba12a;
-  color: #a12568;
   transition: 0.3s;
   border-radius: 50px;
 }
@@ -111,19 +79,38 @@ ul li {
 }
 
 .main h1 {
+  color: rgb(255, 255, 255);
   margin: 15px 0 15px 0;
   font-size: 48px;
   line-height: 56px;
-  color: rgb(255, 255, 255);
 }
 
-.main h2 {
-  color: #aeaeae;
-  margin: 15px 0 15px 0;
+/* .main h2 {
+  color: rgb(202, 202, 202);
   font-size: 14px;
   font-weight: bold;
+  margin: 15px 0 15px 0;
+  text-transform: uppercase;
+} */
+
+ /* .main h2 a {
+  color: #FEC260;
+  text-decoration: none;
+} */
+
+.main h2 {
+  color: rgb(202, 202, 202);
+  font-size: 14px;
+  font-weight: bold;
+  margin: 15px 0 15px 0;
   text-transform: uppercase;
 }
+
+.main h2 a {
+  color: #FEC260;
+  text-decoration: none;
+}
+
 
 .main-code form {
   background: rgb(255, 255, 255);
@@ -136,25 +123,25 @@ ul li {
 }
 
 .main-code form input[type="number"] {
-  background: rgb(255, 255, 255);
-  border: 0;
+  color: rgb(0, 0, 0);
   font-family: sans-serif;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  background: rgb(255, 255, 255);
+  border: 0;
 }
 
 .main-code form input[type="submit"] {
+  color: #a12568;
+  font-size: 16px;
+  font-weight: bold;
   position: relative;
   top: 0;
   right: 0;
   bottom: 0;
   border: 0;
   background: none;
-  font-size: 16px;
-  font-weight: bold;
   padding: 6px 10px;
   background: #fec260;
-  color: #a12568;
   transition: 0.3s;
   border-radius: 50px;
 }
@@ -164,9 +151,10 @@ ul li {
 }
 
 footer {
-  font-size: 1.5em;
-  font-family: BigNoodleTiling; /* thought that there should be another font */
   color: white;
-  position: fixed;
+  font-family: BigNoodleTiling; /* thought that there should be another font */
+  font-size: 1.5em;
+  position: absolute;
   bottom: 0;
+  right: 0.5em;
 }
