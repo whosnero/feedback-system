@@ -11,16 +11,25 @@
   src: url("../fonts/Roboto-Thin.ttf");
 }
 
-/* CSS code still needs to be formatted better --> 12.10.2021 */
+/* CSS code still needs to be formatted better */
 
 * {
-  font-family: sans-serif;
-  font-family: Roboto-Thin;
+  font-family: Roboto-Thin, sans-serif;
   background-color: #4a47a3;
   color: white;
 }
 
-.main-container {
+.icon {
+  width: 128px;
+  height: 128px;
+}
+
+.x-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.main-body {
   position: absolute;
   bottom: 0;
   top: 0;
@@ -31,15 +40,67 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+  border: 2px solid green;
 }
 
+.help-header{
+  min-height: 10%;
+}
+  .icon-help {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .backtomain a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 6px 10px;
+    margin-top: 1em;
+    margin-right: 1em;
+    text-decoration: none;
+  }
+
+.help-body {
+  text-align: center;
+  position: absolute;
+  bottom: 128px;
+  left: 0;
+  top: 128px;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+  .help-text {
+    border: 5px solid #423f8f;
+    background: #423f8f;
+  }
+  .help-text h1{
+    font-size: 36px;
+    font-weight: bold;
+    background: #423f8f;
+  }
+  .help-text h2 {
+    font-size: 30px;
+    background: #423f8f;
+  }
+  .help-text h3 {
+    font-size: 12px;
+    background: #423f8f;
+  }
 
 ul li {
   text-decoration: none;
   list-style-type: none;
 }
 
-.createpoll a {
+.createsurvey a {
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
@@ -56,7 +117,7 @@ ul li {
   border-radius: 50px;
 }
 
-.createpoll a:hover {
+.createsurvey a:hover {
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
@@ -73,30 +134,12 @@ ul li {
   border-radius: 50px;
 }
 
-.icon {
-  width: 128px;
-  height: 128px;
-}
-
 .main h1 {
   color: rgb(255, 255, 255);
   margin: 15px 0 15px 0;
   font-size: 48px;
   line-height: 56px;
 }
-
-/* .main h2 {
-  color: rgb(202, 202, 202);
-  font-size: 14px;
-  font-weight: bold;
-  margin: 15px 0 15px 0;
-  text-transform: uppercase;
-} */
-
- /* .main h2 a {
-  color: #FEC260;
-  text-decoration: none;
-} */
 
 .main h2 {
   color: rgb(202, 202, 202);
@@ -154,7 +197,7 @@ footer {
   color: white;
   font-family: BigNoodleTiling; /* thought that there should be another font */
   font-size: 1.5em;
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0.1em;
   right: 0.5em;
 }

@@ -26,11 +26,11 @@
 <body>
     <!-- Code section-->
     <section class="main">
-        <div class="main-container container-fluid">
+        <div class="main-body container-fluid">
             <div class="row">
-                <div class="col-md-12 createpoll">
+                <div class="col-md-12 createsurvey">
                     <ul>
-                        <li><a data-aos="fade-down" href="create.php">Create Poll</a></li>
+                        <li><a data-aos="fade-down" href="subpages/create.php">Create Survey</a></li>
                     </ul>
                 </div>
             </div>
