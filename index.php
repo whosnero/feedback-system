@@ -47,8 +47,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div data-aos="zoom-in" class="row main-code justify-content-center">
-                        <form method="post" action="subpages/answer.php" enctype="multipart/form-data">
-                            <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10">
+                        <form method="post" action="subpages/answer.php" enctype="multipart/form-data" autocomplete="off">
+                            <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10" required>
                             <input type="submit" value="Enter">
                         </form>
                     </div>
