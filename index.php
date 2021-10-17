@@ -64,7 +64,7 @@
     </section>
 
     <!-- footer-->
-    <footer>
+    <footer class="main-footer">
         <script>
             document.write(date());
         </script>
