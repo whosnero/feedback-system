@@ -15,26 +15,30 @@ $samplequery->execute();
 $samplequery->store_result(); // returns a buffered result object from samplequery
 $sampleamount = $samplequery->num_rows();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') { // TODO: improving security
+if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   $code = generateCode(3, 499); // define range of generateCode
 
   $postconn = openDB();
 
   for ($i = 1; $i <= ($additionalquestions + $sampleamount); $i++) {
     /* question and questionid from form getted */
+
     $postinput = $_POST[$i];
 
-    /* insert new data into db and creating new code */
-    $postquery = $postconn->prepare("INSERT INTO surveys (code, question, questionid) VALUES (?, ?, ?)");
-    $postquery->bind_param("isi", $code, $postinput, $i); // code = integer, question = string, questionid = integer
-    $postquery->execute();
+    if ($postinput != "") {
 
-    if ($postquery->affected_rows < 0) {
-      /* failed to insert data */
-      header('Location: create.php');
+      /* insert new data into db and creating new code */
+      $postquery = $postconn->prepare("INSERT INTO surveys (code, question, questionid) VALUES (?, ?, ?)");
+      $postquery->bind_param("isi", $code, $postinput, $i); // code = integer, question = string, questionid = integer
+      $postquery->execute();
+
+      if ($postquery->affected_rows < 0) {
+        /* failed to insert data */
+        header('Location: create.php');
+      }
+
+      $postquery->close();
     }
-
-    $postquery->close();
   }
   closeDB($postconn);
 
@@ -86,34 +90,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') { // TODO: improving security
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div data-aos="zoom-in" class="row main-code justify-content-center">
-            <form method="post" action="create.php" enctype="multipart/form-data">
-              <?php
-              /* getting sample questions */
-              /* checks result and creates variables from result */
+          <form method="post" action="create.php" enctype="multipart/form-data">
+            <?php
+            /* getting sample questions */
+            /* checks result and creates variables from result */
 
-              if ($sampleamount > 0) { // amount
-                $samplequery->bind_result($questionid_sample, $question_sample);
-                while ($samplequery->fetch()) { // while page can use this variables
-                  /* echo text-box, value from db */
-                  echo "<input type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' value='" . $question_sample . "'> <br>";
-                }
-              } else {
-                /* no result (db=sample_question) */
-                header('Location: ../index.php');
+            if ($sampleamount > 0) { // amount
+              $samplequery->bind_result($questionid_sample, $question_sample);
+              while ($samplequery->fetch()) { // while page can use this variables
+                /* echo text-box, value from db */
+                $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
+                echo "<input type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' value='" . $question_sample . "'" . $required . "> <br>";
               }
+            } else {
+              /* no result (db=sample_question) */
+              header('Location: ../index.php');
+            }
 
-              $samplequery->close();
-              closeDB($conn);
+            $samplequery->close();
+            closeDB($conn);
 
-              /* adds more input for user */
-              for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-                echo "<input type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255'> <br>";
-              }
-              ?>
-              <input type="submit" value="Create Survey!">
-            </form>
-          </div>
+            /* adds more input for user */
+            for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
+              echo "<input type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255'> <br>";
+            }
+            ?>
+            <br>
+            <input type="submit" name="btnSubmit" value="Create Survey!">
+          </form>
         </div>
       </div>
     </div>
