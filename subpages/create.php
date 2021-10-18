@@ -1,9 +1,7 @@
 <?php
 
-# currently working on
-
 $additionalquestions = 2;
-error_reporting(1); // disable warnings
+error_reporting(0); // disable warnings
 
 /* connection to db */
 require_once '../assets/php/db.php';

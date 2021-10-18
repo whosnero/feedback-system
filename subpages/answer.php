@@ -27,22 +27,23 @@ if ($surveyamount > 0) { // amount
 
 $postconn = openDB();
 
+if (isset($_POST['btnSubmit'])) {
+  foreach ($_POST as $qid => $valuation) {
+    /* search vars from form */
+    if (str_starts_with($qid, "star")) {
+      $qid = str_replace("star-", "", $qid); // for easier insert
 
-foreach ($_POST as $qid => $valuation) {
-  /* search vars from form */
-  if (str_starts_with($qid, "star")) {
-    $qid = str_replace("star-", "", $qid); // for easier insert
 
+      $postquery = $postconn->prepare("INSERT INTO responses (code, questionid, valuation) VALUES (?, ?, ?)");
+      $postquery->bind_param("iii", $code, $qid, $valuation);
+      $postquery->execute();
 
-    $postquery = $postconn->prepare("INSERT INTO responses (code, questionid, valuation) VALUES (?, ?, ?)");
-    $postquery->bind_param("iii", $code, $qid, $valuation);
-    $postquery->execute();
-
-    if ($postquery->affected_rows < 0) {
-      /* failed to insert data */
-      header('Location: index.php');
+      if ($postquery->affected_rows < 0) {
+        /* failed to insert data */
+        header('Location: index.php');
+      }
+      $postquery->close();
     }
-    $postquery->close();
   }
 }
 
@@ -133,7 +134,7 @@ closeDB($postconn);
 
         <br>
         <input type="hidden" name="code" value="<?php echo $code_survey; ?>">
-        <input type="submit" value="Submit!">
+        <input type="submit" name="btnSubmit" value="Submit!">
 
       </form>
 

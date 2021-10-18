@@ -3,12 +3,7 @@
 # currently working on
 
 error_reporting(0); // disable warnings
-$code = $_POST["code"];
 
-/* checks post got an code */
-if (!isset($code) || $code == null) {
-    header('Location: ../index.php');
-}
 
 /* connection to db */
 require_once '../assets/php/db.php';
