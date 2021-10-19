@@ -14,6 +14,7 @@ $samplequery->store_result(); // returns a buffered result object from sampleque
 $sampleamount = $samplequery->num_rows();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
+
   $code = generateCode(3, 499); // define range of generateCode
 
   $postconn = openDB();
@@ -44,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
   #TODO: make notifications
 
-  header('Location: ../index.php');
+  header('Location: notification.php?create&code=' . $code);
 }
 
 ?>

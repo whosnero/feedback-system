@@ -49,7 +49,7 @@
                     <div data-aos="zoom-in" class="row main-code justify-content-center">
                         <form method="post" action="subpages/answer.php" enctype="multipart/form-data" autocomplete="off">
                             <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10" required>
-                            <input type="submit" value="Enter">
+                            <input type="submit" name="btnEnter" value="Enter">
                         </form>
                     </div>
                 </div>

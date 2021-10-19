@@ -4,8 +4,28 @@ require_once '../assets/php/db.php';
 $bigtext = "Welcome to Feedo!";
 $smalltext = "Why u are here?";
 
-if (isset($_GET['code'])) {
-    echo $_GET['code'];
+
+/* create-page messages */
+if (isset($_GET['create'], $_GET['code'])) {
+    $code = $_GET['code'];
+    $bigtext = "Die Umfrage wurde erfolgreich erstellt!";
+    $smalltext = "Der Code lautet: " . $code;
+}
+
+/* index wrong code */
+if (isset($_GET['wcode'])) {
+    $code = $_GET['wcode'];
+    $bigtext = "Code " .$code . " nicht gefunden!";
+    $smalltext = "Bitte erneut versuchen.";
+    header("Refresh:2; url=../index.php");
+}
+
+/* answer-page messages */
+if (isset($_GET['answer'])) {
+    $bigtext = "Die Antworten wurde übermittelt!";
+    $smalltext = "Vielen Dank!";
+
+    header("Refresh:3; url=../index.php");
 }
 
 

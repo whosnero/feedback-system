@@ -4,7 +4,7 @@ error_reporting(0); // disable warnings
 $code = $_POST["code"];
 
 /* checks post got an code */
-if (!isset($code) || $code == null) {
+if (!isset($code) || $code == null || !isset($_POST['btnEnter'])) {
   header('Location: ../index.php');
 }
 
@@ -22,7 +22,7 @@ if ($surveyamount > 0) { // amount
   $surveyquery->bind_result($code_survey, $question_survey, $questionid_survey, $created_at_survey);
 } else {
   /* no result (db=survey) */
-  header('Location: ../index.php');
+  header('Location: notification.php?wcode=' . $code);
 }
 
 $postconn = openDB();
@@ -45,6 +45,9 @@ if (isset($_POST['btnSubmit'])) {
       $postquery->close();
     }
   }
+
+  header('Location: notification.php?answer');
+
 }
 
 closeDB($postconn);
