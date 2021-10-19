@@ -123,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   </section>
 
   <!-- footer-->
-  <footer>
+  <footer class="create-footer">
     <script>
       document.write(date());
     </script>

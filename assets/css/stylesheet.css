@@ -116,7 +116,7 @@ ul li {
     border: 0;
     background: none;
     padding: 6px 10px;
-    background: #fec260;
+    background: #FEC260;
     transition: 0.3s;
     border-radius: 50px;
   }
@@ -192,7 +192,7 @@ ul li {
 }
 
 .answer-header {
-  min-height: 10%;
+  height: 10%;
 }
   .icon-answer {
     display: flex;
@@ -202,15 +202,14 @@ ul li {
 
 .answer-body {
   text-align: center;
-  position: absolute;
-  top: 128px;
-  bottom: 128px;
+  position: relative;
+  margin-bottom: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-  .answer-question h1 {
+  .answer-heading h1 {
     font-size: 36px;
     font-weight: bold;
   }
@@ -234,13 +233,13 @@ ul li {
         position: relative;
         display: inline-block;
         font-size: 50px;
-        color: #101010;
+        color: #323064;
       }
       .valuation label:after {
         content: '\f005';
         font-family: fontAwesome !important;
-        position: relative;
-        bottom: 1.5em;
+        position: absolute;
+        top: 0;
         display: block;
         font-size: 50px;
         color: #FEC260;
@@ -254,6 +253,28 @@ ul li {
         opacity: 1;
       }
 
+  .answer-submit {
+    color: #a12568;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    text-decoration: none;
+    padding: 6px 10px;
+    background: #FEC260;
+    border: 0;
+    border-radius: 50px;
+  }
+    .answer-submit:hover {
+      color: #a12568;
+      font-size: 16px;
+      font-weight: bold;
+      background: none;
+      text-decoration: none;
+      padding: 6px 10px;
+      background: #EBA12A;
+      border: 0;
+      border-radius: 50px;
+    }
 footer {
   color: white;
   font-family: BigNoodleTiling;
@@ -270,7 +291,12 @@ footer {
     right: 0.5em;
   }
   .answer-footer {
-    position: absolute;
+    position: fixed;
+    bottom: 0.1em;
+    right: 0.5em;
+  }
+  .create-footer {
+    position: fixed;
     bottom: 0.1em;
     right: 0.5em;
   }

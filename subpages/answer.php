@@ -96,8 +96,8 @@ closeDB($postconn);
     </div>
     <div class="answer-body container-fluid">
       <div class="row">
-        <div class="col-md-12 answer-question">
-          <h1>Wie gefällt dir der Unterricht?</h1>
+        <div class="col-md-12 answer-heading">
+          <h1>Please answer the following questions precisely & honest!</h1>
         </div>
       </div>
 
@@ -109,21 +109,20 @@ closeDB($postconn);
         while ($surveyquery->fetch()) { // while page can use this variables
           /* creates form to answer */
         ?>
-          <div class="row">
-            <div class="col-md-12">
-
+              <div class="row">
               <label for="<?php echo $questionid_survey; ?>"><b><?php echo $question_survey; ?></b></label> <br>
-
+              <div class='col-md-12 valuation'>
+              <div id="group<?php echo $questionid_survey; ?>"> <!-- ist wichtig, nicht rausmachen. hat noch keinen nutzen-->
               <?php
 
               for ($i = 1; $i <= 5; $i++) {
-                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $i . "'><label for='star" . $i . "'></label>";
+                echo "<input type='radio' name='group" . $questionid_survey . "' value='" . $i . "'  id='star" . $i . "'><label for='star" . $i . "'></label>";
               }
 
               ?>
-
             </div>
-          </div>
+            </div>
+            </div>
         <?php
         }
 
@@ -134,7 +133,7 @@ closeDB($postconn);
 
         <br>
         <input type="hidden" name="code" value="<?php echo $code_survey; ?>">
-        <input type="submit" name="btnSubmit" value="Submit!">
+        <input type="submit" class="answer-submit" name="btnSubmit" value="Submit!">
 
       </form>
 
