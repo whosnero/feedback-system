@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               while ($samplequery->fetch()) { // while page can use this variables
                 /* echo text-box, value from db */
                 $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
-                echo "<input type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' value='" . $question_sample . "'" . $required . "> <br>";
+                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' value='" . $question_sample . "'" . $required . "> <br>";
               }
             } else {
               /* no result (db=sample_question) */
@@ -111,11 +111,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255'> <br>";
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255'> <br>";
             }
             ?>
             <br>
-            <input type="submit" name="btnSubmit" value="Create Survey!">
+              <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
           </form>
         </div>
       </div>
