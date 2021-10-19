@@ -304,3 +304,53 @@ footer {
     bottom: 0.1em;
     right: 0.5em;
   }
+  .createsurvey2 {
+    color: #a12568;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    text-decoration: none;
+    padding: 6px 10px;
+    background: #FEC260;
+    transition: 0.3s;
+    border-radius: 50px;
+    border: 0;
+  }
+
+  .createsurvey2:hover {
+    color: #a12568;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    text-decoration: none;
+    padding: 6px 10px;
+    background: #eba12a;
+    transition: 0.3s;
+    border-radius: 50px;
+    border: 0;
+  }
+
+  .question-box {
+    color:white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight:500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: transparent;
+    border:2px solid #FEC260;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 0.5em;
+    width:100%;
+    box-sizing: border-box;
+    outline:0;
+  }
+  
+  .question-box:focus { border:2px solid #FEC260; }
+  
+  textarea {
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+  }
