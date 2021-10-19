@@ -112,15 +112,13 @@ closeDB($postconn);
               <div class="row">
               <label for="<?php echo $questionid_survey; ?>"><b><?php echo $question_survey; ?></b></label> <br>
               <div class='col-md-12 valuation'>
-              <div id="group<?php echo $questionid_survey; ?>"> <!-- ist wichtig, nicht rausmachen. hat noch keinen nutzen-->
               <?php
 
-              for ($i = 1; $i <= 5; $i++) {
-                echo "<input type='radio' name='group" . $questionid_survey . "' value='" . $i . "'  id='star" . $i . "'><label for='star" . $i . "'></label>";
+              for ($i = 5; $i >= 1; $i--) {
+                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label for='star" . $questionid_survey . "-" . $i ."'></label>";
               }
 
               ?>
-            </div>
             </div>
             </div>
         <?php

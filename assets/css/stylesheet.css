@@ -203,8 +203,11 @@ ul li {
 .answer-body {
   text-align: center;
   position: relative;
-  margin-bottom: 2.5em;
   display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -220,8 +223,8 @@ ul li {
   }
     .valuation input{
       display: none;
-
     }
+    
     .valuation label {
       display: inline-block;
       cursor: pointer;
@@ -259,6 +262,7 @@ ul li {
     font-weight: bold;
     background: none;
     text-decoration: none;
+    margin-bottom: 2.5em;
     padding: 6px 10px;
     background: #FEC260;
     border: 0;
