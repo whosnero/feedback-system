@@ -1,5 +1,4 @@
 <?php
-
 $additionalquestions = 2;
 error_reporting(0); // disable warnings
 
@@ -80,6 +79,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <section class="main">
     <div class="main-body container-fluid">
       <div class="row">
+                <div class="col-md-12">
+                    <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+                </div>
+      <div class="row">
         <div class="col-md-12">
           <h1 data-aos="zoom-in-down">Type your question in the text-box!</h1>
         </div>
@@ -99,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               while ($samplequery->fetch()) { // while page can use this variables
                 /* echo text-box, value from db */
                 $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
-                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' value='" . $question_sample . "'" . $required . "> <br>";
+                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' size='70' value='" . $question_sample . "'" . $required . "> <br>";
               }
             } else {
               /* no result (db=sample_question) */
@@ -108,10 +111,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             $samplequery->close();
             closeDB($conn);
-
+            
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255'> <br>";
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255' size='70'> <br>";
             }
             ?>
             <br>
