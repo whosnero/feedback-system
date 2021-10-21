@@ -76,18 +76,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
 <body>
   <!-- Code section-->
-  <section class="main">
-    <div class="main-body container-fluid">
+  <section class="create container-fluid">
+    <div class="create-header container-fluid">
       <div class="row">
-                <div class="col-md-12">
-                    <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
-                </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h1 data-aos="zoom-in-down">Type your question in the text-box!</h1>
+        <div class="col-md-4">
+          <p class="invisible">to be added soon (language change)</p>
+        </div>
+        <div class="col-md-4 icon-answer">
+          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/logo.png" alt="Feedo Logo">
         </div>
         <div class="col-md-4 backtomain">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
+        </div>
+      </div>
+    </div>
+    <div class="create-body container-fluid">
+      <div class="row">
+        <div class="col-md-12 typequestionmsg">
+          <h1 data-aos="zoom-in-down">Type your question in the text-box!</h1>
         </div>
       </div>
       <div class="row">
@@ -111,27 +117,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             $samplequery->close();
             closeDB($conn);
-            
+
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
               echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255' size='70'> <br>";
             }
             ?>
             <br>
-              <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
+            <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
           </form>
         </div>
       </div>
     </div>
 
+    <!-- footer-->
+      <footer class="create-footer">
+        <script>
+          document.write(date());
+        </script>
+      </footer>
   </section>
-
-  <!-- footer-->
-  <footer class="create-footer">
-    <script>
-      document.write(date());
-    </script>
-  </footer>
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->

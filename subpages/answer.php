@@ -87,7 +87,10 @@ closeDB($postconn);
     <div class="answer-header container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <p class="invisible">to be added soon (language change)</p>
+          <form method="post" action="result.php" enctype="multipart/form-data">
+            <input type="submit" class="seeresult" name="seeresult" value="See Result">
+            <input type="hidden" name="code" value="<?php echo $code; ?>">
+          </form>
         </div>
         <div class="col-md-4 icon-answer">
           <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
