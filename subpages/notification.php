@@ -28,6 +28,16 @@ if (isset($_GET['answer'])) {
     header("Refresh:3; url=../index.php");
 }
 
+if (isset($_GET['noanswer'])) {
+    $code = $_GET['noanswer'];
+    $bigtext = "Es liegen keine Antworten vor!";
+    $smalltext = "Bitte erneut probieren";
+
+    //TODO: Link ändern mit Code
+
+    header("Refresh:2; url=../index.php");
+}
+
 
 ?>
 
