@@ -57,13 +57,13 @@ if ($queryamount > 0) { // amount
 
 <body>
     <!-- Code section-->
-    <section class="answer">
-        <div class="answer-header container-fluid">
+    <section class="result">
+        <div class="result-header container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <p class="invisible">to be added soon (language change)</p>
                 </div>
-                <div class="col-md-4 icon-answer">
+                <div class="col-md-4 icon-result">
                     <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
                 </div>
                 <div class="col-md-4 backtomain">
@@ -71,10 +71,11 @@ if ($queryamount > 0) { // amount
                 </div>
             </div>
         </div>
-        <div class="answer-body container-fluid">
+        <div class="result-body container-fluid">
             <div class="row">
-                <div class="col-md-12 answer-heading">
-                    <h1>Here your results!</h1>
+                <div class="col-md-12 result-heading">
+                    <h1>Here are your results!</h1>
+                    <h2>below you can see the average valuation of each question. </h2>
                 </div>
             </div>
 
@@ -99,15 +100,74 @@ if ($queryamount > 0) { // amount
 
                             $valuation_average = (round($valuation_average * 2)) / 2; // 1,25 = 1 && 1,65 = 1,5 && 1,75 = 2
 
-                            //TODO: create stars for every question and use bootstrap
-                            echo "<p> Question: " . $question . ", Valuation: " . $valuation_average . "</p>";
+                            //checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5 , 4, 4.5, 5)
+                            if($valuation_average <= 0.74){
+                            echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star-half'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 0.75 && $valuation_average <= 1.24){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 1.25 && $valuation_average <= 1.74){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star-half'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 1.75 && $valuation_average <= 2.24){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 2.25 && $valuation_average <= 2.74){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star-half'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 2.75 && $valuation_average <= 3.24){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 3.25 && $valuation_average <= 3.74){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-4' class='result-star'><i class='fa fa-star-half'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 3.75 && $valuation_average <= 4.24){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-4' class='result-star'><i class='fa fa-star'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 4.25 && $valuation_average <= 4.74){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-4' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-5' class='result-star'><i class='fa fa-star-half'></i></li>
+                                    </ul></p>";
+                            } else if($valuation_average >= 4.75){
+                                echo "<p>" . $question . " <br> Average Valuation: " . $valuation_average . " <ul class='star-list'>
+                                    <li id='" . $questionid ."-1' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-2' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-3' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-4' class='result-star'><i class='fa fa-star'></i></li>
+                                    <li id='" . $questionid ."-5' class='result-star'><i class='fa fa-star'></i></li>
+                                    </ul></p>";
+                            }else {
+                                /* couldn´t get average of sum(valuation) */
+                            }
                         }
-                    } else {
-                        /* couldn´t get average of sum(valuation) */
                     }
                 }
             }
-
             /* closes all "editors" and connections */
             $query->close();
             $valuequery->close();
@@ -118,11 +178,13 @@ if ($queryamount > 0) { // amount
             <br>
 
 
+
+
         </div>
         </div>
 
         <!-- footer-->
-        <footer class="answer-footer">
+        <footer class="result-footer">
             <script>
                 document.write(date());
             </script>

@@ -73,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
   <title>Feedo!</title>
 </head>
-
 <body>
   <!-- Code section-->
   <section class="create container-fluid">
@@ -93,12 +92,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
     <div class="create-body container-fluid">
       <div class="row">
         <div class="col-md-12 typequestionmsg">
-          <h1 data-aos="zoom-in-down">Type your question in the text-box!</h1>
+          <h1 data-aos="zoom-in-down">Type your questions in the text-boxes!</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="create.php" enctype="multipart/form-data">
+          <form  class='question-box' method="post" id="create-form" action="create.php" enctype="multipart/form-data">
             <?php
             /* getting sample questions */
             /* checks result and creates variables from result */
@@ -120,11 +119,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='255' size='70'> <br>";
+              echo "<input type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'> <br>";
             }
             ?>
-            <br>
-            <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
+            <script>
+              var counter = 5;
+              var addqbtn = document.getElementById('addqbtn');
+              var form = document.getElementById('create-form');
+              var createNewField = function() {
+                counter++;
+
+                var input = document.createElement("input");
+                var br = document.createElement("br");  // If you need new line after each input field
+
+                input.id = 'questionid-' + counter;
+                input.type = 'text';
+                input.name = 'questionid-' + counter;
+                input.placeholder = 'Write your question in here. ';
+                if(counter = 6){
+                  form.appendChild(input);
+                } else { 
+                  form.appendChild(br); // If you need new line after each input field
+                  form.appendChild(input);
+                }
+              };
+            </script>
+            <div class="row">
+              <div class="col-md-6">
+                <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+" >
+              </div>
+              <div class="col-md-6">
+                <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
+              </div>
+            </div>
           </form>
         </div>
       </div>

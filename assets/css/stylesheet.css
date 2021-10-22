@@ -63,22 +63,22 @@ ul li {
     border-radius: 50px;
   }
 
-  .createsurvey a:hover {
-    color: #a12568;
-    font-size: 16px;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: none;
-    text-decoration: none;
-    margin-top: 1em;
-    margin-right: 1em;
-    padding: 6px 10px;
-    background: #eba12a;
-    transition: 0.3s;
-    border-radius: 50px;
-  }
+    .createsurvey a:hover {
+      color: #a12568;
+      font-size: 16px;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: none;
+      text-decoration: none;
+      margin-top: 1em;
+      margin-right: 1em;
+      padding: 6px 10px;
+      background: #eba12a;
+      transition: 0.3s;
+      border-radius: 50px;
+    }
 
   .main h1 {
     color: rgb(255, 255, 255);
@@ -97,33 +97,31 @@ ul li {
     text-align: left;
   }
   
-  .main-code form input[type="number"] {
-    color: rgb(0, 0, 0);
-    font-family: sans-serif;
-    font-weight: bold;
-    background: rgb(255, 255, 255);
-    border: 0;
-  }
-  
-  .main-code form input[type="submit"] {
-    color: #a12568;
-    font-size: 16px;
-    font-weight: bold;
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    border: 0;
-    background: none;
-    padding: 6px 10px;
-    background: #FEC260;
-    transition: 0.3s;
-    border-radius: 50px;
-  }
-  
-  .main-code form input[type="submit"]:hover {
-    background: #eba12a;
-  }
+    .main-code form input[type="number"] {
+      color: rgb(0, 0, 0);
+      font-family: sans-serif;
+      font-weight: bold;
+      background: rgb(255, 255, 255);
+      border: 0;
+    }
+    .main-code form input[type="submit"] {
+      color: #a12568;
+      font-size: 16px;
+      font-weight: bold;
+      position: relative;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border: 0;
+      background: none;
+      padding: 6px 10px;
+      background: #FEC260;
+      transition: 0.3s;
+      border-radius: 50px;
+    }
+    .main-code form input[type="submit"]:hover {
+      background: #eba12a;
+    }
 
   .main h2 {
     color: rgb(202, 202, 202);
@@ -166,7 +164,7 @@ ul li {
       font-size: 48px;
       line-height: 56px;
     }
-    .question-box {
+    .question-box input[type="text"] {
       color:white;
       font-family: Helvetica, Arial, sans-serif;
       font-weight:500;
@@ -178,12 +176,41 @@ ul li {
       transition: all 0.3s;
       padding: 13px;
       margin-bottom: 0.5em;
-      width:100%;
+      width: 100%;
       box-sizing: border-box;
-      outline:0;
+      outline: 0;
+      size: 70;
     }
-      .question-box:focus {
+      .question-box input:focus {
         border:2px solid #FEC260; 
+      }
+    .addquestion {
+        color: #a12568;
+        font-size: 24px;
+        font-weight: bold;
+        background: none;
+        text-decoration: none;
+        float: left;
+        width: 100px;
+        padding: 6px 10px;
+        background: #FEC260;
+        height: 48px;
+        border-radius: 50px;
+        border: 0;
+    }
+      .addquestion:hover {
+        color: #a12568;
+        font-size: 24px;
+        font-weight: bold;
+        background: none;
+        text-decoration: none;
+        float: left;
+        width: 100px;
+        padding: 6px 10px;
+        background: #eba12a;
+        height: 48px;
+        border-radius: 50px;
+        border: 0;
       }
     .createsurvey2 {
       color: #a12568;
@@ -191,27 +218,26 @@ ul li {
       font-weight: bold;
       background: none;
       text-decoration: none;
-      margin-bottom: 1em;
+      float: right;
       padding: 6px 10px;
       background: #FEC260;
-      transition: 0.3s;
+      height: 48px;
       border-radius: 50px;
       border: 0;
     }
-  
-    .createsurvey2:hover {
-      color: #a12568;
-      font-size: 16px;
-      font-weight: bold;
-      background: none;
-      text-decoration: none;
-      margin-bottom: 1em;
-      padding: 6px 10px;
-      background: #eba12a;
-      transition: 0.3s;
-      border-radius: 50px;
-      border: 0;
-    }
+      .createsurvey2:hover {
+        color: #a12568;
+        font-size: 16px;
+        font-weight: bold;
+        background: none;
+        text-decoration: none;
+        float: right;
+        padding: 6px 10px;
+        background: #eba12a;
+        height: 48px;
+        border-radius: 50px;
+        border: 0;
+      }
 
 .help {
   min-height: 100%;
@@ -301,10 +327,6 @@ ul li {
   text-align: center;
   position: relative;
   display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -376,6 +398,55 @@ ul li {
       border: 0;
       border-radius: 50px;
     }
+
+.result {
+  min-height: 100%;
+}
+  .result-header {
+    height: 10%;
+  }
+    .icon-result {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  .result-body {
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+    .result-heading h1 {
+      color: rgb(255, 255, 255);
+      margin: 15px 0 15px 0;
+      font-size: 48px;
+      line-height: 56px;
+    }
+    .result-heading h2 {
+      color: rgb(202, 202, 202);
+      font-size: 18px;
+      font-weight: bold;
+      margin: 15px 0 15px 0;
+    }
+  .star-list {
+    margin: 0;
+    padding: 0;
+  }
+    .star-list li {
+      display: inline-block;
+      text-align: center;
+    }
+      .result-star i {
+        font-family: fontAwesome !important;
+        font-size: 50px;
+        color: #FEC260;
+        opacity: 1;
+        transition: 0.5s;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5)
+      }
+
 footer {
   color: white;
   font-family: BigNoodleTiling;
@@ -396,30 +467,13 @@ footer {
     bottom: 0.1em;
     right: 0.5em;
   }
-  .create-footer{
+  .create-footer {
     position: fixed;
     bottom: 0.1em;
     right: 0.5em;
   }
-
-  .question-box {
-    color:white;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight:500;
-    font-size: 18px;
-    border-radius: 5px;
-    line-height: 22px;
-    background-color: transparent;
-    border:2px solid #FEC260;
-    transition: all 0.3s;
-    padding: 13px;
-    margin-bottom: 0.5em;
-    width:100%;
-    box-sizing: border-box;
-    outline:0;
+  .result-footer {
+    position: fixed;
+    bottom: 0.1em;
+    right: 0.5em;
   }
-  
-  .question-box:focus {
-    border:2px solid #FEC260; 
-  }
-  
