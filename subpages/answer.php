@@ -87,7 +87,7 @@ closeDB($postconn);
     <div class="answer-header container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <form method="post" action="result.php" enctype="multipart/form-data">
+          <form data-aos="flip-left" method="post" action="result.php" enctype="multipart/form-data">
             <input type="submit" class="seeresult" name="seeresult" value="See Result">
             <input type="hidden" name="code" value="<?php echo $code; ?>">
           </form>
@@ -102,12 +102,12 @@ closeDB($postconn);
     </div>
     <div class="answer-body container-fluid">
       <div class="row">
-        <div class="col-md-12 answer-heading">
+        <div data-aos="fade-down" class="col-md-12 answer-heading">
           <h1>Please answer the following questions precisely & honest!</h1>
         </div>
       </div>
 
-      <form method="post" action="answer.php" enctype="multipart/form-data">
+      <form data-aos="zoom-in" method="post" action="answer.php" enctype="multipart/form-data">
         <?php
         /* getting sample questions */
         /* checks result and creates variables from result */
@@ -143,6 +143,7 @@ closeDB($postconn);
 
     </div>
     </div>
+    </section>
 
     <!-- footer-->
     <footer class="answer-footer">
@@ -150,7 +151,6 @@ closeDB($postconn);
         document.write(date());
       </script>
     </footer>
-  </section>
 
 
   <!-- Javascript -->

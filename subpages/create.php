@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form  class='question-box' method="post" id="create-form" action="create.php" enctype="multipart/form-data">
+          <form data-aos="zoom-in" method="post" id="create-form" action="create.php" enctype="multipart/form-data">
             <?php
             /* getting sample questions */
             /* checks result and creates variables from result */
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               while ($samplequery->fetch()) { // while page can use this variables
                 /* echo text-box, value from db */
                 $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
-                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='255' size='70' value='" . $question_sample . "'" . $required . "> <br>";
+                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70' value='" . $question_sample . "'" . $required . "> <br>";
               }
             } else {
               /* no result (db=sample_question) */
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'> <br>";
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'> <br>";
             }
             ?>
             <script>
@@ -130,18 +130,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
                 counter++;
 
                 var input = document.createElement("input");
-                var br = document.createElement("br");  // If you need new line after each input field
+                var br = document.createElement("br");
 
                 input.id = 'questionid-' + counter;
+                input.classList.add("question-box");
                 input.type = 'text';
                 input.name = 'questionid-' + counter;
-                input.placeholder = 'Write your question in here. ';
-                if(counter = 6){
+                input.placeholder = 'Write your question in here. '; 
+                
                   form.appendChild(input);
-                } else { 
-                  form.appendChild(br); // If you need new line after each input field
-                  form.appendChild(input);
+                  form.appendChild(br);
                 }
+
               };
             </script>
             <div class="row">
@@ -156,14 +156,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         </div>
       </div>
     </div>
-
+    </section>
     <!-- footer-->
       <footer class="create-footer">
         <script>
           document.write(date());
         </script>
       </footer>
-  </section>
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->

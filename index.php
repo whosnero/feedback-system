@@ -28,32 +28,38 @@
 <body>
     <!-- Code section-->
     <section class="main">
-        <div class="main-body container-fluid">
+        <div class="main-header container-fluid">
             <div class="row">
-                <div class="col-md-12 createsurvey">
+                <div class="col-md-4">
+                    <p class="invisible">to be added soon (language change)</p>
+                </div>
+                <div class="col-md-4 icon-main">
+                    <img data-aos="zoom-in" class="icon invisible" src="assets/img/logo.png" alt="Feedo Logo">
+                </div>
+                <div class="col-md-4 createsurvey">
                     <ul>
                         <li><a data-aos="fade-down" href="subpages/create.php">Create Survey</a></li>
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="main-body container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <img data-aos="zoom-in" class="icon" src="assets/img/logo.png" alt="Feedo Logo">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 welcomemsg">
                     <h1 data-aos="zoom-in-down">Welcome to Feedo!</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div data-aos="zoom-in" class="row main-code justify-content-center">
-                        <form method="post" action="subpages/answer.php" enctype="multipart/form-data" autocomplete="off">
-                            <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10" required>
-                            <input type="submit" name="btnEnter" value="Enter">
-                        </form>
-                    </div>
+                <div data-aos="zoom-in" class="col-md-12">
+                    <form method="post" class="main-form" action="subpages/answer.php" enctype="multipart/form-data" autocomplete="off">
+                        <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10" required>
+                        <input type="submit" name="btnEnter" value="Enter">
+                    </form>
                 </div>
             </div>
             <div class="row">

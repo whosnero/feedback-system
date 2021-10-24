@@ -34,36 +34,13 @@ ul li {
   height: 64px;
 }
 
-.main-body {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+.main {
+  min-height: 100vh;
 }
-  .createsurvey a {
-    color: #a12568;
-    font-size: 16px;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: none;
-    text-decoration: none;
-    margin-top: 1em;
-    margin-right: 1em;
-    padding: 6px 10px;
-    background: #FEC260;
-    transition: 0.3s;
-    border-radius: 50px;
+  .main-header {
+    min-height: 10%;
   }
-
-    .createsurvey a:hover {
+    .createsurvey ul li a {
       color: #a12568;
       font-size: 16px;
       font-weight: bold;
@@ -75,65 +52,89 @@ ul li {
       margin-top: 1em;
       margin-right: 1em;
       padding: 6px 10px;
-      background: #eba12a;
-      transition: 0.3s;
-      border-radius: 50px;
-    }
-
-  .main h1 {
-    color: rgb(255, 255, 255);
-    margin: 15px 0 15px 0;
-    font-size: 48px;
-    line-height: 56px;
-  }
-  
-  .main-code form {
-    background: rgb(255, 255, 255);
-    margin: 15px 0 15px 0;
-    padding: 6px 10px;
-    position: relative;
-    border-radius: 50px;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-    text-align: left;
-  }
-  
-    .main-code form input[type="number"] {
-      color: rgb(0, 0, 0);
-      font-family: sans-serif;
-      font-weight: bold;
-      background: rgb(255, 255, 255);
-      border: 0;
-    }
-    .main-code form input[type="submit"] {
-      color: #a12568;
-      font-size: 16px;
-      font-weight: bold;
-      position: relative;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      border: 0;
-      background: none;
-      padding: 6px 10px;
       background: #FEC260;
       transition: 0.3s;
       border-radius: 50px;
     }
-    .main-code form input[type="submit"]:hover {
-      background: #eba12a;
-    }
-
-  .main h2 {
-    color: rgb(202, 202, 202);
-    font-size: 14px;
-    font-weight: bold;
-    margin: 15px 0 15px 0;
-    text-transform: uppercase;
+      .createsurvey ul li a:hover {
+        color: #a12568;
+        font-size: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: none;
+        text-decoration: none;
+        margin-top: 1em;
+        margin-right: 1em;
+        padding: 6px 10px;
+        background: #eba12a;
+        transition: 0.3s;
+        border-radius: 50px;
+      }
+  .main-body {
+    position: absolute;
+    bottom: 128px;
+    top: 128px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
   }
-    .main h2 a {
-      color: #FEC260;
-      text-decoration: none;
+    .welcomemsg h1 {
+      color: rgb(255, 255, 255);
+      margin: 15px 0 15px 0;
+      font-size: 48px;
+      line-height: 56px;
     }
+    .main-form {
+      background: rgb(255, 255, 255);
+      margin: 15px 0 15px 0;
+      padding: 6px 10px;
+      position: relative;
+      border-radius: 50px;
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+      .main-form input[type="number"] {
+        color: rgb(0, 0, 0);
+        font-family: sans-serif;
+        font-weight: bold;
+        background: rgb(255, 255, 255);
+        border: 0;
+      }
+      .main-form input[type="submit"] {
+        color: #a12568;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border: 0;
+        background: none;
+        padding: 6px 10px;
+        background: #FEC260;
+        transition: 0.3s;
+        border-radius: 50px;
+      }
+        .main-form input[type="submit"]:hover {
+          background: #eba12a;
+        }
+    .whatsfeedo h2 {
+      color: rgb(202, 202, 202);
+      font-size: 14px;
+      font-weight: bold;
+      margin: 15px 0 15px 0;
+      text-transform: uppercase;
+    }
+      .whatsfeedo h2 a {
+        color: #FEC260;
+        text-decoration: none;
+      }
 
 .create {
   min-height: 100vh;
@@ -164,7 +165,7 @@ ul li {
       font-size: 48px;
       line-height: 56px;
     }
-    .question-box input[type="text"] {
+    .question-box {
       color:white;
       font-family: Helvetica, Arial, sans-serif;
       font-weight:500;
@@ -181,7 +182,7 @@ ul li {
       outline: 0;
       size: 70;
     }
-      .question-box input:focus {
+      .question-box:focus {
         border:2px solid #FEC260; 
       }
     .addquestion {

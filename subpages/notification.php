@@ -91,7 +91,6 @@ if (isset($_GET['noanswer'])) {
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- footer-->

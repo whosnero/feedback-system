@@ -182,14 +182,13 @@ if ($queryamount > 0) { // amount
 
         </div>
         </div>
-
+    </section>
         <!-- footer-->
         <footer class="result-footer">
             <script>
                 document.write(date());
             </script>
         </footer>
-    </section>
 
 
     <!-- Javascript -->
