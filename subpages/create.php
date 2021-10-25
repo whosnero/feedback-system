@@ -124,10 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
             ?>
            
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+" >
-              </div>
-              <div class="col-md-6">
                 <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
               </div>
             </div>

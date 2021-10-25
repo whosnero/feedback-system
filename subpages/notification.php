@@ -2,7 +2,7 @@
 
 require_once '../assets/php/db.php';
 $bigtext = "Welcome to Feedo!";
-$smalltext = "Why u are here?";
+$smalltext = "Why are u here?";
 
 
 /* create-page messages */
@@ -17,7 +17,7 @@ if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " .$code . " nicht gefunden!";
     $smalltext = "Bitte erneut versuchen.";
-    header("Refresh:2; url=../index.php");
+    header("Refresh:3; url=../index.php");
 }
 
 /* answer-page messages */
@@ -35,7 +35,7 @@ if (isset($_GET['noanswer'])) {
 
     //TODO: Link ändern mit Code
 
-    header("Refresh:2; url=../index.php");
+    header("Refresh:3; url=../index.php");
 }
 
 
@@ -68,13 +68,20 @@ if (isset($_GET['noanswer'])) {
 
 <body>
     <!-- Code section-->
-    <section class="main">
-        <div class="main-body container-fluid">
+    <section class="notification">
+        <div class="notification-header container-fluid">
             <div class="row">
+                <div class="col-md-4">
+                    <p class="invisible">to be added soon (language change)</p>
+                </div>
+                <div class="col-md-4 icon-notification">
+                    <img data-aos="zoom-in" class="icon invisible" src="../assets/img/logo.png" alt="Feedo Logo">
+                </div>
                 <div class="col-md-4 backtomain">
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
                 </div>
             </div>
+        <div class="notification-body container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">

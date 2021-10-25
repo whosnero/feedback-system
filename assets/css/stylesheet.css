@@ -34,6 +34,26 @@ ul li {
   height: 64px;
 }
 
+.notification {
+  min-height: 100vh;
+}
+  .notification-header {
+    min-height: 10%;
+  }
+  .notification-body {
+    position: absolute;
+    bottom: 128px;
+    top: 128px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+
 .main {
   min-height: 100vh;
 }
