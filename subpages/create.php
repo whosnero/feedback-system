@@ -14,7 +14,7 @@ $sampleamount = $samplequery->num_rows();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
-  $code = generateCode(3, 499); // define range of generateCode
+  $code = generateCode(100, 899); // define range of generateCode
 
   $postconn = openDB();
 
@@ -122,28 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'> <br>";
             }
             ?>
-            <script>
-              var counter = 5;
-              var addqbtn = document.getElementById('addqbtn');
-              var form = document.getElementById('create-form');
-              var createNewField = function() {
-                counter++;
-
-                var input = document.createElement("input");
-                var br = document.createElement("br");
-
-                input.id = 'questionid-' + counter;
-                input.classList.add("question-box");
-                input.type = 'text';
-                input.name = 'questionid-' + counter;
-                input.placeholder = 'Write your question in here. '; 
-                
-                  form.appendChild(input);
-                  form.appendChild(br);
-                }
-
-              };
-            </script>
+           
             <div class="row">
               <div class="col-md-6">
                 <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+" >
