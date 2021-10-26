@@ -47,7 +47,6 @@ if (isset($_POST['btnSubmit'])) {
   }
 
   header('Location: notification.php?answer');
-
 }
 
 closeDB($postconn);
@@ -73,7 +72,7 @@ closeDB($postconn);
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/40327c7301.js" crossorigin="anonymous"></script>
 
   <!-- javascript (custom) -->
   <script src="../assets/js/main.js"> </script>
@@ -115,18 +114,18 @@ closeDB($postconn);
         while ($surveyquery->fetch()) { // while page can use this variables
           /* creates form to answer */
         ?>
-              <div data-aos="fade-up" class="row answer-box">
-              <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b></label> <br>
-              <div class='col-md-12 valuation darkerbg'>
+          <div data-aos="fade-up" class="row answer-box">
+            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b></label> <br>
+            <div class='col-md-12 valuation darkerbg'>
               <?php
 
               for ($i = 5; $i >= 1; $i--) {
-                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label class='darkerbg' for='star" . $questionid_survey . "-" . $i ."'></label>";
+                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label class='darkerbg' for='star" . $questionid_survey . "-" . $i . "'></label>";
               }
 
               ?>
             </div>
-            </div>
+          </div>
         <?php
         }
 
@@ -143,14 +142,14 @@ closeDB($postconn);
 
     </div>
     </div>
-    </section>
+  </section>
 
-    <!-- footer-->
-    <footer class="answer-footer">
-      <script>
-        document.write(date());
-      </script>
-    </footer>
+  <!-- footer-->
+  <footer class="answer-footer">
+    <script>
+      document.write(date());
+    </script>
+  </footer>
 
 
   <!-- Javascript -->

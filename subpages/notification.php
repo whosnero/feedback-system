@@ -38,9 +38,7 @@ if (isset($_GET['noanswer'])) {
     header("Refresh:3; url=../index.php");
 }
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
