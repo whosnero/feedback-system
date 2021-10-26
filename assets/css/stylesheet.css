@@ -118,7 +118,7 @@ ul li {
       line-height: 56px;
     }
     .main-form {
-      background: #577590;
+      background: #8ecae6;
       margin: 15px 0 15px 0;
       padding: 6px 10px;
       position: relative;
@@ -131,7 +131,7 @@ ul li {
         color: #fff;
         font-family: sans-serif;
         font-weight: bold;
-        background: #577590;
+        background: #8ecae6;
         height: 48px;
         border-radius: 25px;
         border: 0;
@@ -226,8 +226,8 @@ ul li {
       font-size: 18px;
       border-radius: 25px;
       line-height: 22px;
-      background: #577590;
-      border:2px solid #f9c74f;
+      background: #8ecae6;
+      border:2px solid transparent;
       transition: all 0.3s;
       margin-top: 0.5em;
       padding: 13px;
@@ -237,10 +237,10 @@ ul li {
       outline: 0;
     }
       .question-box:focus {
-        border:2px solid #F8961E; 
+        border:2px solid #f9c74f; 
       }
       .question-box::placeholder {
-        color: rgb(189, 189, 189);
+        color: rgb(104, 104, 104);
       }
     .additionalquestion-box {
       color:white;
@@ -248,8 +248,8 @@ ul li {
       font-size: 18px;
       border-radius: 25px;
       line-height: 22px;
-      background: #577590;
-      border:2px solid #f9c74f;
+      background: #8ecae6;
+      border:2px solid transparent;
       transition: all 0.3s;
       margin-bottom: 0.5em;
       padding: 13px;
@@ -259,10 +259,10 @@ ul li {
       outline: 0;
     }
       .additionalquestion-box:focus {
-        border:2px solid #F8961E; 
+        border:2px solid #f9c74f; 
       }
       .additionalquestion-box::placeholder {
-        color: rgb(189, 189, 189);
+        color: rgb(104, 104, 104);
       }
     .togglequestions {
         color: #a12568;
@@ -424,11 +424,12 @@ ul li {
       font-weight: bold;
     }
     .answer-form {
+      margin-top: 2em;
       margin-bottom: 2em;
     }
       .answer-box {
-        border: 5px solid #f9c74f;
-        background: #577590;
+        border: 5px solid transparent;
+        background: #8ecae6;
         padding: 1%;
         margin-bottom: 1em;
         box-sizing: border-box;
@@ -451,15 +452,17 @@ ul li {
         }
           .valuation label:before {
             content: '\f005';
-            font-family: fontAwesome !important;
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900;
             position: relative;
             display: inline-block;
             font-size: 50px;
-            color: #323064;
+            color: #3e3e46;
           }
           .valuation label:after {
             content: '\f005';
-            font-family: fontAwesome !important;
+            font-family: "Font Awesome 6 Free" !important;
+            font-weight: 900;
             position: absolute;
             top: 0;
             display: block;
@@ -524,8 +527,8 @@ ul li {
       margin: 15px 0 15px 0;
     }
     .result-box {
-      border: 5px solid #f9c74f;
-      background: #577590;
+      border: 5px solid transparent;
+      background: #8ecae6;
       padding: 1%;
       margin-bottom: 1em;
       box-sizing: border-box;
@@ -538,7 +541,7 @@ ul li {
         font-size: 20px;
       }
       .darkerbg {
-        background: #577590;
+        background: #8ecae6;
       }
       .word-break {
         word-break: break-all; 
@@ -552,7 +555,7 @@ ul li {
           text-align: center;
         }
           .result-star i {
-            font-family: fontAwesome !important;
+            font-family: "Font Awesome 6 Free" !important;
             font-size: 50px;
             color: #f9c74f;
             opacity: 1;
