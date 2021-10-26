@@ -53,7 +53,7 @@ $submitsquery->close();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- favicon (32x32) -->
-    <link rel="icon" href="../assets/img/favicon.ico" />
+    <link rel="icon" href="../assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
     <!-- custom -->
@@ -80,7 +80,7 @@ $submitsquery->close();
                     <p class="invisible">to be added soon (language change)</p>
                 </div>
                 <div class="col-md-4 icon-result">
-                    <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+                    <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedo.png" alt="Feedo Logo">
                 </div>
                 <div class="col-md-4 backtomain">
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
@@ -89,7 +89,7 @@ $submitsquery->close();
         </div>
         <div class="result-body container-fluid">
             <div class="row">
-                <div class="col-md-12 result-heading">
+                <div data-aos="zoom-in" class="col-md-12 result-heading">
                     <h1>Here are the results of <?php echo $submits <= 1 ? ($submits . " submit!") : ($submits . " submits!") ?></h1>
                     <h2>below you can see the average valuation of each question. </h2>
                 </div>
@@ -119,7 +119,7 @@ $submitsquery->close();
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
 
-                            echo "<div class='row'><div class='col-md-12 result-box'><p class='result-question darkerbg word-break'> " . $question  . "<ul class='star-list darkerbg'>";
+                            echo "<div data-aos='fade-up' class='row'><div class='col-md-12 result-box'><p class='result-question darkerbg word-break'> " . $question  . "<ul class='star-list darkerbg'>";
 
                             for ($i = 1; $i <= $valuation_average_round_down; $i++) {
                                 echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'><i class='fa fa-star darkerbg'></i>";

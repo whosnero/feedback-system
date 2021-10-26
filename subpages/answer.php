@@ -63,7 +63,7 @@ closeDB($postconn);
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- favicon (32x32) -->
-  <link rel="icon" href="../assets/img/favicon.ico" />
+  <link rel="icon" href="../assets/img/feedo.png" />
 
   <!-- stylesheets (CSS) -->
   <!-- custom -->
@@ -93,7 +93,7 @@ closeDB($postconn);
           </form>
         </div>
         <div class="col-md-4 icon-answer">
-          <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+          <img data-aos="zoom-in" class="icon" src="../assets/img/feedologo2.png" alt="Feedo Logo">
         </div>
         <div class="col-md-4 backtomain">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
@@ -103,11 +103,11 @@ closeDB($postconn);
     <div class="answer-body container-fluid">
       <div class="row">
         <div data-aos="fade-down" class="col-md-12 answer-heading">
-          <h1>Please answer the following questions precisely & honest!</h1>
+          <h1>Please answer all the following questions precisely & honest!</h1>
         </div>
       </div>
 
-      <form data-aos="zoom-in" method="post" action="answer.php" enctype="multipart/form-data">
+      <form class="answer-form" data-aos="zoom-in" method="post" action="answer.php" enctype="multipart/form-data">
         <?php
         /* getting sample questions */
         /* checks result and creates variables from result */
@@ -115,13 +115,13 @@ closeDB($postconn);
         while ($surveyquery->fetch()) { // while page can use this variables
           /* creates form to answer */
         ?>
-              <div class="row">
-              <label for="<?php echo $questionid_survey; ?>"><b><?php echo $question_survey; ?></b></label> <br>
-              <div class='col-md-12 valuation'>
+              <div data-aos="fade-up" class="row answer-box">
+              <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b></label> <br>
+              <div class='col-md-12 valuation darkerbg'>
               <?php
 
               for ($i = 5; $i >= 1; $i--) {
-                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label for='star" . $questionid_survey . "-" . $i ."'></label>";
+                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label class='darkerbg' for='star" . $questionid_survey . "-" . $i ."'></label>";
               }
 
               ?>

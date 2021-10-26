@@ -31,13 +31,17 @@ ul li {
 }
 
 .icon {
-  width: 128px;
+  width: 358px;
   height: 128px;
 }
 
 .x-icon {
   width: 64px;
   height: 64px;
+}
+
+.round {
+  border-radius: 25px;
 }
 
 .notification {
@@ -58,6 +62,10 @@ ul li {
     flex-direction: column;
     text-align: center;
   }
+    .icon-notification {
+      width: 111px;
+      height: 128px;
+    }
     .notification-box {
       border: 3px solid #f9c74f;
       background: #577590;
@@ -72,37 +80,24 @@ ul li {
   .main-header {
     min-height: 10%;
   }
-    .createsurvey ul li a {
+    .createsurvey {
       color: #a12568;
       font-size: 16px;
       font-weight: bold;
       position: absolute;
       top: 0;
       right: 0;
-      background: none;
-      text-decoration: none;
+      height: 48px;
       margin-top: 1em;
       margin-right: 1em;
       padding: 6px 10px;
       background: #f9c74f;
       transition: 0.3s;
       border-radius: 50px;
+      border: 0;
     }
-      .createsurvey ul li a:hover {
-        color: #a12568;
-        font-size: 16px;
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: none;
-        text-decoration: none;
-        margin-top: 1em;
-        margin-right: 1em;
-        padding: 6px 10px;
+      .createsurvey:hover {
         background: #F8961E;
-        transition: 0.3s;
-        border-radius: 50px;
       }
   .main-body {
     position: absolute;
@@ -127,7 +122,8 @@ ul li {
       margin: 15px 0 15px 0;
       padding: 6px 10px;
       position: relative;
-      border-radius: 50px;
+      border-radius: 25px;
+      border: 0;
       box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
       text-align: left;
     }
@@ -136,10 +132,25 @@ ul li {
         font-family: sans-serif;
         font-weight: bold;
         background: #577590;
+        height: 48px;
+        border-radius: 25px;
         border: 0;
       }
         .main-form input[type="number"]::placeholder {
           color: #fff;
+        }
+        .main-form input[type="number"]:focus {
+          outline: 0;
+        }
+      /* hide input increment arrows */
+        .main-form input[type="number"] {
+          -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+                  appearance: textfield;
+        }
+        .main-form input[type=number]::-webkit-inner-spin-button, 
+        .main-form [type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none;
         }
       .main-form input[type="submit"] {
         color: #a12568;
@@ -150,11 +161,11 @@ ul li {
         right: 0;
         bottom: 0;
         border: 0;
-        background: none;
+        height: 48px;
         padding: 6px 10px;
         background: #f9c74f;
         transition: 0.3s;
-        border-radius: 50px;
+        border-radius: 25px;
       }
         .main-form input[type="submit"]:hover {
           background: #F8961E;
@@ -181,6 +192,8 @@ ul li {
     min-height: 10%;
   }
     .icon-create {
+      width: 111px;
+      height: 128px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -203,6 +216,10 @@ ul li {
       font-size: 48px;
       line-height: 56px;
     }
+    .create-form {
+      max-width: 684px;
+      width: 100%;
+    }
     .question-box {
       color:white;
       font-weight:500;
@@ -212,11 +229,12 @@ ul li {
       background: #577590;
       border:2px solid #f9c74f;
       transition: all 0.3s;
+      margin-top: 0.5em;
       padding: 13px;
+      max-width: 684px;
       width: 100%;
       box-sizing: border-box;
       outline: 0;
-      size: 70;
     }
       .question-box:focus {
         border:2px solid #F8961E; 
@@ -224,7 +242,29 @@ ul li {
       .question-box::placeholder {
         color: rgb(189, 189, 189);
       }
-    .addquestion {
+    .additionalquestion-box {
+      color:white;
+      font-weight:500;
+      font-size: 18px;
+      border-radius: 25px;
+      line-height: 22px;
+      background: #577590;
+      border:2px solid #f9c74f;
+      transition: all 0.3s;
+      margin-bottom: 0.5em;
+      padding: 13px;
+      max-width: 684px;
+      width: 100%;
+      box-sizing: border-box;
+      outline: 0;
+    }
+      .additionalquestion-box:focus {
+        border:2px solid #F8961E; 
+      }
+      .additionalquestion-box::placeholder {
+        color: rgb(189, 189, 189);
+      }
+    .togglequestions {
         color: #a12568;
         font-size: 24px;
         font-weight: bold;
@@ -232,6 +272,7 @@ ul li {
         text-decoration: none;
         float: left;
         width: 100px;
+        margin-right: 0.1em;
         padding: 6px 10px;
         background: #f9c74f;
         height: 48px;
@@ -287,6 +328,8 @@ ul li {
   min-height: 10%;
 }
   .icon-help {
+    width: 111px;
+    height: 128px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -348,8 +391,9 @@ ul li {
       position: absolute;
       top: 0;
       left: 0;
+      height: 48px;
       margin-top: 1em;
-      margin-left: 1em;
+      margin-left: 0.5em;
       padding: 6px 10px;
       background: #f9c74f;
       transition: 0.3s;
@@ -360,6 +404,8 @@ ul li {
         background: #F8961E;
       }
     .icon-answer {
+      width: 111px;
+      height: 128px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -377,61 +423,72 @@ ul li {
       font-size: 36px;
       font-weight: bold;
     }
-    .valuation {
-      margin: 0;
-      padding: 0;
-      transform: rotateY(180deg);
+    .answer-form {
+      margin-bottom: 2em;
     }
-      .valuation input{
-        display: none;
+      .answer-box {
+        border: 5px solid #f9c74f;
+        background: #577590;
+        padding: 1%;
+        margin-bottom: 1em;
+        box-sizing: border-box;
+        border-radius: 25px;
       }
-      
-      .valuation label {
-        display: inline-block;
-        cursor: pointer;
-        width: 50px;
+      .valuation {
+        margin: 0;
+        padding: 0;
+        transform: rotateY(180deg);
+        border-radius: 25px;
       }
-        .valuation label:before {
-          content: '\f005';
-          font-family: fontAwesome !important;
-          position: relative;
+        .valuation input{
+          display: none;
+        }
+        
+        .valuation label {
           display: inline-block;
-          font-size: 50px;
-          color: #323064;
+          cursor: pointer;
+          width: 50px;
         }
-        .valuation label:after {
-          content: '\f005';
-          font-family: fontAwesome !important;
-          position: absolute;
-          top: 0;
-          display: block;
-          font-size: 50px;
-          color: #f9c74f;
-          opacity: 0;
-          transition: 0.5s;
-          text-shadow: 0 2px 5px rgba(0,0,0,0.5)
+          .valuation label:before {
+            content: '\f005';
+            font-family: fontAwesome !important;
+            position: relative;
+            display: inline-block;
+            font-size: 50px;
+            color: #323064;
+          }
+          .valuation label:after {
+            content: '\f005';
+            font-family: fontAwesome !important;
+            position: absolute;
+            top: 0;
+            display: block;
+            font-size: 50px;
+            color: #f9c74f;
+            opacity: 0;
+            transition: 0.5s;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5)
+          }
+          .valuation label:hover:after,
+          .valuation label:hover ~ label:after,
+          .valuation input:checked ~ label:after {
+            opacity: 1;
+          }
+      .answer-submit {
+        color: #a12568;
+        font-size: 16px;
+        font-weight: bold;
+        background: none;
+        padding: 6px 10px;
+        background: #f9c74f;
+        height: 48px;
+        border-radius: 50px;
+        border: 0;
+        transition: 0.3s;
         }
-        .valuation label:hover:after,
-        .valuation label:hover ~ label:after,
-        .valuation input:checked ~ label:after {
-          opacity: 1;
+        .answer-submit:hover {
+          background: #F8961E;
         }
-
-    .answer-submit {
-      color: #a12568;
-      font-size: 16px;
-      font-weight: bold;
-      background: none;
-      text-decoration: none;
-      margin-bottom: 2.5em;
-      padding: 6px 10px;
-      background: #f9c74f;
-      border: 0;
-      border-radius: 50px;
-    }
-      .answer-submit:hover {
-        background: #F8961E;
-      }
 
 .result {
   min-height: 100%;
@@ -440,6 +497,8 @@ ul li {
     height: 10%;
   }
     .icon-result {
+      width: 111px;
+      height: 128px;
       display: flex;
       justify-content: center;
       align-items: center;

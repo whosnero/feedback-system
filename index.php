@@ -43,7 +43,7 @@ closeDB($conn);
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- favicon (32x32) -->
-    <link rel="icon" href="assets/img/favicon.ico" />
+    <link rel="icon" href="assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
     <!-- custom -->
@@ -72,22 +72,22 @@ closeDB($conn);
                 <div class="col-md-4 icon-main">
                     <img data-aos="zoom-in" class="icon invisible" src="assets/img/logo.png" alt="Feedo Logo">
                 </div>
-                <div class="col-md-4 createsurvey">
-                    <ul>
-                        <li><a data-aos="fade-down" href="subpages/create.php">Create Survey</a></li>
-                    </ul>
+                <div class="col-md-4">
+                <form action="subpages/create.php">
+                    <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
+                </form>
                 </div>
             </div>
         </div>
         <div class="main-body container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img data-aos="zoom-in" class="icon" src="assets/img/logo.png" alt="Feedo Logo">
+                    <img data-aos="zoom-in" class="icon" src="assets/img/feedologo2.png" alt="Feedo Logo">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 welcomemsg">
-                    <h1 data-aos="zoom-in-down">Welcome to Feedo!</h1>
+                    <h1 data-aos="zoom-in-down">Welcome!</h1>
                 </div>
             </div>
             <div class="row">

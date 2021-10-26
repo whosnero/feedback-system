@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- favicon (32x32) -->
-  <link rel="icon" href="../assets/img/favicon.ico" />
+  <link rel="icon" href="../assets/img/feedo.png" />
 
   <!-- stylesheets (CSS) -->
   <!-- custom -->
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
           <p class="invisible">to be added soon (language change)</p>
         </div>
         <div class="col-md-4 icon-answer">
-          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/logo.png" alt="Feedo Logo">
+          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/feedo.png" alt="Feedo Logo">
         </div>
         <div class="col-md-4 backtomain">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
@@ -95,8 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <form data-aos="zoom-in" method="post" id="create-form" action="create.php" enctype="multipart/form-data">
+        <div class="col-md-12" maxwidth="684px">
+          <form data-aos="zoom-in" method="post" class="create-form" id="create-form" action="create.php" enctype="multipart/form-data">
             <?php
             /* getting sample questions */
             /* checks result and creates variables from result */
@@ -106,8 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               while ($samplequery->fetch()) { // while page can use this variables
                 /* echo text-box, value from db */
                 $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
-                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70' value='" . $question_sample . "'" . $required . "> <br>";
-                echo "<br>";
+                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70'; value='" . $question_sample . "'" . $required . "> <br>";
               }
             } else {
               /* no result (db=sample_question) */
@@ -119,13 +118,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'><br>";
-              echo "<br>";
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100' size='70' ><br>";
             }
             ?>
+            <br>
             <div class="row">
               <div class="col-md-12">
-                <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+">
+                <input class="togglequestions" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+">
+                <input class="togglequestions" onclick="removeNewField()" type="button" id="removeqbtn" name="removeqbtn" value="-">
                 <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!">
               </div>
             </div>
@@ -151,25 +151,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <script>
     AOS.init();
 
-    var counter = <?php echo ($additionalquestions + $sampleamount) ?>;
+    var addcounter = <?php echo ($additionalquestions + $sampleamount) ?>;
     var addqbtn = document.getElementById('addqbtn');
     var form = document.getElementById('create-form');
+    var br = document.createElement("br");
     var createNewField = function() {
-      counter++;
+      addcounter++;
 
       var input = document.createElement("input");
-      var br = document.createElement("br");
 
-      input.classList.add("question-box");
+      input.classList.add("additionalquestion-box");
       input.type = 'text';
-      input.name = counter;
+      input.id = addcounter;
+      input.name = addcounter;
       input.placeholder = 'Write your question in here. ';
       input.maxLength = 100;
 
-      if (counter <= 10) {
+      if (addcounter <= 10) {
         form.appendChild(input);
         form.appendChild(br);
+      } else {
+        addcounter--;
       }
+
+    };
+
+
+    var removeNewField = function() {
+      var inputfield = document.getElementById(addcounter);
+      br.remove();
+      inputfield.remove();
+      addcounter--;
     };
   </script>
 

@@ -17,7 +17,7 @@ if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " . $code . " does not exist!";
     $smalltext = "Please try again.";
-    header("Refresh:30; url=../index.php");
+    header("Refresh:3; url=../index.php");
 }
 
 /* answer-page messages */
@@ -50,7 +50,7 @@ if (isset($_GET['noanswer'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- favicon (32x32) -->
-    <link rel="icon" href="../assets/img/favicon.ico" />
+    <link rel="icon" href="../assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
     <!-- custom -->
@@ -81,15 +81,16 @@ if (isset($_GET['noanswer'])) {
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
                 </div>
             </div>
-            <div class="notification-body ">
+            <div class="notification-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+                        <img data-aos="zoom-in" class="icon icon-notification" src="../assets/img/feedo.png" alt="Feedo Logo">
                     </div>
                 </div>
+                <br>
                 <div class="row">
                     <div class="col-md-12 ">
-                        <p class="notification-box">
+                        <p data-aos="fade-down" class="notification-box">
                         <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
 
                         </p>
@@ -98,7 +99,7 @@ if (isset($_GET['noanswer'])) {
                 <div class="row">
                     <div class="col-md-12 whatsfeedo">
                         <h2 data-aos="zoom-in"><?php echo $smalltext; ?></h2>
-                        <p class="notification-box">
+                        <p data-aos="fade-up" class="notification-box">
                         </p>
                     </div>
                 </div>
