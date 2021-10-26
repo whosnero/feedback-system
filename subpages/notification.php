@@ -8,30 +8,30 @@ $smalltext = "Why are u here?";
 /* create-page messages */
 if (isset($_GET['create'], $_GET['code'])) {
     $code = $_GET['code'];
-    $bigtext = "Die Umfrage wurde erfolgreich erstellt!";
-    $smalltext = "Der Code lautet: " . $code;
+    $smalltext = "Your Survey has been created successfully!";
+    $bigtext = "Code: " . $code;
 }
 
 /* index wrong code */
 if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
-    $bigtext = "Code " .$code . " nicht gefunden!";
-    $smalltext = "Bitte erneut versuchen.";
+    $bigtext = "Code " . $code . " does not exist!";
+    $smalltext = "Please try again.";
     header("Refresh:3; url=../index.php");
 }
 
 /* answer-page messages */
 if (isset($_GET['answer'])) {
-    $bigtext = "Die Antworten wurde übermittelt!";
-    $smalltext = "Vielen Dank!";
+    $bigtext = "Your Answer has been committed successfully!";
+    $smalltext = "Thank you!";
 
     header("Refresh:3; url=../index.php");
 }
 
 if (isset($_GET['noanswer'])) {
     $code = $_GET['noanswer'];
-    $bigtext = "Es liegen keine Antworten vor!";
-    $smalltext = "Bitte erneut probieren";
+    $bigtext = "There are no answers for this survey!";
+    $smalltext = "Please try again.";
 
     //TODO: Link ändern mit Code
 
@@ -81,23 +81,28 @@ if (isset($_GET['noanswer'])) {
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
                 </div>
             </div>
-        <div class="notification-body container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+            <div class="notification-body ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img data-aos="zoom-in" class="icon" src="../assets/img/logo.png" alt="Feedo Logo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 ">
+                        <p class="result-box">
+                        <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 whatsfeedo">
+                        <h2 data-aos="zoom-in"><?php echo $smalltext; ?></h2>
+                        <p class="result-box">
+                        </p>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 whatsfeedo">
-                    <h2 data-aos="zoom-in"><?php echo $smalltext; ?></h2>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- footer-->

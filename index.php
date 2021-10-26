@@ -1,3 +1,39 @@
+<?php
+
+error_reporting(1); // disable warnings
+
+/* connection to db */
+require_once 'assets/php/db.php';
+$conn = openDB();
+
+$selquery = $conn->prepare("SELECT code FROM surveys WHERE DATE(created_at) < CURDATE() - INTERVAL 7 DAY;"); // prepare db (against injection)
+$selquery->execute();
+$selquery->store_result();
+
+if ($selquery->num_rows() > 0) {
+    while ($selquery->fetch()) {
+        $selquery->bind_result($delcode);
+
+        $delquery = $conn->prepare("DELETE FROM surveys WHERE code = ?;"); // prepare db (against injection)
+        $delquery->bind_param("i", $delcode);
+        $delquery->execute();
+        $delquery->close();
+
+        $delquery2 = $conn->prepare("DELETE FROM responses WHERE code = ?;"); // prepare db (against injection)
+        $delquery2->bind_param("i", $delcode);
+        $delquery2->execute();
+        $delquery2->close();
+    }
+} else {
+    /* no code to delete */
+}
+
+$selquery->close();
+
+
+closeDB($conn);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +54,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    
+
     <!-- javascript (custom) -->
     <script src="assets/js/main.js"> </script>
 

@@ -1,5 +1,8 @@
 <?php
-$additionalquestions = 2;
+if (!isset($additionalquestions)) {
+  $additionalquestions = 2;
+}
+
 error_reporting(0); // disable warnings
 
 /* connection to db */
@@ -14,36 +17,31 @@ $sampleamount = $samplequery->num_rows();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
-  $code = generateCode(100, 899); // define range of generateCode
+  $code = generateCode(100, 999); // define range of generateCode
 
   $postconn = openDB();
 
-  for ($i = 1; $i <= ($additionalquestions + $sampleamount); $i++) {
-    /* question and questionid from form getted */
+  foreach ($_POST as $i => $postinput) {
+    if ($i != "btnSubmit") {
 
-    $postinput = $_POST[$i];
+      if ($postinput != "" && $postinput != "Create") {
+        /* insert new data into db and creating new code */
+        $postquery = $postconn->prepare("INSERT INTO surveys (code, question, questionid) VALUES (?, ?, ?)");
+        $postquery->bind_param("isi", $code, $postinput, $i); // code = integer, question = string, questionid = integer
+        $postquery->execute();
 
-    if ($postinput != "") {
-
-      /* insert new data into db and creating new code */
-      $postquery = $postconn->prepare("INSERT INTO surveys (code, question, questionid) VALUES (?, ?, ?)");
-      $postquery->bind_param("isi", $code, $postinput, $i); // code = integer, question = string, questionid = integer
-      $postquery->execute();
-
-      if ($postquery->affected_rows < 0) {
-        /* failed to insert data */
-        header('Location: create.php');
+        if ($postquery->affected_rows < 0) {
+          /* failed to insert data */
+          header('Location: create.php');
+        }
+        $postquery->close();
       }
-
-      $postquery->close();
     }
   }
+
   closeDB($postconn);
 
   /* successful imported data into db */
-
-  #TODO: make notifications
-
   header('Location: notification.php?create&code=' . $code);
 }
 
@@ -73,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
   <title>Feedo!</title>
 </head>
+
 <body>
   <!-- Code section-->
   <section class="create container-fluid">
@@ -122,32 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'>";
             }
             ?>
-            <script>
-              var counter = 5;
-              var addqbtn = document.getElementById('addqbtn');
-              var form = document.getElementById('create-form');
-              var createNewField = function() {
-                counter++;
-
-                var input = document.createElement("input");
-                var br = document.createElement("br");
-
-                input.id = 'questionid-' + counter;
-                input.classList.add("question-box");
-                input.type = 'text';
-                input.name = counter;
-                input.placeholder = 'Write your question in here. '; 
-                if (counter <= 10) {
-                form.appendChild(input);
-                form.appendChild(br);
-                }
-              };
-            </script>
             <br>
             <div class="row">
               <div class="col-md-12">
-                <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+" >
-                <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
+                <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+">
+                <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!">
               </div>
             </div>
             <br>
@@ -155,13 +133,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         </div>
       </div>
     </div>
-    </section>
-    <!-- footer-->
-      <footer class="create-footer">
-        <script>
-          document.write(date());
-        </script>
-      </footer>
+  </section>
+  <!-- footer-->
+  <footer class="create-footer">
+    <script>
+      document.write(date());
+    </script>
+  </footer>
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->
@@ -171,6 +149,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    var counter = <?php echo ($additionalquestions + $sampleamount) ?>;
+    var addqbtn = document.getElementById('addqbtn');
+    var form = document.getElementById('create-form');
+    var createNewField = function() {
+      counter++;
+
+      var input = document.createElement("input");
+      var br = document.createElement("br");
+
+      input.classList.add("question-box");
+      input.type = 'text';
+      input.name = counter;
+      input.placeholder = 'Write your question in here. ';
+      input.maxLength = 100;
+
+      if (counter <= 10) {
+        form.appendChild(input);
+        form.appendChild(br);
+      }
+    };
   </script>
 
 </body>
