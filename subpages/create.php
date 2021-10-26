@@ -119,16 +119,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
             /* adds more input for user */
             for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'> <br>";
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100'>";
             }
             ?>
-           
+            <script>
+              var counter = 5;
+              var addqbtn = document.getElementById('addqbtn');
+              var form = document.getElementById('create-form');
+              var createNewField = function() {
+                counter++;
+
+                var input = document.createElement("input");
+                var br = document.createElement("br");
+
+                input.id = 'questionid-' + counter;
+                input.classList.add("question-box");
+                input.type = 'text';
+                input.name = counter;
+                input.placeholder = 'Write your question in here. '; 
+                if (counter <= 10) {
+                form.appendChild(input);
+                form.appendChild(br);
+                }
+              };
+            </script>
+            <br>
             <div class="row">
               <div class="col-md-12">
                 <input class="addquestion" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+" >
                 <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!" >
               </div>
             </div>
+            <br>
           </form>
         </div>
       </div>

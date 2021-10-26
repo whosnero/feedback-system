@@ -119,10 +119,10 @@ $submitsquery->close();
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
 
-                            echo "<p class='question-box'> " . $question  . "<ul class='star-list'>";
+                            echo "<div class='row'><div class='col-md-12 result-box'><p class='result-question darkerbg word-break'> " . $question  . "<ul class='star-list darkerbg'>";
 
                             for ($i = 1; $i <= $valuation_average_round_down; $i++) {
-                                echo "<li id='" . $questionid . "-" . $i . "' class='result-star'><i class='fa fa-star'></i>";
+                                echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'><i class='fa fa-star darkerbg'></i>";
                                 if ($i == $valuation_average) {
                                     echo "(" . $valuation_average .  ")";
                                 }
@@ -130,11 +130,11 @@ $submitsquery->close();
                             }
 
                             if (filter_var($valuation_average, FILTER_VALIDATE_INT) === false) { //checks if valuation_average is an double than place the half star
-                                echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star'><i class='fa fa-star-half'></i> </li>";
+                                echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'><i class='fa fa-star-half darkerbg'></i> </li>";
                                 echo " (" . $valuation_average .  ")";
                             }
 
-                            echo "</ul> </p>";
+                            echo "</ul> </p></div></div>";
                         }
                     } else {
                         /* couldn´t get average of sum(valuation) */
