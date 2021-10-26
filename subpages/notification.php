@@ -17,7 +17,7 @@ if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " . $code . " does not exist!";
     $smalltext = "Please try again.";
-    header("Refresh:3; url=../index.php");
+    header("Refresh:30; url=../index.php");
 }
 
 /* answer-page messages */
@@ -89,7 +89,7 @@ if (isset($_GET['noanswer'])) {
                 </div>
                 <div class="row">
                     <div class="col-md-12 ">
-                        <p class="result-box">
+                        <p class="notification-box">
                         <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
 
                         </p>
@@ -98,7 +98,7 @@ if (isset($_GET['noanswer'])) {
                 <div class="row">
                     <div class="col-md-12 whatsfeedo">
                         <h2 data-aos="zoom-in"><?php echo $smalltext; ?></h2>
-                        <p class="result-box">
+                        <p class="notification-box">
                         </p>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ if (isset($_GET['noanswer'])) {
     </section>
 
     <!-- footer-->
-    <footer class="main-footer">
+    <footer class="notification-footer">
         <script>
             document.write(date());
         </script>

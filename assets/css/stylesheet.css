@@ -15,10 +15,16 @@
 
 * {
   font-family: Roboto-Thin, sans-serif;
-  background-color: #4a47a3;
+  background-color: #277da1;
   color: white;
 }
 
+ /* main background #277da1
+    border and button normal #f9c74f
+    border and button hover/focus #F8961E
+    box-background #577590
+    answer-stars before #323064
+*/
 ul li {
   text-decoration: none;
   list-style-type: none;
@@ -52,6 +58,12 @@ ul li {
     flex-direction: column;
     text-align: center;
   }
+    .notification-box {
+      border: 3px solid #f9c74f;
+      background: #577590;
+      padding: 1%;
+      border-radius: 25px;
+    }
 
 
 .main {
@@ -72,7 +84,7 @@ ul li {
       margin-top: 1em;
       margin-right: 1em;
       padding: 6px 10px;
-      background: #FEC260;
+      background: #f9c74f;
       transition: 0.3s;
       border-radius: 50px;
     }
@@ -88,7 +100,7 @@ ul li {
         margin-top: 1em;
         margin-right: 1em;
         padding: 6px 10px;
-        background: #eba12a;
+        background: #F8961E;
         transition: 0.3s;
         border-radius: 50px;
       }
@@ -111,7 +123,7 @@ ul li {
       line-height: 56px;
     }
     .main-form {
-      background: rgb(255, 255, 255);
+      background: #577590;
       margin: 15px 0 15px 0;
       padding: 6px 10px;
       position: relative;
@@ -120,12 +132,15 @@ ul li {
       text-align: left;
     }
       .main-form input[type="number"] {
-        color: rgb(0, 0, 0);
+        color: #fff;
         font-family: sans-serif;
         font-weight: bold;
-        background: rgb(255, 255, 255);
+        background: #577590;
         border: 0;
       }
+        .main-form input[type="number"]::placeholder {
+          color: #fff;
+        }
       .main-form input[type="submit"] {
         color: #a12568;
         font-size: 16px;
@@ -137,12 +152,12 @@ ul li {
         border: 0;
         background: none;
         padding: 6px 10px;
-        background: #FEC260;
+        background: #f9c74f;
         transition: 0.3s;
         border-radius: 50px;
       }
         .main-form input[type="submit"]:hover {
-          background: #eba12a;
+          background: #F8961E;
         }
     .whatsfeedo h2 {
       color: rgb(202, 202, 202);
@@ -155,6 +170,9 @@ ul li {
         color: #FEC260;
         text-decoration: none;
       }
+        .whatsfeedo h2 a:hover {
+          color: #F8961E;
+        }
 
 .create {
   min-height: 100vh;
@@ -191,21 +209,20 @@ ul li {
       font-size: 18px;
       border-radius: 25px;
       line-height: 22px;
-      background: #323064;
-      border:2px solid #FEC260;
+      background: #577590;
+      border:2px solid #f9c74f;
       transition: all 0.3s;
       padding: 13px;
-      margin-bottom: 0.5em;
       width: 100%;
       box-sizing: border-box;
       outline: 0;
       size: 70;
     }
       .question-box:focus {
-        border:2px solid #FEC260; 
+        border:2px solid #F8961E; 
       }
       .question-box::placeholder {
-        color: #FEC260;
+        color: rgb(189, 189, 189);
       }
     .addquestion {
         color: #a12568;
@@ -216,7 +233,7 @@ ul li {
         float: left;
         width: 100px;
         padding: 6px 10px;
-        background: #FEC260;
+        background: #f9c74f;
         height: 48px;
         border-radius: 50px;
         border: 0;
@@ -230,7 +247,7 @@ ul li {
         float: left;
         width: 100px;
         padding: 6px 10px;
-        background: #eba12a;
+        background: #F8961E;
         height: 48px;
         border-radius: 50px;
         border: 0;
@@ -243,7 +260,7 @@ ul li {
       text-decoration: none;
       float: right;
       padding: 6px 10px;
-      background: #FEC260;
+      background: #f9c74f;
       height: 48px;
       border-radius: 50px;
       border: 0;
@@ -256,7 +273,7 @@ ul li {
         text-decoration: none;
         float: right;
         padding: 6px 10px;
-        background: #eba12a;
+        background: #F8961E;
         height: 48px;
         border-radius: 50px;
         border: 0;
@@ -315,112 +332,106 @@ ul li {
 .answer {
   min-height: 100%;
 }
-
-.answer-header {
-  height: 10%;
-}
-  .seeresult {
-    color: #a12568;
-    font-size: 16px;
-    font-weight: bold;
-    background: none;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-top: 1em;
-    margin-left: 1em;
-    padding: 6px 10px;
-    background: #FEC260;
-    transition: 0.3s;
-    border-radius: 50px;
-    border: 0;
+  .answer-header {
+    height: 10%;
   }
-  .icon-answer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-.answer-body {
-  text-align: center;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-  .answer-heading h1 {
-    font-size: 36px;
-    font-weight: bold;
-  }
-  .valuation {
-    margin: 0;
-    padding: 0;
-    transform: rotateY(180deg);
-  }
-    .valuation input{
-      display: none;
-    }
-    
-    .valuation label {
-      display: inline-block;
-      cursor: pointer;
-      width: 50px;
-    }
-      .valuation label:before {
-        content: '\f005';
-        font-family: fontAwesome !important;
-        position: relative;
-        display: inline-block;
-        font-size: 50px;
-        color: #323064;
-      }
-      .valuation label:after {
-        content: '\f005';
-        font-family: fontAwesome !important;
-        position: absolute;
-        top: 0;
-        display: block;
-        font-size: 50px;
-        color: #FEC260;
-        opacity: 0;
-        transition: 0.5s;
-        text-shadow: 0 2px 5px rgba(0,0,0,0.5)
-      }
-      .valuation label:hover:after,
-      .valuation label:hover ~ label:after,
-      .valuation input:checked ~ label:after {
-        opacity: 1;
-      }
-
-  .answer-submit {
-    color: #a12568;
-    font-size: 16px;
-    font-weight: bold;
-    background: none;
-    text-decoration: none;
-    margin-bottom: 2.5em;
-    padding: 6px 10px;
-    background: #FEC260;
-    border: 0;
-    border-radius: 50px;
-  }
-    .answer-submit:hover {
+    .seeresult {
       color: #a12568;
       font-size: 16px;
       font-weight: bold;
       background: none;
       text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: 1em;
+      margin-left: 1em;
       padding: 6px 10px;
-      background: #EBA12A;
+      background: #f9c74f;
+      transition: 0.3s;
+      border-radius: 50px;
+      border: 0;
+    }
+      .seeresult:hover {
+        background: #F8961E;
+      }
+    .icon-answer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+  .answer-body {
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+    .answer-heading h1 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    .valuation {
+      margin: 0;
+      padding: 0;
+      transform: rotateY(180deg);
+    }
+      .valuation input{
+        display: none;
+      }
+      
+      .valuation label {
+        display: inline-block;
+        cursor: pointer;
+        width: 50px;
+      }
+        .valuation label:before {
+          content: '\f005';
+          font-family: fontAwesome !important;
+          position: relative;
+          display: inline-block;
+          font-size: 50px;
+          color: #323064;
+        }
+        .valuation label:after {
+          content: '\f005';
+          font-family: fontAwesome !important;
+          position: absolute;
+          top: 0;
+          display: block;
+          font-size: 50px;
+          color: #f9c74f;
+          opacity: 0;
+          transition: 0.5s;
+          text-shadow: 0 2px 5px rgba(0,0,0,0.5)
+        }
+        .valuation label:hover:after,
+        .valuation label:hover ~ label:after,
+        .valuation input:checked ~ label:after {
+          opacity: 1;
+        }
+
+    .answer-submit {
+      color: #a12568;
+      font-size: 16px;
+      font-weight: bold;
+      background: none;
+      text-decoration: none;
+      margin-bottom: 2.5em;
+      padding: 6px 10px;
+      background: #f9c74f;
       border: 0;
       border-radius: 50px;
     }
+      .answer-submit:hover {
+        background: #F8961E;
+      }
 
 .result {
   min-height: 100%;
@@ -454,14 +465,13 @@ ul li {
       margin: 15px 0 15px 0;
     }
     .result-box {
-      border: 5px solid #eba12a;
-      background: #323064;
+      border: 5px solid #f9c74f;
+      background: #577590;
       padding: 1%;
       margin-bottom: 1em;
       box-sizing: border-box;
       border-radius: 25px;
       line-height: 22px;
-      size: 70;
     }
       .result-question {
         padding-top: 1em;
@@ -469,7 +479,7 @@ ul li {
         font-size: 20px;
       }
       .darkerbg {
-        background: #323064;
+        background: #577590;
       }
       .word-break {
         word-break: break-all; 
@@ -485,7 +495,7 @@ ul li {
           .result-star i {
             font-family: fontAwesome !important;
             font-size: 50px;
-            color: #FEC260;
+            color: #f9c74f;
             opacity: 1;
             transition: 0.5s;
             text-shadow: 0 2px 5px rgba(0,0,0,0.5)
@@ -517,6 +527,11 @@ footer {
     right: 0.5em;
   }
   .result-footer {
+    position: fixed;
+    bottom: 0.1em;
+    right: 0.5em;
+  }
+  .notification-footer {
     position: fixed;
     bottom: 0.1em;
     right: 0.5em;
