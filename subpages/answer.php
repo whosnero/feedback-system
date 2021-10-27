@@ -33,7 +33,6 @@ if (isset($_POST['btnSubmit'])) {
     if (str_starts_with($qid, "star")) {
       $qid = str_replace("star-", "", $qid); // for easier insert
 
-
       $postquery = $postconn->prepare("INSERT INTO responses (code, questionid, valuation) VALUES (?, ?, ?)");
       $postquery->bind_param("iii", $code, $qid, $valuation);
       $postquery->execute();
@@ -50,9 +49,7 @@ if (isset($_POST['btnSubmit'])) {
 }
 
 closeDB($postconn);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +58,7 @@ closeDB($postconn);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- favicon (32x32) -->
+  <!-- favicon -->
   <link rel="icon" href="../assets/img/feedo.png" />
 
   <!-- stylesheets (CSS) -->
@@ -95,7 +92,9 @@ closeDB($postconn);
           <img data-aos="zoom-in" class="icon icon-answer" src="../assets/img/feedo.png" alt="Feedo Logo">
         </div>
         <div class="col-md-4 backtomain">
-          <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
+          <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
+            <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+          </a>
         </div>
       </div>
     </div>
@@ -115,7 +114,8 @@ closeDB($postconn);
           /* creates form to answer */
         ?>
           <div data-aos="fade-up" class="row answer-box">
-            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b></label> <br>
+            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b>
+            </label><br>
             <div class='col-md-12 valuation darkerbg'>
               <?php
 
@@ -131,7 +131,6 @@ closeDB($postconn);
 
         $surveyquery->close();
         closeDB($conn);
-
         ?>
 
         <br>
@@ -150,7 +149,6 @@ closeDB($postconn);
       document.write(date());
     </script>
   </footer>
-
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->

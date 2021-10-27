@@ -14,7 +14,7 @@ function closeDB($conn)
 function generateCode($min, $max)
 {
     $co = openDB();
-    /* table inputs (surveys) */
+    /* table inputs (surveys, responses) */
     $codequery = $co->prepare("SELECT surveys.code, responses.code FROM surveys, responses;"); // prepare db (against injection)
     $codequery->execute();
     $codequery->store_result(); // returns a buffered result object from codequery

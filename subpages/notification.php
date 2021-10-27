@@ -1,9 +1,10 @@
 <?php
 
+error_reporting(0); // disable warnings
+
 require_once '../assets/php/db.php';
 $bigtext = "Welcome to Feedo!";
-$smalltext = "Why are u here?";
-
+$smalltext = "Site not found!";
 
 /* create-page messages */
 if (isset($_GET['create'], $_GET['code'])) {
@@ -17,6 +18,7 @@ if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " . $code . " does not exist!";
     $smalltext = "Please try again.";
+
     header("Refresh:3; url=../index.php");
 }
 
@@ -31,13 +33,10 @@ if (isset($_GET['answer'])) {
 if (isset($_GET['noanswer'])) {
     $code = $_GET['noanswer'];
     $bigtext = "There are no answers for this survey!";
-    $smalltext = "Please try again.";
-
-    //TODO: Link ändern mit Code
+    $smalltext = "Code: " . $code . "<br> <br>Please try again.";
 
     header("Refresh:3; url=../index.php");
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +46,7 @@ if (isset($_GET['noanswer'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon (32x32) -->
+    <!-- favicon -->
     <link rel="icon" href="../assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
@@ -69,14 +68,10 @@ if (isset($_GET['noanswer'])) {
     <section class="notification">
         <div class="notification-header container-fluid">
             <div class="row">
-                <div class="col-md-4">
-                    <p class="invisible">to be added soon (language change)</p>
-                </div>
-                <div class="col-md-4 icon-notification">
-                    <img data-aos="zoom-in" class="icon invisible" src="../assets/img/logo.png" alt="Feedo Logo">
-                </div>
                 <div class="col-md-4 backtomain">
-                    <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
+                    <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
+                        <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+                    </a>
                 </div>
             </div>
             <div class="notification-body">
@@ -90,7 +85,6 @@ if (isset($_GET['noanswer'])) {
                     <div class="col-md-12 ">
                         <p data-aos="fade-down" class="notification-box">
                         <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
-
                         </p>
                     </div>
                 </div>

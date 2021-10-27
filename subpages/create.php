@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($additionalquestions)) {
   $additionalquestions = 2;
 }
@@ -16,7 +17,6 @@ $samplequery->store_result(); // returns a buffered result object from sampleque
 $sampleamount = $samplequery->num_rows();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
-
   $code = generateCode(100, 999); // define range of generateCode
 
   $postconn = openDB();
@@ -46,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- favicon (32x32) -->
+  <!-- favicon -->
   <link rel="icon" href="../assets/img/feedo.png" />
 
   <!-- stylesheets (CSS) -->
@@ -77,21 +76,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <section class="create container-fluid">
     <div class="create-header container-fluid">
       <div class="row">
-        <div class="col-md-4">
-          <p class="invisible">to be added soon (language change)</p>
-        </div>
         <div class="col-md-4 icon-answer">
-          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/feedo.png" alt="Feedo Logo">
+          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/feedo.png" alt="Feedo Logo"> </img>
         </div>
         <div class="col-md-4 backtomain">
-          <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
+          <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
+            <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+          </a>
         </div>
       </div>
     </div>
     <div class="create-body container-fluid">
       <div class="row">
         <div class="col-md-12 typequestionmsg">
-          <h1 data-aos="zoom-in-down">Type your questions in the text-boxes!</h1>
+          <h1 data-aos="zoom-in-down">Fill the text-boxes with your questions!</h1>
         </div>
       </div>
       <div class="row">
@@ -105,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
               $samplequery->bind_result($questionid_sample, $question_sample);
               while ($samplequery->fetch()) { // while page can use this variables
                 /* echo text-box, value from db */
-                $required = $questionid_sample === 1 ? "required" : ""; // one question is always required
+                $required = $questionid_sample === 1 ? "required" : ""; // first question is always required
                 echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70'; value='" . $question_sample . "'" . $required . "> <br>";
               }
             } else {
@@ -173,9 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       } else {
         addcounter--;
       }
-
     };
-
 
     var removeNewField = function() {
       var inputfield = document.getElementById(addcounter);

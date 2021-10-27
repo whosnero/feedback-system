@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(1); // disable warnings
+error_reporting(0); // disable warnings
 $code = $_POST["code"];
 
 /* checks post got an code */
@@ -12,19 +12,18 @@ if (!isset($code) || $code == null) {
 require_once '../assets/php/db.php';
 $conn = openDB();
 
-/* table inputs (surveys) */
+/* table inputs (surveys & responses) */
 $query = $conn->prepare("SELECT responses.questionid, responses.valuation, surveys.question FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? ORDER BY responses.created_at ASC;"); // prepare db (against injection)
 $query->bind_param("i", $code); // replace integer (code) to var ($code)
 $query->execute();
 $query->store_result(); // returns a buffered result object from query
-$queryamount = $query->num_rows(); // amount
+$queryamount = $query->num_rows(); // amount for query
 if ($queryamount > 0) { // amount
     $query->bind_result($questionid, $valuation, $question); //vars can be used
 } else {
     /* no result (db=responses, no answer?) */
     header('Location: notification.php?noanswer=' . $code);
 }
-
 
 $submitsquery = $conn->prepare("SELECT CAST(COUNT(*)/MAX(questionid) AS int) FROM responses WHERE code = ?;"); // prepare db (against injection)
 $submitsquery->bind_param("i", $code); // replace integer (code) to var ($code)
@@ -40,10 +39,7 @@ if ($submitsqueryamount > 0) { // amount
 }
 $submitsquery->close();
 
-
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +48,7 @@ $submitsquery->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon (32x32) -->
+    <!-- favicon -->
     <link rel="icon" href="../assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
@@ -76,14 +72,13 @@ $submitsquery->close();
     <section class="result">
         <div class="result-header container-fluid">
             <div class="row">
-                <div class="col-md-4">
-                    <p class="invisible">to be added soon (language change)</p>
-                </div>
                 <div class="col-md-4 icon-result">
                     <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedo.png" alt="Feedo Logo">
                 </div>
                 <div class="col-md-4 backtomain">
-                    <a data-aos="flip-right" data-aos-duration="500" href="../index.php"><img class="x-icon" src="../assets/img/x.png" alt="close help"></a>
+                    <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
+                        <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+                    </a>
                 </div>
             </div>
         </div>
@@ -117,12 +112,15 @@ $submitsquery->close();
 
                             $valuation_average_round_down = floor($valuation_average); // rounds the number down to the nearest integer
 
+                            echo "<div data-aos='fade-up' class='row'>";
+                            echo "<div class='col-md-12 result-box'>";
+                            echo "<p class='result-question darkerbg word-break'> " . $question;
+                            echo "<ul class='star-list darkerbg'>";
+
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
-
-                            echo "<div data-aos='fade-up' class='row'><div class='col-md-12 result-box'><p class='result-question darkerbg word-break'> " . $question  . "<ul class='star-list darkerbg'>";
-
                             for ($i = 1; $i <= $valuation_average_round_down; $i++) {
-                                echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'><i class='fa-solid fa-star darkerbg'></i>";
+                                echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'>";
+                                echo "<i class='fa-solid fa-star darkerbg'></i>";
                                 if ($i == $valuation_average) {
                                     echo "(" . $valuation_average .  ")";
                                 }
@@ -130,11 +128,13 @@ $submitsquery->close();
                             }
 
                             if (filter_var($valuation_average, FILTER_VALIDATE_INT) === false) { //checks if valuation_average is an double than place the half star
-                                echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'><i class='fa-solid fa-star-half darkerbg'></i> </li>";
-                                echo " (" . $valuation_average .  ")";
+                                echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'>";
+                                echo "<i class='fa-solid fa-star-half darkerbg'></i>";
+                                echo "(" . $valuation_average .  ")";
+                                echo "</li>";
                             }
 
-                            echo "</ul> </p></div></div>";
+                            echo "</ul></p></div></div>";
                         }
                     } else {
                         /* couldn´t get average of sum(valuation) */
@@ -147,13 +147,9 @@ $submitsquery->close();
             closeDB($conn);
             ?>
 
-            <br>
-
-
-
-
         </div>
         </div>
+
     </section>
     <!-- footer-->
     <footer class="result-footer">
@@ -161,7 +157,6 @@ $submitsquery->close();
             document.write(date());
         </script>
     </footer>
-
 
     <!-- Javascript -->
     <!-- Bootstrap Bundle with Popper -->

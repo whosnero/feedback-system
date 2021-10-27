@@ -1,38 +1,40 @@
 <?php
 
-error_reporting(1); // disable warnings
+error_reporting(0); // disable warnings
 
 /* connection to db */
 require_once 'assets/php/db.php';
 $conn = openDB();
 
+/* search code to delete */
 $selquery = $conn->prepare("SELECT code FROM surveys WHERE DATE(created_at) < CURDATE() - INTERVAL 7 DAY;"); // prepare db (against injection)
 $selquery->execute();
 $selquery->store_result();
 
+/* when code found, starting delete query */
 if ($selquery->num_rows() > 0) {
     while ($selquery->fetch()) {
         $selquery->bind_result($delcode);
 
+        /* delete all data (db=surveys) */
         $delquery = $conn->prepare("DELETE FROM surveys WHERE code = ?;"); // prepare db (against injection)
         $delquery->bind_param("i", $delcode);
         $delquery->execute();
         $delquery->close();
 
+        /* delete all data (db=responses) */
         $delquery2 = $conn->prepare("DELETE FROM responses WHERE code = ?;"); // prepare db (against injection)
         $delquery2->bind_param("i", $delcode);
         $delquery2->execute();
         $delquery2->close();
     }
 } else {
-    /* no code to delete */
+    /* no code found to delete */
 }
 
 $selquery->close();
 
-
 closeDB($conn);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +44,7 @@ closeDB($conn);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- favicon (32x32) -->
+    <!-- favicon -->
     <link rel="icon" href="assets/img/feedo.png" />
 
     <!-- stylesheets (CSS) -->
@@ -66,16 +68,10 @@ closeDB($conn);
     <section class="main">
         <div class="main-header container-fluid">
             <div class="row">
-                <div class="col-md-4">
-                    <p class="invisible">to be added soon (language change)</p>
-                </div>
-                <div class="col-md-4 icon-main">
-                    <img data-aos="zoom-in" class="icon invisible" src="assets/img/logo.png" alt="Feedo Logo">
-                </div>
-                <div class="col-md-4">
-                <form action="subpages/create.php">
-                    <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
-                </form>
+                <div class="col-md-4"></div>
+                    <form action="subpages/create.php" method="post" enctype="multipart/form-data">
+                        <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,7 +89,7 @@ closeDB($conn);
             <div class="row">
                 <div data-aos="zoom-in" class="col-md-12">
                     <form method="post" class="main-form" action="subpages/answer.php" enctype="multipart/form-data" autocomplete="off">
-                        <input type="number" name="code" placeholder="Code" oninput="this.value = Math.abs(this.value)" min="0" maxlength="10" required>
+                        <input type="number" name="code" placeholder="Code" oninput="value = Math.abs(value)" min="0" maxlength="10" required>
                         <input type="submit" name="btnEnter" value="Enter">
                     </form>
                 </div>

@@ -142,7 +142,7 @@ ul li {
         .main-form input[type="number"]:focus {
           outline: 0;
         }
-      /* hide input increment arrows */
+        /* hide input increment arrows */
         .main-form input[type="number"] {
           -webkit-appearance: textfield;
             -moz-appearance: textfield;
@@ -227,7 +227,7 @@ ul li {
       border-radius: 25px;
       line-height: 22px;
       background: #8ecae6;
-      border:2px solid transparent;
+      border: 2px solid transparent;
       transition: all 0.3s;
       margin-top: 0.5em;
       padding: 13px;
