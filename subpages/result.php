@@ -72,6 +72,9 @@ $submitsquery->close();
     <section class="result">
         <div class="result-header container-fluid">
             <div class="row">
+                <div class="col-md-4">
+                    <!-- for alignment of other header-columns -->
+                </div>
                 <div class="col-md-4 icon-result">
                     <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedo.png" alt="Feedo Logo">
                 </div>

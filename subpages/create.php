@@ -76,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <section class="create container-fluid">
     <div class="create-header container-fluid">
       <div class="row">
+        <div class="col-md-4">
+          <!-- for alignment of other header-columns -->
+        </div>
         <div class="col-md-4 icon-answer">
           <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/feedo.png" alt="Feedo Logo"> </img>
         </div>

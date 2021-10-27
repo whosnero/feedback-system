@@ -67,8 +67,8 @@ ul li {
       height: 128px;
     }
     .notification-box {
-      border: 3px solid #f9c74f;
-      background: #577590;
+      border: 3px solid transparent;
+      background: #8ecae6;
       padding: 1%;
       border-radius: 25px;
     }
