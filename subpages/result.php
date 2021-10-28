@@ -25,20 +25,6 @@ if ($queryamount > 0) { // amount
     header('Location: notification.php?noanswer=' . $code);
 }
 
-$submitsquery = $conn->prepare("SELECT CAST(COUNT(*)/MAX(questionid) AS int) FROM responses WHERE code = ?;"); // prepare db (against injection)
-$submitsquery->bind_param("i", $code); // replace integer (code) to var ($code)
-$submitsquery->execute();
-$submitsquery->store_result(); // returns a buffered result object from submitsquery
-$submitsqueryamount = $submitsquery->num_rows(); // amount
-if ($submitsqueryamount > 0) { // amount
-    $submitsquery->bind_result($submits); //vars can be used
-    $submitsquery->fetch();
-} else {
-    /* no result (db=responses, no answer?) */
-    header('Location: notification.php?noanswer=' . $code);
-}
-$submitsquery->close();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +50,18 @@ $submitsquery->close();
     <!-- javascript (custom) -->
     <script src="../assets/js/main.js"> </script>
 
+    <script>
+        let ctx = '';
+        let labels = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'];
+        let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#A129FA'];
+
+        let one = 0;
+        let two = 0;
+        let three = 0;
+        let four = 0;
+        let five = 0;
+    </script>
+
     <title>Feedo!</title>
 </head>
 
@@ -88,13 +86,12 @@ $submitsquery->close();
         <div class="result-body container-fluid">
             <div class="row">
                 <div data-aos="zoom-in" class="col-md-12 result-heading">
-                    <h1>Here are the results of <?php echo $submits <= 1 ? ($submits . " submit!") : ($submits . " submits!") ?></h1>
+                    <h1>Here are the results</h1>
                     <h2>below you can see the average valuation of each question. </h2>
                 </div>
             </div>
 
             <?php
-
             $questionid_array = array();
             /* getting average amount of valuations (connected with the questionid and code) */
             $valuequery = $conn->prepare("SELECT SUM(valuation) / COUNT(valuation) FROM responses WHERE questionid = ? AND code = ? ORDER BY responses.created_at ASC;"); // prepare db (against injection)
@@ -109,15 +106,41 @@ $submitsquery->close();
                     if ($valuequery_amount > 0) {
                         $valuequery->bind_result($valuation_average);
                         while ($valuequery->fetch()) {
+                            $one = 0;
+                            $two = 0;
+                            $three = 0;
+                            $four = 0;
+                            $five = 0;
+
+                            $piequery = $conn->prepare("SELECT valuation FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? AND responses.questionid = ? ORDER BY responses.created_at ASC;");
+                            $piequery->bind_param("ii", $code, $questionid);
+                            $piequery->execute();
+                            $piequery->store_result();
+
+                            if ($piequery->num_rows() > 0) {
+                                $piequery->bind_result($allvaluationforthisid);
+
+                                while ($piequery->fetch()) {
+                                    $allvaluationforthisid === 1 ? $one++ : null;
+                                    $allvaluationforthisid === 2 ? $two++ : null;
+                                    $allvaluationforthisid === 3 ? $three++ : null;
+                                    $allvaluationforthisid === 4 ? $four++ : null;
+                                    $allvaluationforthisid === 5 ? $five++ : null;
+                                }
+                            } else {
+                                /* couldn´t find any valuation for this questionid */
+                            }
+
                             $questionid_array[] = $questionid; // adds current questionid to an array
 
                             $valuation_average = (round($valuation_average * 2)) / 2; // 1,25 = 1 && 1,65 = 1,5 && 1,75 = 2
 
                             $valuation_average_round_down = floor($valuation_average); // rounds the number down to the nearest integer
 
-                            echo "<div data-aos='fade-up' class='row'>";
-                            echo "<div class='col-md-12 result-box'>";
+                            echo "<div class='row result-row'>";
+                            echo "<div class='col-md-6 result-box darkerbg'>";
                             echo "<p class='result-question darkerbg word-break'> " . $question;
+                            echo "<p class='submitamount darkerbg'> Diese Frage wurde " . $one + $two + $three + $four + $five . "x beantwortet</p>";
                             echo "<ul class='star-list darkerbg'>";
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
@@ -137,13 +160,81 @@ $submitsquery->close();
                                 echo "</li>";
                             }
 
-                            echo "</ul></p></div></div>";
+                            $piequery->close();
+
+                            $piearray[] = $questionid;
+
+                            echo "</ul></p></div><div class='col-md-6 chart-box darkerbg'>";
+                            echo "<canvas class='myChart darkerbg' id='myChart-" . $questionid . "'></canvas>";
+                            echo "</div></div>";
+
+            ?>
+                            <!-- Chart.js -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+                            <script>
+                                one = <?php echo $one; ?>;
+                                two = <?php echo $two; ?>;
+                                three = <?php echo $three; ?>;
+                                four = <?php echo $four; ?>;
+                                five = <?php echo $five; ?>;
+                                all = (one + two + three + four + five);
+                                questionid = <?php echo $questionid; ?>;
+
+                                ctx = document.getElementById('myChart-' + questionid).getContext('2d');
+                                new Chart(ctx, {
+                                    type: 'pie',
+                                    data: {
+                                        datasets: [{
+                                            data: [Math.round((one / all * 100)),
+                                                Math.round((two / all * 100)),
+                                                Math.round((three / all * 100)),
+                                                Math.round((four / all * 100)),
+                                                Math.round((five / all * 100))
+                                            ],
+                                            backgroundColor: colorHex
+                                        }],
+                                        labels: labels
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        legend: {
+                                            position: 'bottom'
+                                        },
+                                        plugins: {
+                                            datalabels: {
+                                                color: '#fff',
+                                                anchor: 'end',
+                                                align: 'start',
+                                                offset: -10,
+                                                borderWidth: 2,
+                                                borderColor: '#fff',
+                                                borderRadius: 25,
+                                                backgroundColor: (context) => {
+                                                    return context.dataset.backgroundColor;
+                                                },
+                                                font: {
+                                                    weight: 'bold',
+                                                    size: '10'
+                                                },
+                                                formatter: (value) => {
+                                                    return value + ' %';
+                                                }
+                                            }
+                                        }
+                                    }
+                                })
+                            </script>
+            <?php
                         }
                     } else {
                         /* couldn´t get average of sum(valuation) */
                     }
                 }
             }
+
+
             /* closes all "editors" and connections */
             $query->close();
             $valuequery->close();
@@ -170,5 +261,6 @@ $submitsquery->close();
     <script>
         AOS.init();
     </script>
+
 
 </body>

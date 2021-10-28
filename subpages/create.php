@@ -178,8 +178,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 
     var removeNewField = function() {
       var inputfield = document.getElementById(addcounter);
-      br.remove();
-      inputfield.remove();
+
+      if (inputfield) {
+        br.remove();
+        inputfield.remove();
+      }
+
       addcounter--;
     };
   </script>

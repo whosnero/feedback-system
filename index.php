@@ -69,11 +69,11 @@ closeDB($conn);
         <div class="main-header container-fluid">
             <div class="row">
                 <div class="col-md-4"></div>
-                    <form action="subpages/create.php" method="post" enctype="multipart/form-data">
-                        <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
-                    </form>
-                </div>
+                <form action="subpages/create.php" method="post" enctype="multipart/form-data">
+                    <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
+                </form>
             </div>
+        </div>
         </div>
         <div class="main-body container-fluid">
             <div class="row">
