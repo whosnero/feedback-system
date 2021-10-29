@@ -74,6 +74,11 @@ ul li {
   background: #F8961E;
 }
 
+.icon-main {
+  width: 358px;
+  height: 128px;
+}
+
 .main-body {
   position: absolute;
   bottom: 128px;
@@ -172,6 +177,14 @@ ul li {
 
 .whatsfeedo h2 a:hover {
   color: #F8961E;
+}
+
+@media screen and (max-width: 400px) {
+  .icon-main {
+    content: url(../img/feedo.png);
+    width: 111px;
+    height: 128px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -283,7 +296,7 @@ ul li {
 }
 
 .additionalquestion-box {
-  color: white;
+  color:rgb(104, 104, 104);
   font-weight: 500;
   font-size: 18px;
   border-radius: 25px;
@@ -304,7 +317,7 @@ ul li {
 }
 
 .additionalquestion-box::placeholder {
-  color: rgb(104, 104, 104);
+  color: #2891d7;
 }
 
 .togglequestions {
@@ -494,12 +507,16 @@ ul li {
 .answer-form {
   margin-top: 2em;
   margin-bottom: 2em;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .answer-box {
+  max-width: 100%;
   border: 5px solid transparent;
   background: #8ecae6;
   padding: 1%;
+  margin-right: 0;
   margin-bottom: 1em;
   box-sizing: border-box;
   border-radius: 25px;
@@ -656,7 +673,7 @@ ul li {
 }
 
 .word-break {
-  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .star-list {
@@ -718,7 +735,7 @@ ul li {
 
 @media screen and (max-width: 550px) {
   .result-row {
-    height: 380px;
+    height: 420px;
     width: 345px;
   }
 }
