@@ -64,7 +64,6 @@ if (isset($_GET['noanswer'])) {
 </head>
 
 <body>
-    <!-- Code section-->
     <section class="notification">
         <div class="notification-header container-fluid">
             <div class="row">

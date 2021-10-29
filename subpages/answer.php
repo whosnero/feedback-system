@@ -78,7 +78,6 @@ closeDB($postconn);
 </head>
 
 <body>
-  <!-- Code section-->
   <section class="answer">
     <div class="answer-header container-fluid">
       <div class="row">

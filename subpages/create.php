@@ -72,7 +72,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 </head>
 
 <body>
-  <!-- Code section-->
   <section class="create container-fluid">
     <div class="create-header container-fluid">
       <div class="row">

@@ -47,26 +47,70 @@ if ($queryamount > 0) { // amount
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/40327c7301.js" crossorigin="anonymous"></script>
 
-    <!-- javascript (custom) -->
+    <!-- Javascript -->
+    <!-- custom -->
     <script src="../assets/js/main.js"> </script>
+    <!-- Charts-API -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
     <script>
-        let ctx = '';
         let labels = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'];
         let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#A129FA'];
+        let all = 0;
 
-        let one = 0;
-        let two = 0;
-        let three = 0;
-        let four = 0;
-        let five = 0;
+        function confPie(one, two, three, four, five, questionid) {
+            ctx = document.getElementById('myChart-' + questionid).getContext('2d');
+            all = (one + two + three + four + five);
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [Math.round((one / all * 100)),
+                            Math.round((two / all * 100)),
+                            Math.round((three / all * 100)),
+                            Math.round((four / all * 100)),
+                            Math.round((five / all * 100))
+                        ],
+                        backgroundColor: colorHex
+                    }],
+                    labels: labels
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom'
+                    },
+                    plugins: {
+                        datalabels: {
+                            color: '#fff',
+                            anchor: 'end',
+                            align: 'start',
+                            offset: -10,
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            borderRadius: 25,
+                            backgroundColor: (context) => {
+                                return context.dataset.backgroundColor;
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: '10'
+                            },
+                            formatter: (value) => {
+                                return value + ' %';
+                            }
+                        },
+                    }
+                }
+            })
+        }
     </script>
 
     <title>Feedo!</title>
 </head>
 
 <body>
-    <!-- Code section-->
     <section class="result">
         <div class="result-header container-fluid">
             <div class="row">
@@ -131,6 +175,8 @@ if ($queryamount > 0) { // amount
                                 /* couldn´t find any valuation for this questionid */
                             }
 
+                            $piequery->close();
+
                             $questionid_array[] = $questionid; // adds current questionid to an array
 
                             $valuation_average = (round($valuation_average * 2)) / 2; // 1,25 = 1 && 1,65 = 1,5 && 1,75 = 2
@@ -160,71 +206,14 @@ if ($queryamount > 0) { // amount
                                 echo "</li>";
                             }
 
-                            $piequery->close();
-
-                            $piearray[] = $questionid;
-
                             echo "</ul></p></div><div class='col-md-6 chart-box darkerbg'>";
                             echo "<canvas class='myChart darkerbg' id='myChart-" . $questionid . "'></canvas>";
                             echo "</div></div>";
 
             ?>
                             <!-- Chart.js -->
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-
                             <script>
-                                one = <?php echo $one; ?>;
-                                two = <?php echo $two; ?>;
-                                three = <?php echo $three; ?>;
-                                four = <?php echo $four; ?>;
-                                five = <?php echo $five; ?>;
-                                all = (one + two + three + four + five);
-                                questionid = <?php echo $questionid; ?>;
-
-                                ctx = document.getElementById('myChart-' + questionid).getContext('2d');
-                                new Chart(ctx, {
-                                    type: 'pie',
-                                    data: {
-                                        datasets: [{
-                                            data: [Math.round((one / all * 100)),
-                                                Math.round((two / all * 100)),
-                                                Math.round((three / all * 100)),
-                                                Math.round((four / all * 100)),
-                                                Math.round((five / all * 100))
-                                            ],
-                                            backgroundColor: colorHex
-                                        }],
-                                        labels: labels
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        legend: {
-                                            position: 'bottom'
-                                        },
-                                        plugins: {
-                                            datalabels: {
-                                                color: '#fff',
-                                                anchor: 'end',
-                                                align: 'start',
-                                                offset: -10,
-                                                borderWidth: 2,
-                                                borderColor: '#fff',
-                                                borderRadius: 25,
-                                                backgroundColor: (context) => {
-                                                    return context.dataset.backgroundColor;
-                                                },
-                                                font: {
-                                                    weight: 'bold',
-                                                    size: '10'
-                                                },
-                                                formatter: (value) => {
-                                                    return value + ' %';
-                                                }
-                                            }
-                                        }
-                                    }
-                                })
+                                confPie(<?php echo $one; ?>, <?php echo $two; ?>, <?php echo $three; ?>, <?php echo $four; ?>, <?php echo $five; ?>, <?php echo $questionid; ?>);
                             </script>
             <?php
                         }
