@@ -105,7 +105,7 @@ closeDB($postconn);
         </div>
       </div>
 
-      <form class="answer-form" data-aos="zoom-in" method="post" action="answer.php" enctype="multipart/form-data">
+      <form class="answer-form container" data-aos="zoom-in" method="post" action="answer.php" enctype="multipart/form-data">
         <?php
         /* getting sample questions */
         /* checks result and creates variables from result */
@@ -113,8 +113,8 @@ closeDB($postconn);
         while ($surveyquery->fetch()) { // while page can use this variables
           /* creates form to answer */
         ?>
-          <div data-aos="fade-up" class="row answer-box">
-            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="answer-question darkerbg round"><?php echo $question_survey; ?></b>
+          <div data-aos="fade-up" class="answer-box">
+            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="answer-question darkerbg round word-break"><?php echo $question_survey; ?></b>
             </label><br>
             <div class='col-md-12 valuation darkerbg'>
               <?php

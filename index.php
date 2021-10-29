@@ -78,7 +78,7 @@ closeDB($conn);
         <div class="main-body container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <img data-aos="zoom-in" class="icon" src="assets/img/feedologo2.png" alt="Feedo Logo">
+                    <img data-aos="zoom-in" class="icon icon-main" src="assets/img/feedologo2.png" alt="Feedo Logo">
                 </div>
             </div>
             <div class="row">
