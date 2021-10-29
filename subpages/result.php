@@ -140,7 +140,7 @@ if ($queryamount > 0) { // amount
                             echo "<div class='row result-row'>";
                             echo "<div class='col-md-6 result-box darkerbg'>";
                             echo "<p class='result-question darkerbg word-break'> " . $question;
-                            echo "<p class='submitamount darkerbg'> submitted " . $one + $two + $three + $four + $five . "x </p>";
+                            echo "<p class='submitamount darkerbg'> (submitted " . $one + $two + $three + $four + $five . "x) </p>";
                             echo "<ul class='star-list darkerbg'>";
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */

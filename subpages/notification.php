@@ -27,7 +27,7 @@ if (isset($_GET['answer'])) {
     $bigtext = "Your Answer has been committed successfully!";
     $smalltext = "Thank you!";
 
-    /* header("Refresh:3; url=../index.php"); */
+    header("Refresh:3; url=../index.php");
 }
 
 if (isset($_GET['noanswer'])) {
