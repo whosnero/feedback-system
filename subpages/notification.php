@@ -27,7 +27,7 @@ if (isset($_GET['answer'])) {
     $bigtext = "Your Answer has been committed successfully!";
     $smalltext = "Thank you!";
 
-    header("Refresh:3; url=../index.php");
+    /* header("Refresh:3; url=../index.php"); */
 }
 
 if (isset($_GET['noanswer'])) {
@@ -82,9 +82,9 @@ if (isset($_GET['noanswer'])) {
                 </div>
                 <br>
                 <div class="row">
-                    <div class="col-md-12 ">
+                    <div class="col-md-12 bigtext">
                         <p data-aos="fade-down" class="notification-box">
-                        <h1 data-aos="zoom-in-down"><?php echo $bigtext; ?></h1>
+                        <h1 data-aos="zoom-in"><?php echo $bigtext; ?></h1>
                         </p>
                     </div>
                 </div>

@@ -114,7 +114,7 @@ closeDB($postconn);
           /* creates form to answer */
         ?>
           <div data-aos="fade-up" class="row answer-box">
-            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="darkerbg round"><?php echo $question_survey; ?></b>
+            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="answer-question darkerbg round"><?php echo $question_survey; ?></b>
             </label><br>
             <div class='col-md-12 valuation darkerbg'>
               <?php

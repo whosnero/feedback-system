@@ -87,7 +87,7 @@ if ($queryamount > 0) { // amount
             <div class="row">
                 <div data-aos="zoom-in" class="col-md-12 result-heading">
                     <h1>Here are the results</h1>
-                    <h2>below you can see the average valuation of each question. </h2>
+                    <h2>below you can see the average valuation and a pie chart for your questions</h2>
                 </div>
             </div>
 
@@ -140,7 +140,7 @@ if ($queryamount > 0) { // amount
                             echo "<div class='row result-row'>";
                             echo "<div class='col-md-6 result-box darkerbg'>";
                             echo "<p class='result-question darkerbg word-break'> " . $question;
-                            echo "<p class='submitamount darkerbg'> Diese Frage wurde " . $one + $two + $three + $four + $five . "x beantwortet</p>";
+                            echo "<p class='submitamount darkerbg'> submitted " . $one + $two + $three + $four + $five . "x </p>";
                             echo "<ul class='star-list darkerbg'>";
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */

@@ -108,7 +108,7 @@ ul li {
 }
 
 .main-form input[type="number"] {
-  color: #fff;
+  color:rgb(104, 104, 104);
   font-family: sans-serif;
   font-weight: bold;
   background: #8ecae6;
@@ -118,7 +118,7 @@ ul li {
 }
 
 .main-form input[type="number"]::placeholder {
-  color: #fff;
+  color:rgb(104, 104, 104);
 }
 
 .main-form input[type="number"]:focus {
@@ -187,7 +187,8 @@ ul li {
 }
 
 .notification-body {
-  position: absolute;
+  width: 100%;
+  position: fixed;
   bottom: 128px;
   top: 128px;
   left: 0;
@@ -207,7 +208,7 @@ ul li {
 .notification-box {
   border: 3px solid transparent;
   background: #8ecae6;
-  padding: 1%;
+  padding: 1% 0 1% 1%;
   border-radius: 25px;
 }
 
@@ -257,7 +258,7 @@ ul li {
 }
 
 .question-box {
-  color: white;
+  color:rgb(104, 104, 104);
   font-weight: 500;
   font-size: 18px;
   border-radius: 25px;
@@ -278,7 +279,7 @@ ul li {
 }
 
 .question-box::placeholder {
-  color: rgb(104, 104, 104);
+  color: #2891d7;
 }
 
 .additionalquestion-box {
@@ -504,6 +505,10 @@ ul li {
   border-radius: 25px;
 }
 
+.answer-question {
+  color:rgb(104, 104, 104);
+}
+
 /* stars */
 
 .valuation {
@@ -549,6 +554,10 @@ ul li {
 
 .valuation label:hover:after, .valuation label:hover~label:after, .valuation input:checked~label:after {
   opacity: 1;
+}
+
+.valuation-average-text {
+  color:rgb(104, 104, 104);
 }
 
 .answer-submit {
@@ -631,9 +640,15 @@ ul li {
 }
 
 .result-question {
+  color:rgb(104, 104, 104);
   padding-top: 1em;
   font-weight: bold;
   font-size: 20px;
+}
+
+.submitamount {
+  color:rgb(104, 104, 104);
+  font-weight: bold;
 }
 
 .darkerbg {
@@ -641,7 +656,7 @@ ul li {
 }
 
 .word-break {
-  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .star-list {
@@ -650,6 +665,7 @@ ul li {
 }
 
 .star-list li {
+  color:rgb(104, 104, 104);
   display: inline-block;
   text-align: center;
 }
@@ -673,6 +689,48 @@ ul li {
 .myChart {
   height: 200px;
   width: 500px;
+}
+
+/* media querys for responsive deisgn */
+@media screen and (max-width: 1250px) {
+  .result-row {
+    height: 300px;
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .result-row {
+    height: 300px;
+    width: 650px;
+  }
+  .result-star i {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .result-row {
+    height: 500px;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .result-row {
+    height: 380px;
+    width: 345px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .result-row {
+    height: 400px;
+    width: 300px;
+  }
+  .result-star i {
+    font-size: 25px;
+  }
 }
 
 /*--------------------------------------------------------------
