@@ -155,7 +155,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
     var addqbtn = document.getElementById('addqbtn');
     var form = document.getElementById('create-form');
     var br = document.createElement("br");
-    var createNewField = function() {
+
+    function createNewField() {
       addcounter++;
 
       var input = document.createElement("input");
@@ -175,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       }
     };
 
-    var removeNewField = function() {
+    function removeNewField() {
       var inputfield = document.getElementById(addcounter);
 
       if (inputfield) {
