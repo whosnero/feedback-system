@@ -334,6 +334,11 @@ ul li {
   height: 48px;
   border-radius: 50px;
   border: 0;
+  transition: 0.3s;
+}
+
+.togglequestions:hover {
+  background: #F8961E;
 }
 
 .addquestion:hover {
@@ -502,6 +507,13 @@ ul li {
 .answer-heading h1 {
   font-size: 36px;
   font-weight: bold;
+}
+
+.answer-heading h2 {
+  color: rgb(202, 202, 202);
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
 }
 
 .answer-form {

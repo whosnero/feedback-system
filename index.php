@@ -96,7 +96,7 @@ closeDB($conn);
             </div>
             <div class="row">
                 <div class="col-md-12 whatsfeedo">
-                    <h2 data-aos="zoom-in">What´s Feedo? Click <a href="subpages/help.html">here</a> for more Information!</h2>
+                    <h2 data-aos="zoom-in">What´s Feedo? <a href="subpages/help.html">Click here</a> for more Information!</h2>
                 </div>
             </div>
         </div>

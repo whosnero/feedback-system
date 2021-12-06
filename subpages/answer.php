@@ -101,6 +101,7 @@ closeDB($postconn);
       <div class="row">
         <div data-aos="fade-down" class="col-md-12 answer-heading">
           <h1>Please answer all the following questions precisely & honest!</h1>
+          <h2>(Code: <?php echo $code ?>)</h2>
         </div>
       </div>
 

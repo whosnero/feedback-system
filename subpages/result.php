@@ -54,6 +54,59 @@ if ($queryamount > 0) { // amount
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
+    <script>
+        let labels = ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'];
+        let colorHex = ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#A129FA'];
+        let all = 0;
+
+        function confPie(one, two, three, four, five, questionid) {
+            ctx = document.getElementById('myChart-' + questionid).getContext('2d');
+            all = (one + two + three + four + five);
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [Math.round((one / all * 100)),
+                            Math.round((two / all * 100)),
+                            Math.round((three / all * 100)),
+                            Math.round((four / all * 100)),
+                            Math.round((five / all * 100))
+                        ],
+                        backgroundColor: colorHex
+                    }],
+                    labels: labels
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom'
+                    },
+                    plugins: {
+                        datalabels: {
+                            color: '#fff',
+                            anchor: 'end',
+                            align: 'start',
+                            offset: -10,
+                            borderWidth: 2,
+                            borderColor: '#fff',
+                            borderRadius: 25,
+                            backgroundColor: (context) => {
+                                return context.dataset.backgroundColor;
+                            },
+                            font: {
+                                weight: 'bold',
+                                size: '10'
+                            },
+                            formatter: (value) => {
+                                return value + ' %';
+                            }
+                        },
+                    }
+                }
+            })
+        }
+    </script>
+
     <title>Feedo!</title>
 </head>
 
@@ -77,8 +130,10 @@ if ($queryamount > 0) { // amount
         <div class="result-body container-fluid">
             <div class="row">
                 <div data-aos="zoom-in" class="col-md-12 result-heading">
-                    <h1>Here are the results</h1>
+                    <h1>Here are your results!</h1>
+                    <h2>(Code: <?php echo $code ?>)</h2>
                     <h2>below you can see the average valuation and a pie chart for your questions</h2>
+                    <h2>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
                 </div>
             </div>
 
@@ -130,10 +185,10 @@ if ($queryamount > 0) { // amount
 
                             $valuation_average_round_down = floor($valuation_average); // rounds the number down to the nearest integer
 
-                            echo "<div class='row result-row'>";
+                            echo "<div data-aos='fade-up' class='row result-row'>";
                             echo "<div class='col-md-6 result-box darkerbg'>";
                             echo "<p class='result-question darkerbg word-break'> " . $question;
-                            echo "<p class='submitamount darkerbg'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
+                            echo "<p class='submitamount darkerbg'> (submitted " . $one + $two + $three + $four + $five . "x) </p>";
                             echo "<ul class='star-list darkerbg'>";
 
                             /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
