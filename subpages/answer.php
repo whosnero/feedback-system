@@ -102,6 +102,8 @@ closeDB($postconn);
         <div data-aos="fade-down" class="col-md-12 answer-heading">
           <h1>Please answer all the following questions precisely & honest!</h1>
           <h2>(Code: <?php echo $code ?>)</h2>
+          <h2>Scroll down to see all questions <i class="fa-solid fa-arrow-down"></i></h2>
+          <h2>You can submit your answers at the bottom of the page</h2>
         </div>
       </div>
 
