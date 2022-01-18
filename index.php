@@ -55,7 +55,7 @@ closeDB($conn);
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/40327c7301.js" crossorigin="anonymous"></script>
 
     <!-- javascript (custom) -->
     <script src="assets/js/main.js"> </script>
@@ -69,8 +69,8 @@ closeDB($conn);
         <div class="main-header container-fluid">
             <div class="row">
                 <div class="col-md-4"></div>
-                <form action="subpages/create.php" method="post" enctype="multipart/form-data">
-                    <input data-aos="fade-down" type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
+                <form data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">
+                    <input type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
                 </form>
             </div>
         </div>

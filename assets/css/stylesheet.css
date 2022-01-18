@@ -225,6 +225,33 @@ ul li {
   border-radius: 25px;
 }
 
+.bigtext {
+  display: flex;
+  flex-direction: row;
+}
+
+.copy-button {
+  border: 0;
+  font-size: 25px;
+  transition: all 0.3s;
+}
+
+.copy-button i {
+  transition: all 0.3s;
+}
+
+.copy-button i:hover {
+  color: #FEC260;
+}
+
+.smalltext {
+  color: rgb(202, 202, 202);
+  font-size: 14px;
+  font-weight: bold;
+  margin: 15px 0 15px 0;
+  text-transform: uppercase;
+}
+
 /*--------------------------------------------------------------
 # create page
 --------------------------------------------------------------*/
