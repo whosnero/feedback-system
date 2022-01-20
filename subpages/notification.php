@@ -6,7 +6,6 @@ require_once '../assets/php/db.php';
 $bigtext = "Welcome to Feedo!";
 $smalltext = "Site not found!";
 $codetext = "";
-$showcopybutton = false;
 
 /* create-page messages */
 if (isset($_GET['create'], $_GET['code'])) {
@@ -14,7 +13,6 @@ if (isset($_GET['create'], $_GET['code'])) {
     $smalltext = "Your Survey has been created successfully!";
     $bigtext = "Code: ";
     $codetext = $code;
-    $showcopybutton = true;
 }
 
 /* index wrong code */
@@ -22,8 +20,6 @@ if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " . $code . " does not exist!";
     $smalltext = "Please try again.";
-    $codetext = "";
-    $showcopybutton = false;
 
     header("Refresh:3; url=../index.php");
 }
@@ -32,8 +28,6 @@ if (isset($_GET['wcode'])) {
 if (isset($_GET['answer'])) {
     $bigtext = "Your Answer has been committed successfully!";
     $smalltext = "Thank you!";
-    $codetext = "";
-    $showcopybutton = false;
 
     header("Refresh:3; url=../index.php");
 }
@@ -42,8 +36,6 @@ if (isset($_GET['noanswer'])) {
     $code = $_GET['noanswer'];
     $bigtext = "There are no answers for this survey!";
     $smalltext = "Code: " . $code . "<br> <br>Please try again.";
-    $codetext = "";
-    $showcopybutton = false;
 
     header("Refresh:3; url=../index.php");
 }
@@ -98,8 +90,8 @@ if (isset($_GET['noanswer'])) {
                         <h1 class="bigtext" data-aos="zoom-in">
                             <div><?php echo $bigtext; ?></div>
                             <div id="notification-code"><?php echo $codetext; ?></div>
-                            <?php if ($showcopybutton){
-                                echo "<button class='copy-button' onclick='myFunction()' alt='copy code'><i class='fa-solid fa-copy'></i></button>";
+                            <?php if (isset($_GET['create'], $_GET['code'])){
+                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button>";
                             }
                             ?>
                             </h1>
@@ -133,14 +125,14 @@ if (isset($_GET['noanswer'])) {
         AOS.init();
     </script>
     <script>
-                function myFunction() {
+                function copyCode() {
                     var range = document.createRange();
                     range.selectNode(document.getElementById("notification-code"));
                     window.getSelection().removeAllRanges(); // clear current selection
                     window.getSelection().addRange(range); // to select text
                     document.execCommand("copy");
                     window.getSelection().removeAllRanges();// to deselect
-                    alert("Copied the code: " + range);
+                    alert("copied the code: " + range);
                 }
             </script>
 </body>
