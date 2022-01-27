@@ -677,8 +677,10 @@ ul li {
 }
 
 .result-row {
+  display: flex;
+  align-items: center;
   height: 300px;
-  width: 1200px;
+  width: 70%;
   border: 5px solid transparent;
   background: #8ecae6;
   padding: 0 1% 0 1%;
@@ -690,6 +692,7 @@ ul li {
 
 .result-box {
   display: flex;
+  max-height: 95%;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
@@ -712,7 +715,7 @@ ul li {
 }
 
 .word-break {
-  word-break: break-all;
+  word-break: normal;
 }
 
 .star-list {
@@ -737,28 +740,27 @@ ul li {
 
 .chart-box {
   display: flex;
+  max-height: 95%;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
 }
 
 .myChart {
-  height: 200px;
-  width: 500px;
+  max-height: 100%;
+  width: 100%;
 }
 
 /* media querys for responsive deisgn */
 @media screen and (max-width: 1250px) {
   .result-row {
-    height: 300px;
-    width: 900px;
+    width: 85%;
   }
 }
 
 @media screen and (max-width: 950px) {
   .result-row {
-    height: 300px;
-    width: 650px;
+    width: 85%;
   }
   .result-star i {
     font-size: 35px;
@@ -767,22 +769,40 @@ ul li {
 
 @media screen and (max-width: 767px) {
   .result-row {
+    width: 95%;
     height: 500px;
-    width: 500px;
+    overflow-x: hidden;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    height: 60%;
   }
 }
 
 @media screen and (max-width: 550px) {
   .result-row {
-    height: 420px;
-    width: 345px;
+    width: 95%;
+    height: auto;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    max-height: 60%;
   }
 }
 
 @media screen and (max-width: 350px) {
   .result-row {
-    height: 400px;
-    width: 300px;
+    width: 95%;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    max-height: 60%;
   }
   .result-star i {
     font-size: 25px;

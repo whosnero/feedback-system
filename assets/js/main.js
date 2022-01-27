@@ -23,7 +23,7 @@ function confPie(one, two, three, four, five, questionid) {
                 ],
                 backgroundColor: ['#FB3640', '#EFCA08', '#43AA8B', '#253D5B', '#A129FA'],
             }],
-            labels: ['⭐', '⭐⭐', '⭐⭐⭐', '⭐⭐⭐⭐', '⭐⭐⭐⭐⭐'],
+            labels: ['1x⭐', '2x⭐', '3x⭐', '4x⭐', '5x⭐'],
         },
         options: {
             responsive: true,
@@ -36,7 +36,7 @@ function confPie(one, two, three, four, five, questionid) {
                     anchor: 'end',
                     align: 'start',
                     offset: -10,
-                    borderWidth: 2,
+                    borderWidth: 1,
                     borderColor: '#fff',
                     borderRadius: 25,
                     backgroundColor: (context) => {
