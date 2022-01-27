@@ -31,7 +31,7 @@ if ($selquery->num_rows() > 0) {
 } else {
     /* no code found to delete */
 }
-
+hallo
 $selquery->close();
 
 closeDB($conn);
