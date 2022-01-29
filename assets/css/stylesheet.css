@@ -261,6 +261,19 @@ ul li {
   transition: all 0.3s;
 }
 
+.tooltip{
+  z-index: -1;
+  background: linear-gradient(#18b495,#16a085);
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: opacity 0.4s, margin-left 0.4s;
+}
+
+.tooltip.show{
+  margin-left: 210px;
+  pointer-events: auto;
+}
+
 .copy-button i:hover {
   color: #FEC260;
 }

@@ -49,6 +49,21 @@ if (isset($_POST['btnSubmit'])) {
 }
 
 closeDB($postconn);
+
+/* disallow showing result button */
+
+$disallow = $conn->prepare("SELECT responses.questionid FROM responses WHERE responses.code = ?;"); // prepare db (against injection)
+$disallow->bind_param("i", $code); // replace integer (code) to var ($code)
+$disallow->execute();
+$disallow->store_result(); // returns a buffered result object from query
+
+$disallowboolean = false;
+
+if ($disallow->num_rows() < 1) { // amount
+  $disallowboolean = true;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +103,9 @@ closeDB($postconn);
       <div class="row">
         <div class="col-md-4">
           <form data-aos="flip-left" method="post" action="result.php" enctype="multipart/form-data">
-            <input type="submit" class="seeresult" name="seeresult" value="See Result">
+            <?php
+            echo "<input type='" . ($disallowboolean ? "hidden" : "submit") . "' class='seeresult' name='seeresult' value='See Result'>";
+            ?>
             <input type="hidden" name="code" value="<?php echo $code; ?>">
           </form>
         </div>

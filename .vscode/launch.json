@@ -1,11 +1,10 @@
 {
-    "version": "0.2.0",
     "configurations": [
         {
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch!",
-            "url": "http://localhost/workspace",
+            "url": "http://localhost/feedo",
             "webRoot": "${workspaceFolder}"
         }
     ]
