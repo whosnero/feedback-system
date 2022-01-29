@@ -1,3 +1,6 @@
 ☐ design alert on notification (copied klein)
 ✔ change name of functions @done (20.1.2022, 17:46:48)
-update charts.js
+☐ datenbank verschlüsseln
+☐ wenn beim code keine db einträge verfügbar sind see result nicht anzeigen
+☐ update charts.js
+☐ bug fix on create (sometimes possible to get 6 additional questions)
