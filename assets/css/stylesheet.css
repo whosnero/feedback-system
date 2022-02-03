@@ -18,6 +18,20 @@
   color: white;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #8ecae6;
+}
+
 ul li {
   text-decoration: none;
   list-style-type: none;
@@ -45,10 +59,18 @@ ul li {
 
 .main {
   min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .main-header {
-  min-height: 10%;
+  height: 10vh;
+  z-index: 1;
+  justify-content: end; /* needs to be in .css for right responsive behavior */
+}
+
+.main-header-form {
+  margin: 0 10% 0 0;
 }
 
 /* button */
@@ -57,12 +79,7 @@ ul li {
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
-  position: absolute;
-  top: 0;
-  right: 0;
   height: 48px;
-  margin-top: 1em;
-  margin-right: 1em;
   padding: 6px 10px;
   background: #f9c74f;
   transition: 0.3s;
@@ -77,19 +94,11 @@ ul li {
 .icon-main {
   width: 358px;
   height: 128px;
+  margin: 15px 0 15px 0;
 }
 
 .main-body {
-  position: absolute;
-  bottom: 128px;
-  top: 128px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  /* placeholder */
 }
 
 .welcomemsg h1 {
@@ -105,11 +114,11 @@ ul li {
   background: #8ecae6;
   margin: 15px 0 15px 0;
   padding: 6px 10px;
-  position: relative;
   border-radius: 25px;
   border: 0;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
+  overflow: hidden;
 }
 
 .main-form input[type="number"] {
@@ -118,6 +127,8 @@ ul li {
   font-weight: bold;
   background: #8ecae6;
   height: 48px;
+  width: 70%;
+  float: left;
   border-radius: 25px;
   border: 0;
 }
@@ -146,16 +157,13 @@ ul li {
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
-  position: relative;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border: 0;
   height: 48px;
-  padding: 6px 10px;
+  width: 30%;
+  float: right;
   background: #f9c74f;
   transition: 0.3s;
   border-radius: 25px;
+  border: 0;
 }
 
 .main-form input[type="submit"]:hover {
@@ -170,13 +178,26 @@ ul li {
   text-transform: uppercase;
 }
 
+.whatsfeedo {
+  text-align: center;
+}
+
 .whatsfeedo h2 a {
   color: #FEC260;
+  transition: 0.3s;
   text-decoration: none;
 }
 
 .whatsfeedo h2 a:hover {
   color: #F8961E;
+}
+
+
+@media screen and (max-width: 350px) {
+  .main-header {
+    justify-content: center;
+    margin: 0;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -240,6 +261,19 @@ ul li {
   transition: all 0.3s;
 }
 
+.tooltip{
+  z-index: -1;
+  background: linear-gradient(#18b495,#16a085);
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: opacity 0.4s, margin-left 0.4s;
+}
+
+.tooltip.show{
+  margin-left: 210px;
+  pointer-events: auto;
+}
+
 .copy-button i:hover {
   color: #FEC260;
 }
@@ -258,31 +292,22 @@ ul li {
 
 .create {
   min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .create-header {
-  min-height: 10%;
+  min-height: 10vh;
+  z-index: 1;
 }
 
 .icon-create {
   width: 111px;
   height: 128px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .create-body {
-  text-align: center;
-  position: relative;
-  display: flex;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  /* placeholder */
 }
 
 .typequestionmsg h1 {
@@ -409,6 +434,26 @@ ul li {
   height: 48px;
   border-radius: 50px;
   border: 0;
+}
+
+.x-icon-col {
+  justify-content: end; /* needs to be in .css because cant override it in html class */
+}
+
+@media screen and (max-width: 767px) {
+  .x-icon-col {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .togglequestions {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .createsurvey2 {
+    width: 100%;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -677,8 +722,10 @@ ul li {
 }
 
 .result-row {
+  display: flex;
+  align-items: center;
   height: 300px;
-  width: 1200px;
+  width: 70%;
   border: 5px solid transparent;
   background: #8ecae6;
   padding: 0 1% 0 1%;
@@ -690,6 +737,7 @@ ul li {
 
 .result-box {
   display: flex;
+  max-height: 95%;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
@@ -712,7 +760,7 @@ ul li {
 }
 
 .word-break {
-  word-break: break-all;
+  word-break: normal;
 }
 
 .star-list {
@@ -737,28 +785,27 @@ ul li {
 
 .chart-box {
   display: flex;
+  max-height: 95%;
   justify-content: center;
   align-items: center;
   flex-flow: column wrap;
 }
 
 .myChart {
-  height: 200px;
-  width: 500px;
+  max-height: 100%;
+  width: 100%;
 }
 
 /* media querys for responsive deisgn */
 @media screen and (max-width: 1250px) {
   .result-row {
-    height: 300px;
-    width: 900px;
+    width: 85%;
   }
 }
 
 @media screen and (max-width: 950px) {
   .result-row {
-    height: 300px;
-    width: 650px;
+    width: 85%;
   }
   .result-star i {
     font-size: 35px;
@@ -767,22 +814,40 @@ ul li {
 
 @media screen and (max-width: 767px) {
   .result-row {
+    width: 95%;
     height: 500px;
-    width: 500px;
+    overflow-x: hidden;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    height: 60%;
   }
 }
 
 @media screen and (max-width: 550px) {
   .result-row {
-    height: 420px;
-    width: 345px;
+    width: 95%;
+    height: auto;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    max-height: 60%;
   }
 }
 
 @media screen and (max-width: 350px) {
   .result-row {
-    height: 400px;
-    width: 300px;
+    width: 95%;
+  }
+  .result-box {
+    height: 40%;
+  }
+  .chart-box {
+    max-height: 60%;
   }
   .result-star i {
     font-size: 25px;
@@ -794,16 +859,18 @@ ul li {
 --------------------------------------------------------------*/
 
 footer {
-  background: 0;
+  background: transparent;
   color: white;
   font-family: BigNoodleTiling;
   font-size: 1.5em;
 }
-
+ 
 .main-footer {
-  position: fixed;
-  bottom: 0.1em;
-  right: 0.5em;
+  margin: 0 0.5% 0 0;
+}
+
+.create-footer {
+  margin: 0 0.5% 0 0;
 }
 
 .help-footer {
@@ -813,12 +880,6 @@ footer {
 }
 
 .answer-footer {
-  position: fixed;
-  bottom: 0.1em;
-  right: 0.5em;
-}
-
-.create-footer {
   position: fixed;
   bottom: 0.1em;
   right: 0.5em;

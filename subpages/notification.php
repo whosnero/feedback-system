@@ -61,7 +61,7 @@ if (isset($_GET['noanswer'])) {
     <!-- animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
     <!-- JavaScript -->
     <!-- custom -->
@@ -96,7 +96,7 @@ if (isset($_GET['noanswer'])) {
                             <div><?php echo $bigtext; ?></div>
                             <div id="notification-code"><?php echo $codetext; ?></div>
                             <?php if (isset($_GET['create'], $_GET['code'])) {
-                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button>";
+                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button><span class='tooltip'>copied</span>";
                             }
                             ?>
                         </h1>
@@ -122,7 +122,7 @@ if (isset($_GET['noanswer'])) {
 
     <!-- Javascript -->
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
 
     <!-- AOS (animation) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -136,8 +136,15 @@ if (isset($_GET['noanswer'])) {
             window.getSelection().removeAllRanges(); // clear current selection
             window.getSelection().addRange(range); // to select text
             document.execCommand("copy");
+
+            const tooltip = document.querySelector(".tooltip");
+            tooltip.classList.add("show");
+            setTimeout(function() {
+                tooltip.classList.remove("show");
+            }, 800);
+
             window.getSelection().removeAllRanges(); // to deselect
-            alert("copied the code: " + range);
+
         }
     </script>
 </body>

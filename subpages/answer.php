@@ -49,6 +49,21 @@ if (isset($_POST['btnSubmit'])) {
 }
 
 closeDB($postconn);
+
+/* disallow showing result button */
+
+$disallow = $conn->prepare("SELECT responses.questionid FROM responses WHERE responses.code = ?;"); // prepare db (against injection)
+$disallow->bind_param("i", $code); // replace integer (code) to var ($code)
+$disallow->execute();
+$disallow->store_result(); // returns a buffered result object from query
+
+$disallowboolean = false;
+
+if ($disallow->num_rows() < 1) { // amount
+  $disallowboolean = true;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +86,7 @@ closeDB($postconn);
   <!-- animation -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
   <!-- JavaScript -->
   <!-- custom -->
@@ -88,7 +103,9 @@ closeDB($postconn);
       <div class="row">
         <div class="col-md-4">
           <form data-aos="flip-left" method="post" action="result.php" enctype="multipart/form-data">
-            <input type="submit" class="seeresult" name="seeresult" value="See Result">
+            <?php
+            echo "<input type='" . ($disallowboolean ? "hidden" : "submit") . "' class='seeresult' name='seeresult' value='See Result'>";
+            ?>
             <input type="hidden" name="code" value="<?php echo $code; ?>">
           </form>
         </div>
@@ -159,7 +176,7 @@ closeDB($postconn);
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
 
   <!-- AOS (animation) -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

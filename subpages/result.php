@@ -47,7 +47,7 @@ if ($queryamount > 0) { // amount
     <!-- animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
     <!-- JavaScript -->
     <!-- custom -->
@@ -55,8 +55,7 @@ if ($queryamount > 0) { // amount
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/40327c7301.js" crossorigin="anonymous"></script>
     <!-- Charts-API -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <title>Feedo!</title>
 </head>
@@ -83,7 +82,7 @@ if ($queryamount > 0) { // amount
                 <div data-aos="zoom-in" class="col-md-12 result-heading">
                     <h1>Here are your results!</h1>
                     <h2>(Code: <?php echo $code ?>)</h2>
-                    <h2>below you can see the average valuation and a pie chart for your questions</h2>
+                    <h2>Below you can see the average valuation and a pie chart for your questions</h2>
                     <h2>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
                 </div>
             </div>
@@ -196,7 +195,7 @@ if ($queryamount > 0) { // amount
 
     <!-- Javascript -->
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
 
     <!-- AOS (animation) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
