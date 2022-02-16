@@ -7,7 +7,7 @@ $bigtext = "Welcome to Feedo!";
 $smalltext = "Site not found!";
 $codetext = "";
 
-/* create-page messages */
+/* create-page */
 if (isset($_GET['create'], $_GET['code'])) {
     $code = $_GET['code'];
     $smalltext = "Your Survey has been created successfully!";
@@ -15,7 +15,7 @@ if (isset($_GET['create'], $_GET['code'])) {
     $codetext = $code;
 }
 
-/* index wrong code */
+/* wrong code */
 if (isset($_GET['wcode'])) {
     $code = $_GET['wcode'];
     $bigtext = "Code " . $code . " does not exist!";
@@ -24,7 +24,7 @@ if (isset($_GET['wcode'])) {
     header("Refresh:3; url=../index.php");
 }
 
-/* answer-page messages */
+/* answer/s committed */
 if (isset($_GET['answer'])) {
     $bigtext = "Your Answer has been committed successfully!";
     $smalltext = "Thank you!";
@@ -32,6 +32,13 @@ if (isset($_GET['answer'])) {
     header("Refresh:3; url=../index.php");
 }
 
+/* maintenance */
+if (isset($_GET['conn'])) {
+    $bigtext = "Feedo is currently down for maintenance!";
+    $smalltext = "grab a snack :)";
+}
+
+/* no answers for code x */
 if (isset($_GET['noanswer'])) {
     $code = $_GET['noanswer'];
     $bigtext = "There are no answers for this survey!";

@@ -2,7 +2,7 @@
 
 function openDB()
 {
-    $conn = mysqli_connect("localhost", "root", "", "feedo") or die("Connection to database failed!");
+    $conn = mysqli_connect("localhost", "root", "", "feedo") or header('Location: subpages/notification.php?conn');
     return $conn;
 }
 

@@ -96,50 +96,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       </div>
     </div>
     <div class="create-body flex-grow-1 container-fluid d-flex align-items-center flex-column text-center">
-        <div class="row">
-          <div class="col-md-12 typequestionmsg">
-            <h1 data-aos="zoom-in-down">Fill the text-boxes with your questions!</h1>
-          </div>
+      <div class="row">
+        <div class="col-md-12 typequestionmsg">
+          <h1 data-aos="zoom-in-down">Fill the text-boxes with your questions!</h1>
         </div>
-        <div class="row">
-          <div class="col-md-12" maxwidth="684px">
-            <form data-aos="zoom-in" method="post" class="create-form" id="create-form" action="create.php" enctype="multipart/form-data">
-              <?php
-              /* getting sample questions */
-              /* checks result and creates variables from result */
+      </div>
+      <div class="row">
+        <div class="col-md-12" maxwidth="684px">
+          <form data-aos="zoom-in" method="post" class="create-form" id="create-form" action="create.php" enctype="multipart/form-data">
+            <?php
+            /* getting sample questions */
+            /* checks result and creates variables from result */
 
-              if ($sampleamount > 0) { // amount
-                $samplequery->bind_result($questionid_sample, $question_sample);
-                while ($samplequery->fetch()) { // while page can use this variables
-                  /* echo text-box, value from db */
-                  $required = $questionid_sample === 1 ? "required" : ""; // first question is always required
-                  echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70'; value='" . $question_sample . "'" . $required . "> <br>";
-                }
-              } else {
-                /* no result (db=sample_question) */
-                header('Location: ../index.php');
+            if ($sampleamount > 0) { // amount
+              $samplequery->bind_result($questionid_sample, $question_sample);
+              while ($samplequery->fetch()) { // while page can use this variables
+                /* echo text-box, value from db */
+                $required = $questionid_sample === 1 ? "required" : ""; // first question is always required
+                echo "<input class='question-box' type='text' name='" . $questionid_sample . "' placeholder='Write your question in here.' maxlength='100' size='70'; value='" . $question_sample . "'" . $required . "> <br>";
               }
+            } else {
+              /* no result (db=sample_question) */
+              header('Location: ../index.php');
+            }
 
-              $samplequery->close();
-              closeDB($conn);
+            $samplequery->close();
+            closeDB($conn);
 
-              /* adds more input for user */
-              for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
-                echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100' size='70' ><br>";
-              }
-              ?>
-              <br>
-              <div class="row">
-                <div class="col-md-12">
-                  <input class="togglequestions" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+">
-                  <input class="togglequestions" onclick="removeNewField()" type="button" id="removeqbtn" name="removeqbtn" value="-">
-                  <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!">
-                </div>
+            /* adds more input for user */
+            for ($i = ($sampleamount + 1); $i <= ($additionalquestions + $sampleamount); $i++) {
+              echo "<input class='question-box' type='text' name='" . $i . "' placeholder='Write your question in here.' maxlength='100' size='70' ><br>";
+            }
+            ?>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <input class="togglequestions" onclick="createNewField()" type="button" id="addqbtn" name="addqbtn" value="+">
+                <input class="togglequestions" onclick="removeNewField()" type="button" id="removeqbtn" name="removeqbtn" value="-">
+                <input class="createsurvey2" type="submit" name="btnSubmit" value="Create Survey!">
               </div>
-              <br>
-            </form>
-          </div>
+            </div>
+            <br>
+          </form>
         </div>
+      </div>
     </div>
     <footer class="create-footer h-10 d-flex justify-content-end">
       <script>
@@ -157,16 +157,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <script>
     AOS.init();
 
-    document.onkeydown = function shortcutCreate(e){
-    e = e || window.event;
-    keycode = e.which || e.keyCode;
-    if(keycode == 187){      // '187' is the keycode for "+"
+    document.onkeydown = function shortcutCreate(e) {
+      e = e || window.event;
+      keycode = e.which || e.keyCode;
+      if (keycode == 187 || keycode == 107) { // keycodes for "+"
         e.preventDefault();
         createNewField();
-     } if(keycode == 189) {  // '189' is the keycode for "-"
+      }
+      if (keycode == 189 || keycode == 109) { // keycodes for "-"
         e.preventDefault();
         removeNewField();
-     }
+      }
     }
 
     var addcounter = <?php echo ($additionalquestions + $sampleamount) ?>;
@@ -192,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       } else {
         addcounter--;
       }
-      window.scrollTo(0,document.body.scrollHeight);
+      window.scrollTo(0, document.body.scrollHeight);
     };
 
     function removeNewField() {
@@ -203,8 +204,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         inputfield.remove();
       }
 
-      if (addcounter >=5) {
-      addcounter--;
+      if (addcounter >= 5) {
+        addcounter--;
       }
     };
   </script>
