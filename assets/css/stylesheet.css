@@ -58,6 +58,9 @@ ul li {
 --------------------------------------------------------------*/
 
 .main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   max-width: 100vw;
   overflow: hidden;
@@ -66,11 +69,18 @@ ul li {
 .main-header {
   height: 10vh;
   z-index: 1;
-  justify-content: end; /* needs to be in .css for right responsive behavior */
 }
 
-.main-header-form {
-  margin: 0 10% 0 0;
+.main-header-row {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.main-header-col {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  min-height: 100%;
 }
 
 /* button */
@@ -98,7 +108,10 @@ ul li {
 }
 
 .main-body {
-  /* placeholder */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcomemsg h1 {
@@ -194,7 +207,7 @@ ul li {
 
 
 @media screen and (max-width: 350px) {
-  .main-header {
+  .main-header-col {
     justify-content: center;
     margin: 0;
   }
@@ -263,7 +276,8 @@ ul li {
 
 .tooltip{
   z-index: -1;
-  background: linear-gradient(#18b495,#16a085);
+  background: linear-gradient(#f9c74f,#eebb44);
+  color: #a12568;
   padding: 6px 10px;
   border-radius: 10px;
   transition: opacity 0.4s, margin-left 0.4s;
@@ -291,6 +305,9 @@ ul li {
 --------------------------------------------------------------*/
 
 .create {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
   max-width: 100vw;
   overflow: hidden;
@@ -298,7 +315,13 @@ ul li {
 
 .create-header {
   min-height: 10vh;
-  z-index: 1;
+}
+
+.create-header-row {
+  min-height: 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: end;
 }
 
 .icon-create {
@@ -306,8 +329,17 @@ ul li {
   height: 128px;
 }
 
+.create-header-col-3 {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .create-body {
-  /* placeholder */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .typequestionmsg h1 {
@@ -479,16 +511,7 @@ ul li {
 /* x-button */
 
 .backtomain a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: bold;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 6px 10px;
-  margin-top: 1em;
-  margin-right: 1em;
   text-decoration: none;
 }
 
@@ -523,12 +546,36 @@ ul li {
 --------------------------------------------------------------*/
 
 .answer {
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .answer-header {
-  height: 10%;
+  min-height: 10vh;
 }
+
+.answer-header-row {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.answer-header-col-1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.answer-header-col-3 {
+  display: flex;
+  align-items: center;
+}
+
 
 /* button */
 
@@ -538,16 +585,8 @@ ul li {
   font-weight: bold;
   background: none;
   text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: bold;
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 48px;
-  margin-top: 1em;
-  margin-left: 0.5em;
   padding: 6px 10px;
   background: #f9c74f;
   transition: 0.3s;
@@ -608,6 +647,12 @@ ul li {
 
 .answer-question {
   color:rgb(104, 104, 104);
+}
+
+@media screen and (max-width: 767px) {
+  .answer-header-col-1 {
+    justify-content: center;
+  }
 }
 
 /* stars */
@@ -866,10 +911,14 @@ footer {
 }
  
 .main-footer {
+  display: flex;
+  justify-content: end;
   margin: 0 0.5% 0 0;
 }
 
 .create-footer {
+  display: flex;
+  justify-content: end;
   margin: 0 0.5% 0 0;
 }
 
@@ -880,9 +929,9 @@ footer {
 }
 
 .answer-footer {
-  position: fixed;
-  bottom: 0.1em;
-  right: 0.5em;
+  display: flex;
+  justify-content: end;
+  margin: 0 0.5% 0 0;
 }
 
 .result-footer {

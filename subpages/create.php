@@ -79,23 +79,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
 </head>
 
 <body>
-  <section class="create d-flex flex-column justify-content-start">
-    <div class="create-header container-fluid d-flex">
-      <div class="row create-header-row h-100 min-vw-100 d-flex">
-        <div class="col-md-4 d-flex">
-          <!-- invisible column for alignment -->
-        </div>
-        <div class="col-md-4 icon-create d-flex align-items-center justify-content-center">
-          <img data-aos="zoom-in" class="icon-create" src="../assets/img/feedo.png" alt="Feedo Logo"> </img>
-        </div>
-        <div class="col-md-4 x-icon-col m-0 d-flex align-items-center">
+  <section class="create">
+    <div class="create-header container-fluid">
+      <div class="row create-header-row">
+        <div class="col-md-12 create-header-col-3 x-icon-col">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
             <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
           </a>
         </div>
       </div>
     </div>
-    <div class="create-body flex-grow-1 container-fluid d-flex align-items-center flex-column text-center">
+    <div class="create-body container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <img data-aos="zoom-in" class="icon-create" src="../assets/img/feedo.png" alt="Feedo Logo"> </img>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12 typequestionmsg">
           <h1 data-aos="zoom-in-down">Fill the text-boxes with your questions!</h1>
@@ -141,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         </div>
       </div>
     </div>
-    <footer class="create-footer h-10 d-flex justify-content-end">
+    <footer class="create-footer">
       <script>
         document.write(date());
       </script>

@@ -100,8 +100,8 @@ if ($disallow->num_rows() < 1) { // amount
 <body>
   <section class="answer">
     <div class="answer-header container-fluid">
-      <div class="row">
-        <div class="col-md-4">
+      <div class="row answer-header-row">
+        <div class="col-md-4 answer-header-col-1">
           <form data-aos="flip-left" method="post" action="result.php" enctype="multipart/form-data">
             <?php
             echo "<input type='" . ($disallowboolean ? "hidden" : "submit") . "' class='seeresult' name='seeresult' value='See Result'>";
@@ -109,12 +109,12 @@ if ($disallow->num_rows() < 1) { // amount
             <input type="hidden" name="code" value="<?php echo $code; ?>">
           </form>
         </div>
-        <div class="col-md-4 icon-answer">
+        <div class="col-md-4 answer-header-col-2 icon-answer">
           <img data-aos="zoom-in" class="icon icon-answer" src="../assets/img/feedo.png" alt="Feedo Logo">
         </div>
-        <div class="col-md-4 backtomain">
+        <div class="col-md-4 answer-header-col-3 x-icon-col backtomain">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
-            <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+            <img class="x-icon" src="../assets/img/x.png" alt="close answer"></img>
           </a>
         </div>
       </div>
@@ -165,14 +165,14 @@ if ($disallow->num_rows() < 1) { // amount
 
     </div>
     </div>
-  </section>
 
-  <!-- footer-->
-  <footer class="answer-footer">
-    <script>
-      document.write(date());
-    </script>
-  </footer>
+    <!-- footer-->
+    <footer class="answer-footer">
+      <script>
+        document.write(date());
+      </script>
+    </footer>
+  </section>
 
   <!-- Javascript -->
   <!-- Bootstrap Bundle with Popper -->
