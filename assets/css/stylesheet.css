@@ -13,8 +13,8 @@
 }
 
 * {
-  font-family: Roboto-Thin, sans-serif;
   background-color: #2891d7;
+  font-family: Roboto-Thin, sans-serif;
   color: white;
 }
 
@@ -58,11 +58,11 @@ ul li {
 --------------------------------------------------------------*/
 
 .main {
+  max-width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
-  max-width: 100vw;
   overflow: hidden;
 }
 
@@ -77,24 +77,24 @@ ul li {
 }
 
 .main-header-col {
+  min-height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
-  min-height: 100%;
 }
 
 /* button */
 
 .createsurvey {
-  color: #a12568;
-  font-size: 16px;
-  font-weight: bold;
   height: 48px;
   padding: 6px 10px;
   background: #f9c74f;
-  transition: 0.3s;
+  color: #a12568;
+  font-size: 16px;
+  font-weight: bold;
   border-radius: 50px;
   border: 0;
+  transition: all 0.3s;
 }
 
 .createsurvey:hover {
@@ -115,8 +115,8 @@ ul li {
 }
 
 .welcomemsg h1 {
-  color: rgb(255, 255, 255);
   margin: 15px 0 15px 0;
+  color: rgb(255, 255, 255);
   font-size: 48px;
   line-height: 56px;
 }
@@ -124,24 +124,23 @@ ul li {
 /* code input form */
 
 .main-form {
-  background: #8ecae6;
   margin: 15px 0 15px 0;
   padding: 6px 10px;
-  border-radius: 25px;
-  border: 0;
+  overflow: hidden;
+  background: #8ecae6;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
-  overflow: hidden;
+  border-radius: 25px;
+  border: 0;
 }
 
 .main-form input[type="number"] {
-  color:rgb(104, 104, 104);
-  font-family: sans-serif;
-  font-weight: bold;
-  background: #8ecae6;
-  height: 48px;
   width: 70%;
+  height: 48px;
   float: left;
+  background: #8ecae6;
+  color:rgb(104, 104, 104);
+  font-weight: bold;
   border-radius: 25px;
   border: 0;
 }
@@ -167,16 +166,16 @@ ul li {
 }
 
 .main-form input[type="submit"] {
+  width: 30%;
+  height: 48px;
+  float: right;
+  background: #f9c74f;
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
-  height: 48px;
-  width: 30%;
-  float: right;
-  background: #f9c74f;
-  transition: 0.3s;
   border-radius: 25px;
   border: 0;
+  transition: all 0.3s;
 }
 
 .main-form input[type="submit"]:hover {
@@ -184,10 +183,10 @@ ul li {
 }
 
 .whatsfeedo h2 {
+  margin: 15px 0 15px 0;
   color: rgb(202, 202, 202);
   font-size: 14px;
   font-weight: bold;
-  margin: 15px 0 15px 0;
   text-transform: uppercase;
 }
 
@@ -197,8 +196,8 @@ ul li {
 
 .whatsfeedo h2 a {
   color: #FEC260;
-  transition: 0.3s;
   text-decoration: none;
+  transition: all 0.3s;
 }
 
 .whatsfeedo h2 a:hover {
@@ -208,16 +207,16 @@ ul li {
 
 @media screen and (max-width: 350px) {
   .main-header-col {
-    justify-content: center;
     margin: 0;
+    justify-content: center;
   }
 }
 
 @media screen and (max-width: 400px) {
   .icon-main {
-    content: url(../img/feedo.png);
     width: 111px;
     height: 128px;
+    content: url(../img/feedo.png);
   }
 }
 
@@ -236,14 +235,14 @@ ul li {
 .notification-body {
   width: 100%;
   position: fixed;
-  bottom: 128px;
   top: 128px;
-  left: 0;
   right: 0;
+  bottom: 128px;
+  left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   text-align: center;
 }
 
@@ -253,9 +252,9 @@ ul li {
 }
 
 .notification-box {
-  border: 3px solid transparent;
-  background: #8ecae6;
   padding: 1% 0 1% 1%;
+  background: #8ecae6;
+  border: 3px solid transparent;
   border-radius: 25px;
 }
 
@@ -265,8 +264,8 @@ ul li {
 }
 
 .copy-button {
-  border: 0;
   font-size: 25px;
+  border: 0;
   transition: all 0.3s;
 }
 
@@ -275,10 +274,10 @@ ul li {
 }
 
 .tooltip{
+  padding: 6px 10px;
   z-index: -1;
   background: linear-gradient(#f9c74f,#eebb44);
   color: #a12568;
-  padding: 6px 10px;
   border-radius: 10px;
   transition: opacity 0.4s, margin-left 0.4s;
 }
@@ -293,10 +292,10 @@ ul li {
 }
 
 .smalltext {
+  margin: 15px 0 15px 0;
   color: rgb(202, 202, 202);
   font-size: 14px;
   font-weight: bold;
-  margin: 15px 0 15px 0;
   text-transform: uppercase;
 }
 
@@ -305,11 +304,11 @@ ul li {
 --------------------------------------------------------------*/
 
 .create {
+  max-width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 100vh;
-  max-width: 100vw;
   overflow: hidden;
 }
 
@@ -318,8 +317,8 @@ ul li {
 }
 
 .create-header-row {
-  min-height: 100%;
   min-width: 100%;
+  min-height: 100%;
   display: flex;
   justify-content: end;
 }
@@ -337,38 +336,38 @@ ul li {
 
 .create-body {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
 .typequestionmsg h1 {
-  color: rgb(255, 255, 255);
   margin: 15px 0 15px 0;
+  color: rgb(255, 255, 255);
   font-size: 48px;
   line-height: 56px;
 }
 
 .create-form {
-  max-width: 684px;
   width: 100%;
+  max-width: 684px;
 }
 
 .question-box {
+  width: 100%;
+  max-width: 684px;
+  margin-top: 0.5em;
+  padding: 13px;
+  background: #8ecae6;
+  box-sizing: border-box;
   color:rgb(255, 255, 255);
   font-weight: 500;
   font-size: 18px;
   border-radius: 25px;
   line-height: 22px;
-  background: #8ecae6;
+  outline: 0;
   border: 2px solid transparent;
   transition: all 0.3s;
-  margin-top: 0.5em;
-  padding: 13px;
-  max-width: 684px;
-  width: 100%;
-  box-sizing: border-box;
-  outline: 0;
 }
 
 .question-box:focus {
@@ -380,20 +379,20 @@ ul li {
 }
 
 .additionalquestion-box {
-  color:rgb(255, 255, 255);
-  font-weight: 500;
-  font-size: 18px;
-  border-radius: 25px;
-  line-height: 22px;
-  background: #8ecae6;
-  border: 2px solid transparent;
-  transition: all 0.3s;
+  width: 100%;
+  max-width: 684px;
   margin-bottom: 0.5em;
   padding: 13px;
-  max-width: 684px;
-  width: 100%;
+  background: #8ecae6;
   box-sizing: border-box;
+  color:rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
   outline: 0;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  transition: all 0.3s;
 }
 
 .additionalquestion-box:focus {
@@ -405,20 +404,19 @@ ul li {
 }
 
 .togglequestions {
-  color: #a12568;
-  font-size: 24px;
-  font-weight: bold;
-  background: none;
-  text-decoration: none;
-  float: left;
   width: 100px;
+  height: 48px;
   margin-right: 0.1em;
   padding: 6px 10px;
   background: #f9c74f;
-  height: 48px;
-  border-radius: 50px;
+  float: left;
+  color: #a12568;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
   border: 0;
-  transition: 0.3s;
+  border-radius: 50px;
+  transition: all 0.3s;
 }
 
 .togglequestions:hover {
@@ -426,46 +424,43 @@ ul li {
 }
 
 .addquestion:hover {
+  width: 100px;
+  height: 48px;
+  padding: 6px 10px;
+  float: left;
+  background: #F8961E;
   color: #a12568;
   font-size: 24px;
   font-weight: bold;
-  background: none;
   text-decoration: none;
-  float: left;
-  width: 100px;
-  padding: 6px 10px;
-  background: #F8961E;
-  height: 48px;
-  border-radius: 50px;
   border: 0;
+  border-radius: 50px;
 }
 
 .createsurvey2 {
+  height: 48px;
+  padding: 6px 10px;
+  background: #f9c74f;
+  float: right;
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
-  background: none;
   text-decoration: none;
-  float: right;
-  padding: 6px 10px;
-  background: #f9c74f;
-  height: 48px;
-  border-radius: 50px;
   border: 0;
+  border-radius: 50px;
 }
 
 .createsurvey2:hover {
+  height: 48px;
+  padding: 6px 10px;
+  background: #F8961E;
+  float: right;
   color: #a12568;
   font-size: 16px;
   font-weight: bold;
-  background: none;
   text-decoration: none;
-  float: right;
-  padding: 6px 10px;
-  background: #F8961E;
-  height: 48px;
-  border-radius: 50px;
   border: 0;
+  border-radius: 50px;
 }
 
 .x-icon-col {
