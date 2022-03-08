@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
     <div class="create-body container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <img data-aos="zoom-in" class="icon-create" src="../assets/img/feedo.png" alt="Feedo Logo"> </img>
+          <img data-aos="zoom-in" class="icon icon-create" src="../assets/img/feedologo2.png" alt="Feedo Logo"> </img>
         </div>
       </div>
       <div class="row">

@@ -109,8 +109,8 @@ if ($disallow->num_rows() < 1) { // amount
             <input type="hidden" name="code" value="<?php echo $code; ?>">
           </form>
         </div>
-        <div class="col-md-4 answer-header-col-2 icon-answer">
-          <img data-aos="zoom-in" class="icon icon-answer" src="../assets/img/feedo.png" alt="Feedo Logo">
+        <div class="col-md-4 answer-header-col-2">
+          <img data-aos="zoom-in" class="icon icon-answer" src="../assets/img/feedologo2.png" alt="Feedo Logo">
         </div>
         <div class="col-md-4 answer-header-col-3 x-icon-col backtomain">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
@@ -138,7 +138,7 @@ if ($disallow->num_rows() < 1) { // amount
           /* creates form to answer */
         ?>
           <div data-aos="fade-up" class="answer-box">
-            <label class="darkerbg round" for="<?php echo $questionid_survey; ?>"><b border-radius="25px" class="answer-question darkerbg round word-break"><?php echo $question_survey; ?></b>
+            <label class="darkerbg" for="<?php echo $questionid_survey; ?>"><p border-radius="25px" class="answer-question darkerbg word-break"><?php echo $question_survey; ?></p>
             </label><br>
             <div class='col-md-12 valuation darkerbg'>
               <?php
@@ -164,7 +164,6 @@ if ($disallow->num_rows() < 1) { // amount
       </form>
 
     </div>
-    </div>
 
     <!-- footer-->
     <footer class="answer-footer">
@@ -185,3 +184,4 @@ if ($disallow->num_rows() < 1) { // amount
   </script>
 
 </body>
+</html>
