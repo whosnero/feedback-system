@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@media screen and (max-width: 240px) {
+  body {
+    display: none;
+  }
+}
 
 @font-face {
   font-family: BigNoodleTiling;
@@ -314,18 +319,14 @@ ul li {
 
 .create-header {
   min-height: 10vh;
+  display: flex;
 }
 
 .create-header-row {
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
   display: flex;
+  flex-grow: 1;
   justify-content: end;
-}
-
-.icon-create {
-  width: 111px;
-  height: 128px;
 }
 
 .create-header-col-3 {
@@ -338,6 +339,7 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
   text-align: center;
 }
 
@@ -363,10 +365,10 @@ ul li {
   color:rgb(255, 255, 255);
   font-weight: 500;
   font-size: 18px;
-  border-radius: 25px;
   line-height: 22px;
   outline: 0;
   border: 2px solid transparent;
+  border-radius: 25px;
   transition: all 0.3s;
 }
 
@@ -467,19 +469,24 @@ ul li {
   justify-content: end; /* needs to be in .css because cant override it in html class */
 }
 
-@media screen and (max-width: 767px) {
-  .x-icon-col {
-    justify-content: center;
+@media screen and (max-width: 400px) {
+  .icon-create {
+    width: 111px;
+    height: 128px;
+    content: url(../img/feedo.png);
   }
-}
-
-@media screen and (max-width: 350px) {
   .togglequestions {
     width: 100%;
     margin-bottom: 10px;
   }
   .createsurvey2 {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .x-icon-col {
+    justify-content: center;
   }
 }
 
@@ -511,16 +518,16 @@ ul li {
 }
 
 .help-body {
-  text-align: center;
   position: absolute;
-  bottom: 128px;
-  left: 0;
   top: 128px;
   right: 0;
+  bottom: 128px;
+  left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  text-align: center;
 }
 
 .help-text h1 {
@@ -566,6 +573,12 @@ ul li {
   align-items: center;
 }
 
+.answer-header-col-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .answer-header-col-3 {
   display: flex;
   align-items: center;
@@ -591,14 +604,6 @@ ul li {
 
 .seeresult:hover {
   background: #F8961E;
-}
-
-.icon-answer {
-  width: 111px;
-  height: 128px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .answer-body {
@@ -637,6 +642,7 @@ ul li {
   margin-right: 0;
   margin-bottom: 1em;
   box-sizing: border-box;
+  overflow: hidden;
   border-radius: 25px;
 }
 
@@ -644,19 +650,38 @@ ul li {
   color:rgb(104, 104, 104);
 }
 
+@media screen and (max-width: 400px) {
+  .icon-answer {
+    width: 111px;
+    height: 128px;
+    content: url(../img/feedo.png);
+  }
+}
+
 @media screen and (max-width: 767px) {
   .answer-header-col-1 {
     justify-content: center;
+    margin: 2.5% 0 0 0 !important;
+  }
+  .answer-header-col-2 {
+    margin: 2.5% 0 0 0 !important;
+  }
+  .answer-header-col-3 {
+    margin: 2.5% 0 0 0 !important;
   }
 }
 
 /* stars */
 
 .valuation {
+  max-width: 100%;
   margin: 0;
   padding: 0;
   transform: rotateY(180deg);
   border-radius: 25px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .valuation input {
@@ -689,8 +714,7 @@ ul li {
   font-size: 50px;
   color: #f9c74f;
   opacity: 0;
-  transition: 0.5s;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5)
+  transition: all 0.5s;
 }
 
 .valuation label:hover:after, .valuation label:hover~label:after, .valuation input:checked~label:after {
@@ -713,9 +737,33 @@ ul li {
   border: 0;
   transition: 0.3s;
 }
-
+ 
 .answer-submit:hover {
   background: #F8961E;
+}
+
+@media screen and (max-width: 350px) {
+  .valuation label:before, .valuation label:after {
+    font-size: 45px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .valuation label:before, .valuation label:after {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .valuation label:before, .valuation label:after {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 260px) {
+  .valuation label:before, .valuation label:after {
+    font-size: 30px;
+  }
 }
 
 /*--------------------------------------------------------------
