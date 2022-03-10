@@ -10,6 +10,9 @@ if (!isset($code) || $code == null || !isset($_POST['btnEnter'])) {
 
 /* connection to db */
 require_once '../assets/php/db.php';
+require_once '../assets/php/Cryption.php';
+$encryption_class = new Cryption();
+
 $conn = openDB();
 
 /* table inputs (surveys) */
@@ -19,7 +22,7 @@ $surveyquery->execute();
 $surveyquery->store_result(); // returns a buffered result object from surveyquery
 $surveyamount = $surveyquery->num_rows();
 if ($surveyamount > 0) { // amount
-  $surveyquery->bind_result($code_survey, $question_survey, $questionid_survey, $created_at_survey);
+  $surveyquery->bind_result($code_survey, $question_survey_hashed, $questionid_survey, $created_at_survey);
 } else {
   /* no result (db=survey) */
   header('Location: notification.php?wcode=' . $code);
@@ -34,7 +37,8 @@ if (isset($_POST['btnSubmit'])) {
       $qid = str_replace("star-", "", $qid); // for easier insert
 
       $postquery = $postconn->prepare("INSERT INTO responses (code, questionid, valuation) VALUES (?, ?, ?)");
-      $postquery->bind_param("iii", $code, $qid, $valuation);
+      $encryptvaluation = $encryption_class->encryptString($valuation);
+      $postquery->bind_param("iis", $code, $qid, $encryptvaluation);
       $postquery->execute();
 
       if ($postquery->affected_rows < 0) {
@@ -135,10 +139,12 @@ if ($disallow->num_rows() < 1) { // amount
         /* checks result and creates variables from result */
 
         while ($surveyquery->fetch()) { // while page can use this variables
+          $question_survey = $encryption_class->decryptString($question_survey_hashed);
           /* creates form to answer */
         ?>
           <div data-aos="fade-up" class="answer-box">
-            <label for="<?php echo $questionid_survey; ?>"><p border-radius="25px" class="answer-question word-break"><?php echo $question_survey; ?></p>
+            <label for="<?php echo $questionid_survey; ?>">
+              <p border-radius="25px" class="answer-question word-break"><?php echo $question_survey; ?></p>
             </label><br>
             <div class='col-md-12 valuation'>
               <?php
@@ -208,4 +214,5 @@ if ($disallow->num_rows() < 1) { // amount
   </script>
 
 </body>
+
 </html>
