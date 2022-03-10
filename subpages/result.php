@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0); // disable warnings
+error_reporting(1); // disable warnings
 $code = $_POST["code"];
 
 /* checks post got an code */
@@ -10,16 +10,19 @@ if (!isset($code) || $code == null) {
 
 /* connection to db */
 require_once '../assets/php/db.php';
+require_once '../assets/php/Cryption.php';
+$encryption_class = new Cryption();
+
 $conn = openDB();
 
 /* table inputs (surveys & responses) */
-$query = $conn->prepare("SELECT responses.questionid, responses.valuation, surveys.question FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? ORDER BY responses.created_at ASC;"); // prepare db (against injection)
+$query = $conn->prepare("SELECT responses.questionid, surveys.question FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? ORDER BY responses.created_at ASC;"); // prepare db (against injection)
 $query->bind_param("i", $code); // replace integer (code) to var ($code)
 $query->execute();
 $query->store_result(); // returns a buffered result object from query
 $queryamount = $query->num_rows(); // amount for query
 if ($queryamount > 0) { // amount
-    $query->bind_result($questionid, $valuation, $question); //vars can be used
+    $query->bind_result($questionid, $question_hashed); //vars can be used
 } else {
     /* no result (db=responses, no answer?) */
     header('Location: notification.php?noanswer=' . $code);
@@ -90,95 +93,90 @@ if ($queryamount > 0) { // amount
             <?php
             $questionid_array = array();
             /* getting average amount of valuations (connected with the questionid and code) */
-            $valuequery = $conn->prepare("SELECT SUM(valuation) / COUNT(valuation) FROM responses WHERE questionid = ? AND code = ? ORDER BY responses.created_at ASC;"); // prepare db (against injection)
+
             while ($query->fetch()) { // while page can use this variables
                 /* creates array, which knows all the questionid´s and run them just one time */
                 if (!in_array($questionid, $questionid_array)) {
-                    $valuequery->bind_param("ii", $questionid, $code); // replaces ? with vars
-                    $valuequery->execute();
-                    $valuequery->store_result(); // returns a buffered result object from valuequery
-                    $valuequery_amount = $valuequery->num_rows(); // amount
+                    $one = 0;
+                    $two = 0;
+                    $three = 0;
+                    $four = 0;
+                    $five = 0;
 
-                    if ($valuequery_amount > 0) {
-                        $valuequery->bind_result($valuation_average);
-                        while ($valuequery->fetch()) {
-                            $one = 0;
-                            $two = 0;
-                            $three = 0;
-                            $four = 0;
-                            $five = 0;
+                    $piequery = $conn->prepare("SELECT valuation FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? AND responses.questionid = ? ORDER BY responses.created_at ASC;");
+                    $piequery->bind_param("ii", $code, $questionid);
+                    $piequery->execute();
+                    $piequery->store_result();
 
-                            $piequery = $conn->prepare("SELECT valuation FROM responses LEFT JOIN surveys ON responses.code = surveys.code AND responses.questionid = surveys.questionid WHERE responses.code = ? AND responses.questionid = ? ORDER BY responses.created_at ASC;");
-                            $piequery->bind_param("ii", $code, $questionid);
-                            $piequery->execute();
-                            $piequery->store_result();
+                    if ($piequery->num_rows() > 0) {
+                        $piequery->bind_result($allvaluationforthisid);
 
-                            if ($piequery->num_rows() > 0) {
-                                $piequery->bind_result($allvaluationforthisid);
-
-                                while ($piequery->fetch()) {
-                                    $allvaluationforthisid === 1 ? $one++ : null;
-                                    $allvaluationforthisid === 2 ? $two++ : null;
-                                    $allvaluationforthisid === 3 ? $three++ : null;
-                                    $allvaluationforthisid === 4 ? $four++ : null;
-                                    $allvaluationforthisid === 5 ? $five++ : null;
-                                }
-                            } else {
-                                /* couldn´t find any valuation for this questionid */
-                            }
-
-                            $piequery->close();
-
-                            $questionid_array[] = $questionid; // adds current questionid to an array
-
-                            $valuation_average = (round($valuation_average * 2)) / 2; // 1,25 = 1 && 1,65 = 1,5 && 1,75 = 2
-
-                            $valuation_average_round_down = floor($valuation_average); // rounds the number down to the nearest integer
-
-                            echo "<div data-aos='fade-up' class='row result-row'>";
-                            echo "<div class='col-md-6 result-box darkerbg'>";
-                            echo "<p class='result-question darkerbg word-break'> " . $question;
-                            echo "<p class='submitamount darkerbg'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
-                            echo "<ul class='star-list darkerbg'>";
-
-                            /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
-                            for ($i = 1; $i <= $valuation_average_round_down; $i++) {
-                                echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'>";
-                                echo "<i class='fa-solid fa-star darkerbg'></i>";
-                                if ($i == $valuation_average) {
-                                    echo "(" . $valuation_average .  ")";
-                                }
-                                echo "</li>";
-                            }
-
-                            if (filter_var($valuation_average, FILTER_VALIDATE_INT) === false) { //checks if valuation_average is an double than place the half star
-                                echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'>";
-                                echo "<i class='fa-solid fa-star-half darkerbg'></i>";
-                                echo "(" . $valuation_average .  ")";
-                                echo "</li>";
-                            }
-
-                            echo "</ul></p></div><div class='col-md-6 chart-box darkerbg'>";
-                            echo "<canvas class='myChart darkerbg' id='myChart-" . $questionid . "'></canvas>";
-                            echo "</div></div>";
-
-            ?>
-                            <!-- Chart.js -->
-                            <script>
-                                confPie(<?php echo $one; ?>, <?php echo $two; ?>, <?php echo $three; ?>, <?php echo $four; ?>, <?php echo $five; ?>, <?php echo $questionid; ?>);
-                            </script>
-            <?php
+                        while ($piequery->fetch()) {
+                            $decryptedvaluation = $encryption_class->decryptString($allvaluationforthisid);
+                            $decryptedvaluation == 1 ? $one++ : null;
+                            $decryptedvaluation == 2 ? $two++ : null;
+                            $decryptedvaluation == 3 ? $three++ : null;
+                            $decryptedvaluation == 4 ? $four++ : null;
+                            $decryptedvaluation == 5 ? $five++ : null;
                         }
                     } else {
-                        /* couldn´t get average of sum(valuation) */
+                        /* couldn´t find any valuation for this questionid */
                     }
+
+                    $valuation_average = ($one + (2 * $two) + (3 * $three) + (4 * $four) + (5 * $five)) / ($one + $two + $three + $four + $five);
+
+                    $piequery->close();
+
+                    $questionid_array[] = $questionid; // adds current questionid to an array
+
+                    $valuation_average = (round($valuation_average * 2)) / 2; // 1,25 = 1 && 1,65 = 1,5 && 1,75 = 2
+
+                    $valuation_average_round_down = floor($valuation_average); // rounds the number down to the nearest integer
+
+                    $question = $encryption_class->decryptString($question_hashed);
+
+                    echo "<div data-aos='fade-up' class='row result-row'>";
+                    echo "<div class='col-md-6 result-box darkerbg'>";
+                    echo "<p class='result-question darkerbg word-break'> " . $question;
+                    echo "<p class='submitamount darkerbg'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
+                    echo "<ul class='star-list darkerbg'>";
+
+                    /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
+                    for ($i = 1; $i <= $valuation_average_round_down; $i++) {
+                        echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'>";
+                        echo "<i class='fa-solid fa-star darkerbg'></i>";
+                        if ($i == $valuation_average) {
+                            echo "(" . $valuation_average .  ")";
+                        }
+                        echo "</li>";
+                    }
+
+                    if (filter_var($valuation_average, FILTER_VALIDATE_INT) === false) { //checks if valuation_average is an double than place the half star
+                        echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'>";
+                        echo "<i class='fa-solid fa-star-half darkerbg'></i>";
+                        echo "(" . $valuation_average .  ")";
+                        echo "</li>";
+                    }
+
+                    echo "</ul></p></div><div class='col-md-6 chart-box darkerbg'>";
+                    echo "<canvas class='myChart darkerbg' id='myChart-" . $questionid . "'></canvas>";
+                    echo "</div></div>";
+
+            ?>
+                    <!-- Chart.js -->
+                    <script>
+                        confPie(<?php echo $one; ?>, <?php echo $two; ?>, <?php echo $three; ?>, <?php echo $four; ?>, <?php echo $five; ?>, <?php echo $questionid; ?>);
+                    </script>
+            <?php
+
+
                 }
             }
 
 
             /* closes all "editors" and connections */
             $query->close();
-            $valuequery->close();
+
             closeDB($conn);
             ?>
 

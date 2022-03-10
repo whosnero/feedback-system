@@ -17,7 +17,7 @@ CREATE TABLE `responses` (
   `id` int(11) NOT NULL,
   `code` int(11) NOT NULL,
   `questionid` int(11) NOT NULL,
-  `valuation` int(1) NOT NULL,
+  `valuation` text COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

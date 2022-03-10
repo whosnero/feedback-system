@@ -4,10 +4,11 @@ if (!isset($additionalquestions)) {
   $additionalquestions = 2;
 }
 
-error_reporting(0); // disable warnings
+error_reporting(1); // disable warnings
 
 /* connection to db */
 require_once '../assets/php/db.php';
+require_once '../assets/php/Cryption.php';
 $conn = openDB();
 
 /* table inputs (sample_questions) */
@@ -27,7 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
       if ($postinput != "" && $postinput != "Create") {
         /* insert new data into db and creating new code */
         $postquery = $postconn->prepare("INSERT INTO surveys (code, question, questionid) VALUES (?, ?, ?)");
-        $postquery->bind_param("isi", $code, $postinput, $i); // code = integer, question = string, questionid = integer
+
+        // the function automatically generates a cryptographically safe salt.
+        $encryption_class = new Cryption();
+        $hashToStoreInDB = $encryption_class->encryptString($postinput);
+
+        $postquery->bind_param("isi", $code, $hashToStoreInDB, $i); // code = integer, question = string, questionid = integer
         $postquery->execute();
 
         if ($postquery->affected_rows < 0) {
