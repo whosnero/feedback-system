@@ -17,10 +17,38 @@
   src: url("../fonts/Roboto-Thin.ttf");
 }
 
+:root {
+  --mainbg: hsl(204, 69%, 50%);
+  --secondarybg: hsl(199, 64%, 73%);
+  --mainfc: hsl(0, 0%, 100%);
+  --secondaryfc: hsl(0, 0%, 41%);
+  --tertiaryfc: hsl(0, 0%, 79%);
+  --placeholderfc: hsl(204, 69%, 50%);
+  --buttonbg: hsl(42, 93%, 64%);
+  --buttonhoverbg: hsl(33, 94%, 55%);
+  --buttonfc: hsl(328, 63%, 39%);
+  --starbg: hsl(240, 6%, 26%);
+  --starhoverbg: hsl(42, 93%, 64%);
+}
+
+.theme-2 {
+  --mainbg: hsl(161, 49%, 39%);
+  --secondarybg: hsl(161, 52%, 48%);
+  --mainfc: hsl(0, 0%, 100%);
+  --secondaryfc: hsl(0, 0%, 41%);
+  --tertiaryfc: hsl(0, 0%, 79%);
+  --placeholderfc: hsl(161, 49%, 39%);
+  --buttonbg: hsl(33, 89%, 52%);
+  --buttonhoverbg: hsl(33, 81%, 43%);
+  --buttonfc: hsl(231, 27%, 19%);
+  --starbg: hsl(240, 6%, 26%);
+  --starhoverbg: hsl(42, 93%, 64%);
+}
+
 * {
-  background-color: #2891d7;
+  background-color: var(--mainbg);
   font-family: Roboto-Thin, sans-serif;
-  color: white;
+  color: var(--mainfc);
 }
 
 ::-webkit-scrollbar {
@@ -29,12 +57,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255);
+  background: var(--mainfc);
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #8ecae6;
+  background: var(--secondarybg);
 }
 
 ul li {
@@ -81,7 +109,14 @@ ul li {
   min-height: 100%;
 }
 
-.main-header-col {
+.main-header-col-1 {
+  min-height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.main-header-col-2 {
   min-height: 100%;
   display: flex;
   justify-content: end;
@@ -90,11 +125,67 @@ ul li {
 
 /* button */
 
+/* Dropdown Button */
+.dropbtn {
+  background-color: var(--buttonbg);
+  color: var(--buttonfc);
+  padding: 6px 10px;
+  height: 48px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 25px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: var(--buttonhoverbg);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--buttonbg);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 0;
+  border-radius: 25px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content button {
+  width: 100%;
+  text-align: left;
+  background-color: var(--buttonbg);
+  color: var(--buttonfc);
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+  border: 0;
+  border-radius: 25px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content button:hover {
+  background-color: var(--buttonhoverbg);
+  color: var(--buttonfc);
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
 .createsurvey {
   height: 48px;
   padding: 6px 10px;
-  background: #f9c74f;
-  color: #a12568;
+  background: var(--buttonbg);
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
   border-radius: 50px;
@@ -103,7 +194,7 @@ ul li {
 }
 
 .createsurvey:hover {
-  background: #F8961E;
+  background: var(--buttonhoverbg);
 }
 
 .icon-main {
@@ -121,7 +212,7 @@ ul li {
 
 .welcomemsg h1 {
   margin: 15px 0 15px 0;
-  color: rgb(255, 255, 255);
+  color: var(--mainfc);
   font-size: 48px;
   line-height: 56px;
 }
@@ -132,7 +223,7 @@ ul li {
   margin: 15px 0 15px 0;
   padding: 6px 10px;
   overflow: hidden;
-  background: #8ecae6;
+  background: var(--secondarybg);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
   border-radius: 25px;
@@ -143,15 +234,16 @@ ul li {
   width: 70%;
   height: 48px;
   float: left;
-  background: #8ecae6;
-  color:rgb(104, 104, 104);
+  background: var(--secondarybg);
+  color: var(--secondaryfc);
   font-weight: bold;
-  border-radius: 25px;
   border: 0;
+  border-radius: 25px;
 }
 
 .main-form input[type="number"]::placeholder {
-  color:rgb(104, 104, 104);
+  color: var(--placeholderfc);
+  font-weight: bold;
 }
 
 .main-form input[type="number"]:focus {
@@ -174,22 +266,22 @@ ul li {
   width: 30%;
   height: 48px;
   float: right;
-  background: #f9c74f;
-  color: #a12568;
+  background: var(--buttonbg);
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
-  border-radius: 25px;
   border: 0;
+  border-radius: 25px;
   transition: all 0.3s;
 }
 
 .main-form input[type="submit"]:hover {
-  background: #F8961E;
+  background: var(--buttonhoverbg);
 }
 
 .whatsfeedo h2 {
   margin: 15px 0 15px 0;
-  color: rgb(202, 202, 202);
+  color: var(--tertiaryfc);
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -200,13 +292,13 @@ ul li {
 }
 
 .whatsfeedo h2 a {
-  color: #FEC260;
+  color: var(--buttonbg);
   text-decoration: none;
   transition: all 0.3s;
 }
 
 .whatsfeedo h2 a:hover {
-  color: #F8961E;
+  color: var(--buttonhoverbg);
 }
 
 
@@ -234,7 +326,21 @@ ul li {
 }
 
 .notification-header {
-  min-height: 10%;
+  min-height: 10vh;
+  display: flex;
+}
+
+.notification-header-row {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.notification-header-col {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .notification-body {
@@ -258,7 +364,7 @@ ul li {
 
 .notification-box {
   padding: 1% 0 1% 1%;
-  background: #8ecae6;
+  background: var(--secondarybg);
   border: 3px solid transparent;
   border-radius: 25px;
 }
@@ -281,8 +387,8 @@ ul li {
 .tooltip{
   padding: 6px 10px;
   z-index: -1;
-  background: linear-gradient(#f9c74f,#eebb44);
-  color: #a12568;
+  background: linear-gradient(var(--buttonbg), var(--buttonhoverbg));
+  color: var(--buttonfc);
   border-radius: 10px;
   transition: opacity 0.4s, margin-left 0.4s;
 }
@@ -293,12 +399,12 @@ ul li {
 }
 
 .copy-button i:hover {
-  color: #FEC260;
+  color: var(--buttonbg);
 }
 
 .smalltext {
   margin: 15px 0 15px 0;
-  color: rgb(202, 202, 202);
+  color: var(--tertiaryfc);
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -329,10 +435,11 @@ ul li {
   justify-content: end;
 }
 
-.create-header-col-3 {
+.create-header-col {
   min-height: 100%;
   display: flex;
   align-items: center;
+  justify-content: end;
 }
 
 .create-body {
@@ -345,7 +452,7 @@ ul li {
 
 .typequestionmsg h1 {
   margin: 15px 0 15px 0;
-  color: rgb(255, 255, 255);
+  color: var(--mainfc);
   font-size: 48px;
   line-height: 56px;
 }
@@ -360,9 +467,9 @@ ul li {
   max-width: 684px;
   margin-top: 0.5em;
   padding: 13px;
-  background: #8ecae6;
+  background: var(--secondarybg);
   box-sizing: border-box;
-  color:rgb(255, 255, 255);
+  color: var(--mainfc);
   font-weight: 500;
   font-size: 18px;
   line-height: 22px;
@@ -373,11 +480,12 @@ ul li {
 }
 
 .question-box:focus {
-  border: 2px solid #f9c74f;
+  border: 2px solid var(--buttonbg);
 }
 
 .question-box::placeholder {
-  color: #2891d7;
+  color: var(--placeholderfc);
+  font-weight: bold;
 }
 
 .additionalquestion-box {
@@ -385,9 +493,9 @@ ul li {
   max-width: 684px;
   margin-bottom: 0.5em;
   padding: 13px;
-  background: #8ecae6;
+  background: var(--secondarybg);
   box-sizing: border-box;
-  color:rgb(255, 255, 255);
+  color: var(--mainfc);
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;
@@ -402,7 +510,8 @@ ul li {
 }
 
 .additionalquestion-box::placeholder {
-  color: #2891d7;
+  color: var(--mainbg);
+  font-weight: bold;
 }
 
 .togglequestions {
@@ -410,9 +519,9 @@ ul li {
   height: 48px;
   margin-right: 0.1em;
   padding: 6px 10px;
-  background: #f9c74f;
+  background: var(--buttonbg);
   float: left;
-  color: #a12568;
+  color: var(--buttonfc);
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
@@ -422,7 +531,7 @@ ul li {
 }
 
 .togglequestions:hover {
-  background: #F8961E;
+  background: var(--buttonhoverbg);
 }
 
 .addquestion:hover {
@@ -430,8 +539,8 @@ ul li {
   height: 48px;
   padding: 6px 10px;
   float: left;
-  background: #F8961E;
-  color: #a12568;
+  background: var(--buttonhoverbg);
+  color: var(--buttonfc);
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
@@ -442,9 +551,9 @@ ul li {
 .createsurvey2 {
   height: 48px;
   padding: 6px 10px;
-  background: #f9c74f;
+  background: var(--buttonbg);
   float: right;
-  color: #a12568;
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
@@ -455,9 +564,9 @@ ul li {
 .createsurvey2:hover {
   height: 48px;
   padding: 6px 10px;
-  background: #F8961E;
+  background: var(--buttonhoverbg);
   float: right;
-  color: #a12568;
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
   text-decoration: none;
@@ -465,8 +574,11 @@ ul li {
   border-radius: 50px;
 }
 
-.x-icon-col {
-  justify-content: end; /* needs to be in .css because cant override it in html class */
+@media screen and (max-width: 300px) {
+  .typequestionmsg h1 {
+    font-size: 28px !important;
+    line-height: 36px !important;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -484,9 +596,10 @@ ul li {
   }
 }
 
-@media screen and (max-width: 767px) {
-  .x-icon-col {
-    justify-content: center;
+@media screen and (max-width: 500px) {
+  .typequestionmsg h1 {
+    font-size: 36px;
+    line-height: 44px;
   }
 }
 
@@ -499,15 +612,22 @@ ul li {
 }
 
 .help-header {
-  min-height: 10%;
+  min-height: 10vh;
+  display: flex;
 }
 
-.icon-help {
-  width: 111px;
-  height: 128px;
+.help-header-row {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-grow: 1;
+  justify-content: end;
+}
+
+.help-header-col {
+  min-height: 100%;
+  display: flex;
   align-items: center;
+  justify-content: end;
 }
 
 /* x-button */
@@ -582,13 +702,14 @@ ul li {
 .answer-header-col-3 {
   display: flex;
   align-items: center;
+  justify-content: end;
 }
 
 
 /* button */
 
 .seeresult {
-  color: #a12568;
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
   background: none;
@@ -596,14 +717,14 @@ ul li {
   font-weight: bold;
   height: 48px;
   padding: 6px 10px;
-  background: #f9c74f;
+  background: var(--buttonbg);
   transition: 0.3s;
   border-radius: 50px;
   border: 0;
 }
 
 .seeresult:hover {
-  background: #F8961E;
+  background: var(--buttonhoverbg);
 }
 
 .answer-body {
@@ -616,12 +737,13 @@ ul li {
 }
 
 .answer-heading h1 {
+  margin: 2.5% 0 0 0;
   font-size: 36px;
   font-weight: bold;
 }
 
 .answer-heading h2 {
-  color: rgb(202, 202, 202);
+  color: var(--secondaryfc);
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
@@ -634,10 +756,15 @@ ul li {
   margin-left: 0;
 }
 
+.answer-box, .answer-box > *, .answer-question, .valuation > * {
+  background: var(--secondarybg);
+}
+
+
+
 .answer-box {
   max-width: 100%;
   border: 5px solid transparent;
-  background: #8ecae6;
   padding: 1%;
   margin-right: 0;
   margin-bottom: 1em;
@@ -647,7 +774,8 @@ ul li {
 }
 
 .answer-question {
-  color:rgb(104, 104, 104);
+  color:var(--secondaryfc);
+  font-weight: bold;
 }
 
 @media screen and (max-width: 400px) {
@@ -655,6 +783,15 @@ ul li {
     width: 111px;
     height: 128px;
     content: url(../img/feedo.png);
+  }
+  .answer-heading h1 {
+    font-size: 24px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .answer-heading h1 {
+    font-size: 28px;
   }
 }
 
@@ -668,6 +805,7 @@ ul li {
   }
   .answer-header-col-3 {
     margin: 2.5% 0 0 0 !important;
+    justify-content: center;
   }
 }
 
@@ -701,7 +839,7 @@ ul li {
   position: relative;
   display: inline-block;
   font-size: 50px;
-  color: #3e3e46;
+  color: var(--starbg);
 }
 
 .valuation label:after {
@@ -712,7 +850,7 @@ ul li {
   top: 0;
   display: block;
   font-size: 50px;
-  color: #f9c74f;
+  color: var(--starhoverbg);
   opacity: 0;
   transition: all 0.5s;
 }
@@ -722,16 +860,16 @@ ul li {
 }
 
 .valuation-average-text {
-  color:rgb(104, 104, 104);
+  color: var(--secondaryfc);
 }
 
 .answer-submit {
-  color: #a12568;
+  color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
   background: none;
   padding: 6px 10px;
-  background: #f9c74f;
+  background: var(--buttonbg);
   height: 48px;
   border-radius: 50px;
   border: 0;
@@ -739,7 +877,7 @@ ul li {
 }
  
 .answer-submit:hover {
-  background: #F8961E;
+  background: var(--buttonhoverbg);
 }
 
 @media screen and (max-width: 350px) {
@@ -796,14 +934,14 @@ ul li {
 }
 
 .result-heading h1 {
-  color: rgb(255, 255, 255);
+  color: var(--mainfc);
   margin: 15px 0 15px 0;
   font-size: 48px;
   line-height: 56px;
 }
 
 .result-heading h2 {
-  color: rgb(202, 202, 202);
+  color: var(--tertiaryfc);
   font-size: 18px;
   font-weight: bold;
   margin: 15px 0 15px 0;
@@ -815,7 +953,7 @@ ul li {
   height: 300px;
   width: 70%;
   border: 5px solid transparent;
-  background: #8ecae6;
+  background: var(--secondarybg);
   padding: 0 1% 0 1%;
   margin-bottom: 1em;
   box-sizing: border-box;
@@ -832,19 +970,15 @@ ul li {
 }
 
 .result-question {
-  color:rgb(104, 104, 104);
+  color: var(--secondaryfc);
   padding-top: 1em;
   font-weight: bold;
   font-size: 20px;
 }
 
 .submitamount {
-  color:rgb(104, 104, 104);
+  color:var(--secondaryfc);
   font-weight: bold;
-}
-
-.darkerbg {
-  background: #8ecae6;
 }
 
 .word-break {
@@ -857,7 +991,7 @@ ul li {
 }
 
 .star-list li {
-  color:rgb(104, 104, 104);
+  color:var(--secondaryfc);
   display: inline-block;
   text-align: center;
 }
@@ -865,7 +999,7 @@ ul li {
 .result-star i {
   font-family: "Font Awesome 6 Free" !important;
   font-size: 50px;
-  color: #f9c74f;
+  color: var(--buttonbg);
   opacity: 1;
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5)
@@ -948,7 +1082,7 @@ ul li {
 
 footer {
   background: transparent;
-  color: white;
+  color: var(--mainfc);
   font-family: BigNoodleTiling;
   font-size: 1.5em;
 }

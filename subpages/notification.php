@@ -82,14 +82,14 @@ if (isset($_GET['noanswer'])) {
 <body>
     <section class="notification">
         <div class="notification-header container-fluid">
-            <div class="row">
-                <div class="col-md-4 backtomain">
+            <div class="row notification-header-row">
+                <div class="col-md-12 notification-header-col">
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
                         <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
                     </a>
                 </div>
             </div>
-            <div class="notification-body">
+            <div class="notification-body container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <img data-aos="zoom-in" class="icon icon-notification" src="../assets/img/feedo.png" alt="Feedo Logo">

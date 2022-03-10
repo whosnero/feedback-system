@@ -112,7 +112,7 @@ if ($disallow->num_rows() < 1) { // amount
         <div class="col-md-4 answer-header-col-2">
           <img data-aos="zoom-in" class="icon icon-answer" src="../assets/img/feedologo2.png" alt="Feedo Logo">
         </div>
-        <div class="col-md-4 answer-header-col-3 x-icon-col backtomain">
+        <div class="col-md-4 answer-header-col-3">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
             <img class="x-icon" src="../assets/img/x.png" alt="close answer"></img>
           </a>
@@ -138,13 +138,13 @@ if ($disallow->num_rows() < 1) { // amount
           /* creates form to answer */
         ?>
           <div data-aos="fade-up" class="answer-box">
-            <label class="darkerbg" for="<?php echo $questionid_survey; ?>"><p border-radius="25px" class="answer-question darkerbg word-break"><?php echo $question_survey; ?></p>
+            <label for="<?php echo $questionid_survey; ?>"><p border-radius="25px" class="answer-question word-break"><?php echo $question_survey; ?></p>
             </label><br>
-            <div class='col-md-12 valuation darkerbg'>
+            <div class='col-md-12 valuation'>
               <?php
 
               for ($i = 5; $i >= 1; $i--) {
-                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label class='darkerbg' for='star" . $questionid_survey . "-" . $i . "'></label>";
+                echo "<input type='radio' name='star-" . $questionid_survey . "' value='" . $i . "'  id='star" . $questionid_survey . "-" . $i . "'><label for='star" . $questionid_survey . "-" . $i . "'></label>";
               }
 
               ?>

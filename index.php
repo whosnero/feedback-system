@@ -72,7 +72,15 @@ closeDB($conn);
     <section class="main">
         <div class="main-header container-fluid">
             <div class="row main-header-row">
-                <div class="col-md-12 main-header-col">
+                <div class="col-md-6 main-header-col-1 dropdown">
+                        <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
+                        <div id="myDropdown" class="dropdown-content">
+                          <button id="themebtn" class="" onClick="changeTheme()">Change Theme</button>
+                          <button id="themebtn" class="" onClick="changeTheme()">Theme 2</button>
+                          <button id="themebtn" class="" onClick="changeTheme()">Theme 3</button>
+                        </div>
+                </div>
+                <div class="col-md-6 main-header-col-2">
                     <form class="main-header-form" data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">
                         <input type="submit" class="createsurvey" name="createsurvey" value="Create Survey">
                     </form>
@@ -118,6 +126,33 @@ closeDB($conn);
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"> </script>
 
+    <!-- theme -->
+    <script>
+        var themebtn = document.getElementById("themebtn");
+
+        function changeTheme(){
+            document.body.classList.toggle("theme-2");
+        }
+        /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function openDropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function closeDropdown(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+        }
+    </script>
     <!-- AOS (animation) -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

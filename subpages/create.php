@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <section class="create">
     <div class="create-header container-fluid">
       <div class="row create-header-row">
-        <div class="col-md-12 create-header-col-3 x-icon-col">
+        <div class="col-md-12 create-header-col">
           <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
             <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
           </a>
