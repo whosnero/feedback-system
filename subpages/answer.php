@@ -159,7 +159,7 @@ if ($disallow->num_rows() < 1) { // amount
 
         <br>
         <input type="hidden" name="code" value="<?php echo $code_survey; ?>">
-        <input type="submit" class="answer-submit" name="btnSubmit" value="Submit!">
+        <button type= sumbit class="answer-submit" name="btnSubmit">Submit!</button>
 
       </form>
 
@@ -181,6 +181,30 @@ if ($disallow->num_rows() < 1) { // amount
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
+  </script>
+  <script>
+        var themebtn = document.getElementById("themebtn");
+
+        if(localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", "light");
+        }
+
+        let localData = localStorage.getItem("theme");
+
+        if(localData == "light") {
+            document.body.classList.remove("dark-theme");
+        } else if(localData == "dark-theme") {
+            document.body.classList.add("dark-theme");
+        }
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                localStorage.setItem("theme", "dark-theme");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        }
   </script>
 
 </body>

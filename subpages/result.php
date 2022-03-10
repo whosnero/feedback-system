@@ -202,6 +202,29 @@ if ($queryamount > 0) { // amount
     <script>
         AOS.init();
     </script>
+    <script>
+            var themebtn = document.getElementById("themebtn");
 
+            if(localStorage.getItem("theme") == null) {
+                localStorage.setItem("theme", "light");
+            }
+
+            let localData = localStorage.getItem("theme");
+
+            if(localData == "light") {
+                document.body.classList.remove("dark-theme");
+            } else if(localData == "dark-theme") {
+                document.body.classList.add("dark-theme");
+            }
+
+            function changeTheme(){
+                document.body.classList.toggle("dark-theme");
+                if(document.body.classList.contains("dark-theme")){
+                    localStorage.setItem("theme", "dark-theme");
+                } else {
+                    localStorage.setItem("theme", "light");
+                }
+            }
+    </script>
 
 </body>

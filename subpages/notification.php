@@ -89,6 +89,7 @@ if (isset($_GET['noanswer'])) {
                     </a>
                 </div>
             </div>
+        </div>
             <div class="notification-body container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -103,9 +104,10 @@ if (isset($_GET['noanswer'])) {
                             <div><?php echo $bigtext; ?></div>
                             <div id="notification-code"><?php echo $codetext; ?></div>
                             <?php if (isset($_GET['create'], $_GET['code'])) {
-                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button><span class='tooltip'>copied</span>";
+                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button>";
                             }
                             ?>
+                            <span class='tooltip'>copied</span>
                         </h1>
                         </p>
                     </div>
@@ -117,15 +119,15 @@ if (isset($_GET['noanswer'])) {
                         </p>
                     </div>
                 </div>
+                
             </div>
+        <footer class="notification-footer">
+            <script>
+                document.write(date());
+            </script>
+        </footer>
     </section>
 
-    <!-- footer-->
-    <footer class="notification-footer">
-        <script>
-            document.write(date());
-        </script>
-    </footer>
 
     <!-- Javascript -->
     <!-- Bootstrap Bundle with Popper -->
@@ -154,6 +156,30 @@ if (isset($_GET['noanswer'])) {
 
         }
     </script>
+    <script>
+        var themebtn = document.getElementById("themebtn");
+
+        if(localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", "light");
+        }
+
+        let localData = localStorage.getItem("theme");
+
+        if(localData == "light") {
+            document.body.classList.remove("dark-theme");
+        } else if(localData == "dark-theme") {
+            document.body.classList.add("dark-theme");
+        }
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                localStorage.setItem("theme", "dark-theme");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        }
+  </script>
 </body>
 
 </html>

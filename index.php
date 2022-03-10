@@ -72,13 +72,8 @@ closeDB($conn);
     <section class="main">
         <div class="main-header container-fluid">
             <div class="row main-header-row">
-                <div class="col-md-6 main-header-col-1 dropdown">
-                        <button onclick="openDropdown()" class="dropbtn">Dropdown</button>
-                        <div id="myDropdown" class="dropdown-content">
-                          <button id="themebtn" class="" onClick="changeTheme()">Change Theme</button>
-                          <button id="themebtn" class="" onClick="changeTheme()">Theme 2</button>
-                          <button id="themebtn" class="" onClick="changeTheme()">Theme 3</button>
-                        </div>
+                <div class="col-md-6 main-header-col-1">
+                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()">Change Theme</button>
                 </div>
                 <div class="col-md-6 main-header-col-2">
                     <form class="main-header-form" data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">
@@ -130,9 +125,27 @@ closeDB($conn);
     <script>
         var themebtn = document.getElementById("themebtn");
 
-        function changeTheme(){
-            document.body.classList.toggle("theme-2");
+        if(localStorage.getItem("theme") == null) {
+            localStorage.setItem("theme", "light");
         }
+
+        let localData = localStorage.getItem("theme");
+
+        if(localData == "light") {
+            document.body.classList.remove("dark-theme");
+        } else if(localData == "dark-theme") {
+            document.body.classList.add("dark-theme");
+        }
+
+        function changeTheme(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                localStorage.setItem("theme", "dark-theme");
+            } else {
+                localStorage.setItem("theme", "light");
+            }
+        }
+
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
         function openDropdown() {
