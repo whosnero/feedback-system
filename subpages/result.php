@@ -70,7 +70,7 @@ if ($queryamount > 0) { // amount
                 <div class="col-md-4 icon-result">
                     <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedo.png" alt="Feedo Logo">
                 </div>
-                <div class="col-md-4 backtomain">
+                <div class="col-md-4 result-col">
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
                         <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
                     </a>
