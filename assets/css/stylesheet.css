@@ -38,14 +38,14 @@ body {
 }
 
 .dark-theme {
-  --mainbg: hsl(0, 0%, 0%);
-  --secondarybg: hsl(150, 4%, 11%);
+  --mainbg: hsl(220, 13%, 18%);
+  --secondarybg: hsl(223, 11%, 13%);
   --mainfc: hsl(0, 0%, 100%);
   --secondaryfc: hsl(0, 0%, 100%);
-  --tertiaryfc: hsl(0, 0%, 79%);
+  --tertiaryfc: hsl(0, 0%, 100%);
   --placeholderfc: hsl(204, 69%, 50%);
-  --buttonbg: hsl(0, 0%, 100%);
-  --buttonhoverbg: hsl(0, 3%, 83%);
+  --buttonbg: hsl(223, 14%, 28%);
+  --buttonhoverbg: hsl(222, 15%, 23%);
   --buttonfc: hsl(204, 69%, 50%);
   --starbg: hsl(0, 0%, 100%);
   --starhoverbg: hsl(42, 93%, 64%);
@@ -254,13 +254,13 @@ ul li {
 }
 
 .whatsfeedo h2 a {
-  color: var(--buttonbg);
+  color: var(--buttonfc);
   text-decoration: none;
   transition: all 0.3s;
 }
 
 .whatsfeedo h2 a:hover {
-  color: var(--buttonhoverbg);
+  color: var(--starhoverbg);
 }
 
 

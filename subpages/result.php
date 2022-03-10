@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(1); // disable warnings
+error_reporting(0); // disable warnings
 $code = $_POST["code"];
 
 /* checks post got an code */
