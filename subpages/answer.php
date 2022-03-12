@@ -142,7 +142,7 @@ if ($disallow->num_rows() < 1) { // amount
           $question_survey = $encryption_class->decryptString($question_survey_hashed);
           /* creates form to answer */
         ?>
-          <div data-aos="fade-up" class="answer-box">
+          <div  class="answer-box">
             <label for="<?php echo $questionid_survey; ?>">
               <p border-radius="25px" class="answer-question word-break"><?php echo $question_survey; ?></p>
             </label><br>

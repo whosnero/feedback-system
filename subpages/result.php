@@ -66,16 +66,16 @@ if ($queryamount > 0) { // amount
 <body>
     <section class="result">
         <div class="result-header container-fluid">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row result-header-row">
+                <div class="col-md-4 result-header-col-1">
                     <!-- for alignment of other header-columns -->
                 </div>
-                <div class="col-md-4 icon-result">
-                    <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedo.png" alt="Feedo Logo">
+                <div class="col-md-4 result-header-col-2">
+                    <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedologo2.png" alt="Feedo Logo">
                 </div>
-                <div class="col-md-4 result-col">
+                <div class="col-md-4 result-header-col-3">
                     <a data-aos="flip-right" data-aos-duration="500" href="../index.php">
-                        <img class="x-icon" src="../assets/img/x.png" alt="close help"></img>
+                        <img class="x-icon" src="../assets/img/x.png" alt="close results"></img>
                     </a>
                 </div>
             </div>
@@ -135,16 +135,16 @@ if ($queryamount > 0) { // amount
 
                     $question = $encryption_class->decryptString($question_hashed);
 
-                    echo "<div data-aos='fade-up' class='row result-row'>";
-                    echo "<div class='col-md-6 result-box darkerbg'>";
-                    echo "<p class='result-question darkerbg word-break'> " . $question;
-                    echo "<p class='submitamount darkerbg'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
-                    echo "<ul class='star-list darkerbg'>";
+                    echo "<div class='row result-row'>";
+                    echo "<div class='col-md-6 result-box'>";
+                    echo "<p class='result-question word-break'> " . $question;
+                    echo "<p class='submitamount'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
+                    echo "<ul class='star-list'>";
 
                     /* checks the average valuation and creates stars for each case (0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5) */
                     for ($i = 1; $i <= $valuation_average_round_down; $i++) {
-                        echo "<li id='" . $questionid . "-" . $i . "' class='result-star darkerbg'>";
-                        echo "<i class='fa-solid fa-star darkerbg'></i>";
+                        echo "<li id='" . $questionid . "-" . $i . "' class='result-star'>";
+                        echo "<i class='fa-solid fa-star'></i>";
                         if ($i == $valuation_average) {
                             echo "(" . $valuation_average .  ")";
                         }
@@ -152,14 +152,14 @@ if ($queryamount > 0) { // amount
                     }
 
                     if (filter_var($valuation_average, FILTER_VALIDATE_INT) === false) { //checks if valuation_average is an double than place the half star
-                        echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star darkerbg'>";
-                        echo "<i class='fa-solid fa-star-half darkerbg'></i>";
+                        echo "<li id='" . $questionid . "-" . $valuation_average . "' class='result-star'>";
+                        echo "<i class='fa-solid fa-star-half'></i>";
                         echo "(" . $valuation_average .  ")";
                         echo "</li>";
                     }
 
-                    echo "</ul></p></div><div class='col-md-6 chart-box darkerbg'>";
-                    echo "<canvas class='myChart darkerbg' id='myChart-" . $questionid . "'></canvas>";
+                    echo "</ul></p></div><div class='col-md-6 chart-box'>";
+                    echo "<canvas class='myChart' id='myChart-" . $questionid . "'></canvas>";
                     echo "</div></div>";
 
             ?>
@@ -183,13 +183,13 @@ if ($queryamount > 0) { // amount
         </div>
         </div>
 
+        <!-- footer-->
+        <footer class="result-footer">
+            <script>
+                document.write(date());
+            </script>
+        </footer>
     </section>
-    <!-- footer-->
-    <footer class="result-footer">
-        <script>
-            document.write(date());
-        </script>
-    </footer>
 
     <!-- Javascript -->
     <!-- Bootstrap Bundle with Popper -->

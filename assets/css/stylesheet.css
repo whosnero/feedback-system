@@ -1,7 +1,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-@media screen and (max-width: 240px) {
+@media screen and (max-width: 249px) {
+  * {
+    background-color: var(--mainbg);
+  }
   body {
     display: none;
   }
@@ -47,7 +50,7 @@ body {
   --buttonbg: hsl(223, 14%, 28%);
   --buttonhoverbg: hsl(222, 15%, 23%);
   --buttonfc: hsl(204, 69%, 50%);
-  --starbg: hsl(0, 0%, 100%);
+  --starbg: hsl(0, 0%, 75%);
   --starhoverbg: hsl(42, 93%, 64%);
 }
 
@@ -710,12 +713,11 @@ ul li {
 }
 
 .answer-body {
-  text-align: center;
-  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .answer-heading h1 {
@@ -892,28 +894,43 @@ ul li {
 --------------------------------------------------------------*/
 
 .result {
-  min-height: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .result-header {
-  height: 10%;
+  min-height: 10vh;
+  display: flex;
 }
 
-.icon-result {
-  width: 111px;
-  height: 128px;
+.result-header-row {
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+}
+
+.result-header-col-2 {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.result-header-col-3 {
+  display: flex;
+  justify-content: end;
   align-items: center;
 }
 
 .result-body {
-  text-align: center;
-  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .result-heading h1 {
@@ -928,6 +945,10 @@ ul li {
   font-size: 18px;
   font-weight: bold;
   margin: 15px 0 15px 0;
+}
+
+.result-row, .result-row > *, .result-box > *, .star-list > *, .result-star > *, .chart-box > * {
+  background: var(--secondarybg);
 }
 
 .result-row {
@@ -982,7 +1003,7 @@ ul li {
 .result-star i {
   font-family: "Font Awesome 6 Free" !important;
   font-size: 50px;
-  color: var(--buttonbg);
+  color: var(--starhoverbg);
   opacity: 1;
   transition: 0.5s;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5)
@@ -1002,6 +1023,7 @@ ul li {
 }
 
 /* media querys for responsive deisgn */
+
 @media screen and (max-width: 1250px) {
   .result-row {
     width: 85%;
@@ -1018,6 +1040,20 @@ ul li {
 }
 
 @media screen and (max-width: 767px) {
+  .result-heading h1 {
+    margin: 10px 0 10px 0;
+  }
+  .answer-header-col-1 {
+    justify-content: center;
+    margin: 2.5% 0 0 0 !important;
+  }
+  .answer-header-col-2 {
+    margin: 2.5% 0 0 0 !important;
+  }
+  .result-header-col-3 {
+    justify-content: center;
+    margin: 5% 0 0 0 !important;
+  }
   .result-row {
     width: 95%;
     height: 500px;
@@ -1044,6 +1080,23 @@ ul li {
   }
 }
 
+@media screen and (max-width: 400px) {
+  .icon-result {
+    width: 111px;
+    height: 128px;
+    content: url(../img/feedo.png);
+  }
+  .result-heading h1 {
+    font-size: 24px !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .result-heading h1 {
+    font-size: 28px;
+  }
+}
+
 @media screen and (max-width: 350px) {
   .result-row {
     width: 95%;
@@ -1052,10 +1105,16 @@ ul li {
     height: 40%;
   }
   .chart-box {
-    max-height: 60%;
+    height: 60%;
   }
   .result-star i {
     font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 265px) {
+  .result-star i {
+    font-size: 20px;
   }
 }
 
@@ -1068,39 +1127,6 @@ footer {
   color: var(--mainfc);
   font-family: BigNoodleTiling;
   font-size: 1.5em;
-}
- 
-.main-footer {
-  display: flex;
-  justify-content: end;
-  margin: 0 0.5% 0 0;
-}
-
-.create-footer {
-  display: flex;
-  justify-content: end;
-  margin: 0 0.5% 0 0;
-}
-
-.help-footer {
-  display: flex;
-  justify-content: end;
-  margin: 0 0.5% 0 0;
-}
-
-.answer-footer {
-  display: flex;
-  justify-content: end;
-  margin: 0 0.5% 0 0;
-}
-
-.result-footer {
-  position: fixed;
-  bottom: 0.1em;
-  right: 0.5em;
-}
-
-.notification-footer {
   display: flex;
   justify-content: end;
   margin: 0 0.5% 0 0;
