@@ -45,7 +45,7 @@ body {
   --secondarybg: hsl(223, 11%, 13%);
   --mainfc: hsl(0, 0%, 100%);
   --secondaryfc: hsl(0, 0%, 100%);
-  --tertiaryfc: hsl(0, 0%, 100%);
+  --tertiaryfc: hsl(0, 0%, 79%);
   --placeholderfc: hsl(204, 69%, 50%);
   --buttonbg: hsl(223, 14%, 28%);
   --buttonhoverbg: hsl(222, 15%, 23%);
@@ -131,19 +131,18 @@ ul li {
 /* button */
 
 .changetheme {
-  height: 48px;
-  padding: 6px 10px;
-  background: var(--buttonbg);
-  color: var(--buttonfc);
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 50px;
+  font-size: 32px;
   border: 0;
   transition: all 0.3s;
 }
 
-.changetheme:hover {
-  background: var(--buttonhoverbg);
+.changetheme i {
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.changetheme i:hover {
+  color: var(--tertiaryfc);
 }
 
 .createsurvey {
@@ -353,6 +352,10 @@ ul li {
   transition: all 0.3s;
 }
 
+.copy-button i:hover {
+  color: var(--buttonbg);
+}
+
 .tooltip {
   align-self: center;
   padding: 6px 10px;
@@ -366,10 +369,6 @@ ul li {
 .tooltip.show {
   margin-left: 100%;
   pointer-events: auto;
-}
-
-.copy-button i:hover {
-  color: var(--buttonbg);
 }
 
 .smalltext {

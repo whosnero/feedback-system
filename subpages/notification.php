@@ -167,16 +167,22 @@ if (isset($_GET['noanswer'])) {
 
         if(localData == "light") {
             document.body.classList.remove("dark-theme");
+            document.getElementById("theme-icon").classList.add("fa-moon");
         } else if(localData == "dark-theme") {
             document.body.classList.add("dark-theme");
+            document.getElementById("theme-icon").classList.add("fa-sun");
         }
 
         function changeTheme(){
             document.body.classList.toggle("dark-theme");
             if(document.body.classList.contains("dark-theme")){
                 localStorage.setItem("theme", "dark-theme");
+                document.getElementById("theme-icon").classList.remove("fa-moon");
+                document.getElementById("theme-icon").classList.add("fa-sun");
             } else {
                 localStorage.setItem("theme", "light");
+                document.getElementById("theme-icon").classList.remove("fa-sun");
+                document.getElementById("theme-icon").classList.add("fa-moon");
             }
         }
   </script>

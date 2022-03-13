@@ -73,7 +73,7 @@ closeDB($conn);
         <div class="main-header container-fluid">
             <div class="row main-header-row">
                 <div class="col-md-6 main-header-col-1">
-                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()">Change Theme</button>
+                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()"><i id="theme-icon"class="fa-solid fa-moon"></i></button>
                 </div>
                 <div class="col-md-6 main-header-col-2">
                     <form class="main-header-form" data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">
@@ -133,37 +133,23 @@ closeDB($conn);
 
         if(localData == "light") {
             document.body.classList.remove("dark-theme");
+            document.getElementById("theme-icon").classList.add("fa-moon");
         } else if(localData == "dark-theme") {
             document.body.classList.add("dark-theme");
+            document.getElementById("theme-icon").classList.add("fa-sun");
         }
 
         function changeTheme(){
             document.body.classList.toggle("dark-theme");
             if(document.body.classList.contains("dark-theme")){
                 localStorage.setItem("theme", "dark-theme");
+                document.getElementById("theme-icon").classList.remove("fa-moon");
+                document.getElementById("theme-icon").classList.add("fa-sun");
             } else {
                 localStorage.setItem("theme", "light");
+                document.getElementById("theme-icon").classList.remove("fa-sun");
+                document.getElementById("theme-icon").classList.add("fa-moon");
             }
-        }
-
-        /* When the user clicks on the button,
-        toggle between hiding and showing the dropdown content */
-        function openDropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function closeDropdown(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
         }
     </script>
     <!-- AOS (animation) -->
