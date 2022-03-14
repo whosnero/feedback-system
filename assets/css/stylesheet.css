@@ -463,7 +463,7 @@ ul li {
 }
 
 .question-box:focus {
-  border: 2px solid var(--buttonbg);
+  border: 2px solid var(--starhoverbg);
 }
 
 .question-box::placeholder {
@@ -489,11 +489,11 @@ ul li {
 }
 
 .additionalquestion-box:focus {
-  border: 2px solid #f9c74f;
+  border: 2px solid var(--starhoverbg);
 }
 
 .additionalquestion-box::placeholder {
-  color: var(--mainbg);
+  color: var(--placeholderfc);
   font-weight: bold;
 }
 
