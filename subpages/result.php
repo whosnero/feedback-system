@@ -85,8 +85,8 @@ if ($queryamount > 0) { // amount
                 <div data-aos="zoom-in" class="col-md-12 result-heading">
                     <h1>Here are your results!</h1>
                     <h2>(Code: <?php echo $code ?>)</h2>
-                    <h2>Below you can see the average valuation and a pie chart for your questions</h2>
-                    <h2>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
+                    <h3>Below you can see the average valuation and a pie chart for your questions</h2>
+                    <h4>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@ if ($queryamount > 0) { // amount
 
                     $question = $encryption_class->decryptString($question_hashed);
 
-                    echo "<div class='row result-row'>";
+                    echo "<div class='row result-row" . " _" . $questionid ." '>";
                     echo "<div class='col-md-6 result-box'>";
                     echo "<p class='result-question word-break'> " . $question;
                     echo "<p class='submitamount'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
@@ -168,7 +168,6 @@ if ($queryamount > 0) { // amount
                         confPie(<?php echo $one; ?>, <?php echo $two; ?>, <?php echo $three; ?>, <?php echo $four; ?>, <?php echo $five; ?>, <?php echo $questionid; ?>);
                     </script>
             <?php
-
 
                 }
             }

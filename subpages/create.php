@@ -243,6 +243,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
                 document.getElementById("theme-icon").classList.add("fa-moon");
             }
         }
+
+        document.onkeydown = function shortcutCreate(i) {
+            i = i || window.event;
+            keycode = i.which || i.keyCode;
+            if (keycode == 27 || keycode == "Escape") {
+                goBack();
+            }
+            }
   </script>
 
 </body>

@@ -63,3 +63,24 @@ function confPie(one, two, three, four, five, questionid) {
         }
     })
 }
+
+function goBack() {
+    window.location.href = "../index.php";
+}
+
+function copyCode(){
+    var range = document.createRange();
+    range.selectNode(document.getElementById("notification-code"));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+
+    const tooltip = document.querySelector(".tooltip");
+    tooltip.classList.add("show");
+    setTimeout(function() {
+        tooltip.classList.remove("show");
+    }, 800);
+
+    window.getSelection().removeAllRanges(); // to deselect
+
+}

@@ -139,24 +139,7 @@ if (isset($_GET['noanswer'])) {
         AOS.init();
     </script>
     <script>
-        function copyCode() {
-            var range = document.createRange();
-            range.selectNode(document.getElementById("notification-code"));
-            window.getSelection().removeAllRanges(); // clear current selection
-            window.getSelection().addRange(range); // to select text
-            document.execCommand("copy");
 
-            const tooltip = document.querySelector(".tooltip");
-            tooltip.classList.add("show");
-            setTimeout(function() {
-                tooltip.classList.remove("show");
-            }, 800);
-
-            window.getSelection().removeAllRanges(); // to deselect
-
-        }
-    </script>
-    <script>
         var themebtn = document.getElementById("themebtn");
 
         if(localStorage.getItem("theme") == null) {
@@ -185,6 +168,14 @@ if (isset($_GET['noanswer'])) {
                 document.getElementById("theme-icon").classList.add("fa-moon");
             }
         }
+
+        document.onkeydown = function shortcutCreate(i) {
+            i = i || window.event;
+            keycode = i.which || i.keyCode;
+            if (keycode == 27 || keycode == "Escape") {
+                goBack();
+            }
+            }
   </script>
 </body>
 

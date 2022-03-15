@@ -1,4 +1,20 @@
 /*--------------------------------------------------------------
+# Print
+--------------------------------------------------------------*/
+
+@media print {
+  body {
+    overflow: visible;
+  }
+  .result-heading, .x-icon {
+    display: none;
+  }
+  .result-row {
+    /* placeholder */
+  }
+}
+
+/*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 @media screen and (max-width: 249px) {
@@ -27,20 +43,6 @@
 }
 
 body {
-  --mainbg: hsl(204, 69%, 50%);
-  --secondarybg: hsl(199, 64%, 73%);
-  --mainfc: hsl(0, 0%, 100%);
-  --secondaryfc: hsl(0, 0%, 41%);
-  --tertiaryfc: hsl(0, 0%, 79%);
-  --placeholderfc: hsl(204, 69%, 50%);
-  --buttonbg: hsl(42, 93%, 64%);
-  --buttonhoverbg: hsl(33, 94%, 55%);
-  --buttonfc: hsl(328, 63%, 39%);
-  --starbg: hsl(240, 6%, 26%);
-  --starhoverbg: hsl(42, 93%, 64%);
-}
-
-.dark-theme {
   --mainbg: hsl(220, 13%, 18%);
   --secondarybg: hsl(223, 11%, 13%);
   --mainfc: hsl(0, 0%, 100%);
@@ -51,6 +53,20 @@ body {
   --buttonhoverbg: hsl(222, 15%, 23%);
   --buttonfc: hsl(204, 69%, 50%);
   --starbg: hsl(0, 0%, 75%);
+  --starhoverbg: hsl(42, 93%, 64%);
+}
+
+.light-theme {
+  --mainbg: hsl(204, 69%, 50%);
+  --secondarybg: hsl(199, 64%, 73%);
+  --mainfc: hsl(0, 0%, 100%);
+  --secondaryfc: hsl(0, 0%, 41%);
+  --tertiaryfc: hsl(0, 0%, 79%);
+  --placeholderfc: hsl(204, 69%, 50%);
+  --buttonbg: hsl(42, 93%, 64%);
+  --buttonhoverbg: hsl(33, 94%, 55%);
+  --buttonfc: hsl(328, 63%, 39%);
+  --starbg: hsl(240, 6%, 26%);
   --starhoverbg: hsl(42, 93%, 64%);
 }
 
@@ -920,7 +936,7 @@ ul li {
   line-height: 56px;
 }
 
-.result-heading h2 {
+.result-heading > * {
   color: var(--tertiaryfc);
   font-size: 18px;
   font-weight: bold;
@@ -1002,6 +1018,9 @@ ul li {
   width: 100%;
 }
 
+.page-breaker {
+  display: none;
+}
 /* media querys for responsive deisgn */
 
 @media screen and (max-width: 1250px) {
