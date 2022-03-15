@@ -83,12 +83,6 @@ ul li {
   height: 64px;
 }
 
-/* for rounded textfields */
-
-.round {
-  border-radius: 25px;
-}
-
 /*--------------------------------------------------------------
 # main page
 --------------------------------------------------------------*/
@@ -113,22 +107,20 @@ ul li {
 }
 
 .main-header-col-1 {
-  min-height: 100%;
   max-width: 50% !important;
+  min-height: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
 }
 
 .main-header-col-2 {
-  min-height: 100%;
   max-width: 50% !important;
+  min-height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
 }
-
-/* button */
 
 .changetheme {
   font-size: 32px;
@@ -188,10 +180,10 @@ ul li {
   padding: 6px 10px;
   overflow: hidden;
   background: var(--secondarybg);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   text-align: left;
-  border-radius: 25px;
   border: 0;
+  border-radius: 25px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .main-form input[type="number"] {
@@ -314,8 +306,8 @@ ul li {
 .notification-header-col {
   min-height: 100%;
   display: flex;
-  align-items: center;
   justify-content: end;
+  align-items: center;
 }
 
 .notification-body {
@@ -357,13 +349,13 @@ ul li {
 }
 
 .tooltip {
-  align-self: center;
   padding: 6px 10px;
+  align-self: center;
   z-index: -1;
   background: linear-gradient(var(--buttonbg), var(--buttonhoverbg));
   color: var(--buttonfc);
   border-radius: 10px;
-  transition: opacity 0.4s, margin-left 0.5s;
+  transition: margin-left 0.5s, opacity 0.4s;
 }
 
 .tooltip.show {
@@ -382,14 +374,12 @@ ul li {
 @media screen and (max-width: 500px) {
   .tooltip.show {
     margin-left: 77.5%;
-    pointer-events: auto;
   }
 }
 
 @media screen and (max-width: 600px) {
   .tooltip.show {
     margin-left: 80%;
-    pointer-events: auto;
   }
 }
 
@@ -421,15 +411,15 @@ ul li {
 .create-header-col {
   min-height: 100%;
   display: flex;
-  align-items: center;
   justify-content: end;
+  align-items: center;
 }
 
 .create-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex-grow: 1;
+  align-items: center;
   text-align: center;
 }
 
@@ -450,12 +440,12 @@ ul li {
   max-width: 684px;
   margin-top: 0.5em;
   padding: 13px;
-  background: var(--secondarybg);
   box-sizing: border-box;
+  background: var(--secondarybg);
   color: var(--mainfc);
-  font-weight: 500;
   font-size: 18px;
   line-height: 22px;
+  font-weight: 500;
   outline: 0;
   border: 2px solid transparent;
   border-radius: 25px;
@@ -476,12 +466,12 @@ ul li {
   max-width: 684px;
   margin-bottom: 0.5em;
   padding: 13px;
-  background: var(--secondarybg);
   box-sizing: border-box;
+  background: var(--secondarybg);
   color: var(--mainfc);
   font-size: 18px;
-  font-weight: 500;
   line-height: 22px;
+  font-weight: 500;
   outline: 0;
   border: 2px solid transparent;
   border-radius: 25px;
@@ -502,8 +492,8 @@ ul li {
   height: 48px;
   margin-right: 0.1em;
   padding: 6px 10px;
-  background: var(--buttonbg);
   float: left;
+  background: var(--buttonbg);
   color: var(--buttonfc);
   font-size: 24px;
   font-weight: bold;
@@ -534,8 +524,8 @@ ul li {
 .createsurvey2 {
   height: 48px;
   padding: 6px 10px;
-  background: var(--buttonbg);
   float: right;
+  background: var(--buttonbg);
   color: var(--buttonfc);
   font-size: 16px;
   font-weight: bold;
@@ -545,16 +535,7 @@ ul li {
 }
 
 .createsurvey2:hover {
-  height: 48px;
-  padding: 6px 10px;
   background: var(--buttonhoverbg);
-  float: right;
-  color: var(--buttonfc);
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  border: 0;
-  border-radius: 50px;
 }
 
 @media screen and (max-width: 300px) {
