@@ -1,5 +1,5 @@
 
-.result-heading, .x-icon, .result-download, .result-footer {
+.result-heading, .x-icon, .result-download {
     display: none;
 }
 
@@ -21,6 +21,10 @@
 ._2, ._4, ._6 ._8{
     display: block;
     page-break-after: always;
+}
+
+._10 {
+    margin-bottom: 1%;
 }
 
 @page {

@@ -73,7 +73,7 @@ closeDB($conn);
         <div class="main-header container-fluid">
             <div class="row main-header-row">
                 <div class="col-md-6 main-header-col-1">
-                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()"><i id="theme-icon" class="fa-solid fa-moon"></i></button>
+                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()"><i id="theme-icon" class="fa-solid fa-sun"></i></button>
                 </div>
                 <div class="col-md-6 main-header-col-2">
                     <form class="main-header-form" data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">

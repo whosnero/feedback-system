@@ -182,7 +182,6 @@ if ($queryamount > 0) { // amount
                                 </div>
                             </div>";
                     }   
-
             ?>
 
             <?php
