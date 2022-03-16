@@ -73,7 +73,7 @@ closeDB($conn);
         <div class="main-header container-fluid">
             <div class="row main-header-row">
                 <div class="col-md-6 main-header-col-1">
-                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()"><i id="theme-icon"class="fa-solid fa-moon"></i></button>
+                    <button data-aos="fade-down" id="themebtn" class="changetheme" onClick="changeTheme()"><i id="theme-icon" class="fa-solid fa-moon"></i></button>
                 </div>
                 <div class="col-md-6 main-header-col-2">
                     <form class="main-header-form" data-aos="fade-down" action="subpages/create.php" method="post" enctype="multipart/form-data">
@@ -123,25 +123,17 @@ closeDB($conn);
 
     <!-- theme -->
     <script>
-        var themebtn = document.getElementById("themebtn");
 
-        if(localStorage.getItem("theme") == null) {
-            localStorage.setItem("theme", "dark");
-        }
+    </script>
+    <!-- AOS (animation) -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        themeSetter(document.body.classList);
 
-        let localData = localStorage.getItem("theme");
-
-        if(localData == "dark") {
-            document.body.classList.remove("light-theme");
-            document.getElementById("theme-icon").classList.add("fa-sun");
-        } else if(localData == "light-theme") {
-            document.body.classList.add("light-theme");
-            document.getElementById("theme-icon").classList.add("fa-moon");
-        }
-
-        function changeTheme(){
+        function changeTheme() {
             document.body.classList.toggle("light-theme");
-            if(document.body.classList.contains("light-theme")){
+            if (document.body.classList.contains("light-theme")) {
                 localStorage.setItem("theme", "light-theme");
                 document.getElementById("theme-icon").classList.remove("fa-sun");
                 document.getElementById("theme-icon").classList.add("fa-moon");
@@ -151,11 +143,6 @@ closeDB($conn);
                 document.getElementById("theme-icon").classList.add("fa-sun");
             }
         }
-    </script>
-    <!-- AOS (animation) -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
     </script>
 
 </body>

@@ -14,7 +14,7 @@ function confPie(one, two, three, four, five, questionid) {
     new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['1x⭐', '2x⭐', '3x⭐', '4x⭐', '5x⭐'], 
+            labels: ['1x⭐', '2x⭐', '3x⭐', '4x⭐', '5x⭐'],
             datasets: [{
                 data: [Math.round((one / all * 100)),
                 Math.round((two / all * 100)),
@@ -28,47 +28,43 @@ function confPie(one, two, three, four, five, questionid) {
         },
         options: {
             responsive: true,
-                plugins: {
-                    datalabels: {
-                        color: '#fff',
-                        anchor: 'end',
-                        align: 'start',
-                        offset: -10,
+            plugins: {
+                datalabels: {
+                    color: '#fff',
+                    anchor: 'end',
+                    align: 'start',
+                    offset: -10,
+                    borderWidth: 0,
+                    borderColor: '#fff',
+                    borderRadius: 25,
+                    backgroundColor: (context) => {
+                        return context.dataset.backgroundColor;
+                    },
+                    font: {
+                        weight: 'bold',
+                        size: '10',
+                    },
+                    formatter: (value) => {
+                        return value + ' %';
+                    }
+                },
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: 'white',
                         borderWidth: 0,
-                        borderColor: '#fff',
-                        borderRadius: 25,
-                        backgroundColor: (context) => {
-                            return context.dataset.backgroundColor;
-                        },
                         font: {
                             weight: 'bold',
                             size: '10',
-                        },
-                        formatter: (value) => {
-                            return value + ' %';
                         }
                     },
-                legend: {
-                    position: 'top',
-                        labels: {
-                            color: 'white',
-                            borderWidth: 0,
-                            font: {
-                                weight: 'bold',
-                                size: '10',
-                            }   
-                        },
                 }
             }
         }
     })
 }
 
-function goBack() {
-    window.location.href = "../index.php";
-}
-
-function copyCode(){
+function copyNotificationCode() {
     var range = document.createRange();
     range.selectNode(document.getElementById("notification-code"));
     window.getSelection().removeAllRanges(); // clear current selection
@@ -77,10 +73,21 @@ function copyCode(){
 
     const tooltip = document.querySelector(".tooltip");
     tooltip.classList.add("show");
-    setTimeout(function() {
+    setTimeout(function () {
         tooltip.classList.remove("show");
     }, 800);
 
     window.getSelection().removeAllRanges(); // to deselect
+}
 
+function themeSetter(classlist) {
+    let localData = localStorage.getItem("theme");
+
+    if (localData == "light-theme") {
+        classlist.add("light-theme");
+    } else if (localData == "dark") {
+        classlist.remove("light-theme");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
 }

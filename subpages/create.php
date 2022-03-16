@@ -161,19 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
-
-    document.onkeydown = function shortcutCreate(e) {
-      e = e || window.event;
-      keycode = e.which || e.keyCode;
-      if (keycode == 187 || keycode == 107) { // keycodes for "+"
-        e.preventDefault();
-        createNewField();
-      }
-      if (keycode == 189 || keycode == 109) { // keycodes for "-"
-        e.preventDefault();
-        removeNewField();
-      }
-    }
+    themeSetter(document.body.classList);
 
     var addcounter = <?php echo ($additionalquestions + $sampleamount) ?>;
     var addqbtn = document.getElementById('addqbtn');
@@ -213,44 +201,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         addcounter--;
       }
     };
-  </script>
-  <script>
-        var themebtn = document.getElementById("themebtn");
-        
-        if(localStorage.getItem("theme") == null) {
-            localStorage.setItem("theme", "light");
-        }
 
-        let localData = localStorage.getItem("theme");
+    document.onkeydown = function keyPress(i) {
+      e = window.event;
+      if (e.keyCode == 27) { // keycode for escape
+        window.location.href = "../index.php";
+      }
 
-        if(localData == "light") {
-            document.body.classList.remove("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-moon");
-        } else if(localData == "dark-theme") {
-            document.body.classList.add("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-sun");
-        }
+      if (e.keyCode == 187 || e.keyCode == 107) { // keycodes for "+"
+        e.preventDefault();
+        createNewField();
+      }
 
-        function changeTheme(){
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains("dark-theme")){
-                localStorage.setItem("theme", "dark-theme");
-                document.getElementById("theme-icon").classList.remove("fa-moon");
-                document.getElementById("theme-icon").classList.add("fa-sun");
-            } else {
-                localStorage.setItem("theme", "light");
-                document.getElementById("theme-icon").classList.remove("fa-sun");
-                document.getElementById("theme-icon").classList.add("fa-moon");
-            }
-        }
-
-        document.onkeydown = function shortcutCreate(i) {
-            i = i || window.event;
-            keycode = i.which || i.keyCode;
-            if (keycode == 27 || keycode == "Escape") {
-                goBack();
-            }
-            }
+      if (e.keyCode == 189 || e.keyCode == 109) { // keycodes for "-"
+        e.preventDefault();
+        removeNewField();
+      }
+    }
   </script>
 
 </body>

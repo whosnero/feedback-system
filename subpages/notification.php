@@ -90,37 +90,37 @@ if (isset($_GET['noanswer'])) {
                 </div>
             </div>
         </div>
-            <div class="notification-body container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <img data-aos="zoom-in" class="icon icon-notification" src="../assets/img/feedo.png" alt="Feedo Logo">
-                    </div>
+        <div class="notification-body container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <img data-aos="zoom-in" class="icon icon-notification" src="../assets/img/feedo.png" alt="Feedo Logo">
                 </div>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <p data-aos="fade-down" class="notification-box">
-                        <h1 class="bigtext" data-aos="zoom-in">
-                            <div><?php echo $bigtext; ?></div>
-                            <div id="notification-code"><?php echo $codetext; ?></div>
-                            <?php if (isset($_GET['create'], $_GET['code'])) {
-                                echo "<button class='copy-button' onclick='copyCode()' title='copy code'><i class='fa-solid fa-copy'></i></button>";
-                            }
-                            ?>
-                            <span class='tooltip'>copied</span>
-                        </h1>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="smalltext" data-aos="zoom-in"><?php echo $smalltext; ?></h2>
-                        <p data-aos="fade-up" class="notification-box">
-                        </p>
-                    </div>
-                </div>
-                
             </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <p data-aos="fade-down" class="notification-box">
+                    <h1 class="bigtext" data-aos="zoom-in">
+                        <div><?php echo $bigtext; ?></div>
+                        <div id="notification-code"><?php echo $codetext; ?></div>
+                        <?php if (isset($_GET['create'], $_GET['code'])) {
+                            echo "<button class='copy-button' onclick='copyNotificationCode()' title='copy code'><i class='fa-solid fa-copy'></i></button>";
+                        }
+                        ?>
+                        <span class='tooltip'>copied</span>
+                    </h1>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="smalltext" data-aos="zoom-in"><?php echo $smalltext; ?></h2>
+                    <p data-aos="fade-up" class="notification-box">
+                    </p>
+                </div>
+            </div>
+
+        </div>
         <footer class="notification-footer">
             <script>
                 document.write(date());
@@ -137,46 +137,13 @@ if (isset($_GET['noanswer'])) {
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
+        themeSetter(document.body.classList);
+        document.onkeydown = function goBack(i) {
+            if (window.event.keyCode == 27) {
+                window.location.href = "../index.php";
+            }
+        }
     </script>
-    <script>
-
-        var themebtn = document.getElementById("themebtn");
-
-        if(localStorage.getItem("theme") == null) {
-            localStorage.setItem("theme", "light");
-        }
-
-        let localData = localStorage.getItem("theme");
-
-        if(localData == "light") {
-            document.body.classList.remove("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-moon");
-        } else if(localData == "dark-theme") {
-            document.body.classList.add("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-sun");
-        }
-
-        function changeTheme(){
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains("dark-theme")){
-                localStorage.setItem("theme", "dark-theme");
-                document.getElementById("theme-icon").classList.remove("fa-moon");
-                document.getElementById("theme-icon").classList.add("fa-sun");
-            } else {
-                localStorage.setItem("theme", "light");
-                document.getElementById("theme-icon").classList.remove("fa-sun");
-                document.getElementById("theme-icon").classList.add("fa-moon");
-            }
-        }
-
-        document.onkeydown = function shortcutCreate(i) {
-            i = i || window.event;
-            keycode = i.which || i.keyCode;
-            if (keycode == 27 || keycode == "Escape") {
-                goBack();
-            }
-            }
-  </script>
 </body>
 
 </html>
