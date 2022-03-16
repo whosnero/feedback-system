@@ -1,5 +1,9 @@
 
-.result-heading, .x-icon, .result-download {
+html, body {
+    margin-bottom: 0;
+}
+
+.result-heading, .x-icon, .result-download, .result-footer {
     display: none;
 }
 
@@ -18,15 +22,18 @@
     width: 95%;
 }
 
-._2, ._4, ._6 ._8{
+.question {
+    display: block;
+}
+
+._2, ._4, ._6 ._8 {
     display: block;
     page-break-after: always;
 }
 
-._10 {
-    margin-bottom: 1%;
-}
-
 @page {
     size: A4 landscape;
+    margin: 0;
 }
+
+

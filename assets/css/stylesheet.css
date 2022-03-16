@@ -980,6 +980,10 @@ ul li {
   align-items: center;
 }
 
+.question {
+  display: none;
+}
+
 .result-question {
   max-width: 100%;
   color: var(--secondaryfc);

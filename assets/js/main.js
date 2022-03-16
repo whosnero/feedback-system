@@ -85,6 +85,8 @@ function themeSetter(classlist) {
 
     if (localData == "light-theme") {
         classlist.add("light-theme");
+        document.getElementById("theme-icon").classList.remove("fa-sun");
+        document.getElementById("theme-icon").classList.add("fa-moon");
     } else if (localData == "dark") {
         classlist.remove("light-theme");
     } else {
