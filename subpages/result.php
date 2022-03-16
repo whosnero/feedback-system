@@ -47,6 +47,7 @@ if ($queryamount > 0) { // amount
     <!-- stylesheets (CSS) -->
     <!-- custom -->
     <link rel="stylesheet" href="../assets/css/stylesheet.css" />
+    <link rel="stylesheet" media="print" href="../assets/css/print.css" />
     <!-- animation -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- bootstrap -->
@@ -68,7 +69,7 @@ if ($queryamount > 0) { // amount
         <div class="result-header container-fluid">
             <div class="row result-header-row">
                 <div class="col-md-4 result-header-col-1">
-                    <!-- for alignment of other header-columns -->
+                    <button class="result-download" onClick="print()"name="btnSubmit">Download!</button>
                 </div>
                 <div class="col-md-4 result-header-col-2">
                     <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedologo2.png" alt="Feedo Logo">
@@ -135,9 +136,9 @@ if ($queryamount > 0) { // amount
 
                     $question = $encryption_class->decryptString($question_hashed);
 
-                    echo "<div class='row result-row" . " _" . $questionid ." '>";
+                    echo "<div class='row result-row " . " _" . $questionid . "'>";
                     echo "<div class='col-md-6 result-box'>";
-                    echo "<p class='result-question word-break'> " . $question;
+                    echo "<p class='result-question'> " . $question;
                     echo "<p class='submitamount'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
                     echo "<ul class='star-list'>";
 
@@ -160,13 +161,30 @@ if ($queryamount > 0) { // amount
 
                     echo "</ul></p></div><div class='col-md-6 chart-box'>";
                     echo "<canvas class='myChart' id='myChart-" . $questionid . "'></canvas>";
-                    echo "</div></div>";
+                    echo "</div><script>
+                            confPie(" .  $one . "," . $two . ",". $three . "," . $four . "," . $five . "," . $questionid . ");
+                            </script></div>";
+
+                    if ($questionid % 2 == 0 && $questionid !== 10) {
+                        echo "<div class='result-print-header container-fluid'>
+                                <div class='row result-header-row'>
+                                    <div class='col-md-4 result-header-col-1'>
+                                        <!-- for alignment of other header-columns -->
+                                    </div>
+                                    <div class='col-md-4 result-header-col-2'>
+                                    <img data-aos='zoom-in' class='icon icon-result' src='../assets/img/feedologo2.png' alt='Feedo Logo'>
+                                    </div>
+                                    <div class='col-md-4 result-header-col-3'>
+                                        <a data-aos='flip-right' data-aos-duration='500' href='../index.php'>
+                                            <img class='x-icon' src='../assets/img/x.png' alt='close results'></img>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>";
+                    }   
 
             ?>
-                    <!-- Chart.js -->
-                    <script>
-                        confPie(<?php echo $one; ?>, <?php echo $two; ?>, <?php echo $three; ?>, <?php echo $four; ?>, <?php echo $five; ?>, <?php echo $questionid; ?>);
-                    </script>
+
             <?php
 
                 }
@@ -227,6 +245,13 @@ if ($queryamount > 0) { // amount
                     document.getElementById("theme-icon").classList.remove("fa-sun");
                     document.getElementById("theme-icon").classList.add("fa-moon");
                 }
+            }
+            document.onkeydown = function shortcutCreate(i) {
+            i = i || window.event;
+            keycode = i.which || i.keyCode;
+            if (keycode == 27 || keycode == "Escape") {
+                goBack();
+            }
             }
     </script>
 

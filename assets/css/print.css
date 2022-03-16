@@ -1,0 +1,28 @@
+
+.result-heading, .x-icon, .result-download, .result-footer {
+    display: none;
+}
+
+.result, .result-body {
+    display: block;
+}
+
+.result-print-header {
+    display: flex;
+    page-break-inside: avoid;
+}
+
+.result-row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 95%;
+}
+
+._2, ._4, ._6 ._8{
+    display: block;
+    page-break-after: always;
+}
+
+@page {
+    size: A4 landscape;
+}

@@ -1,26 +1,7 @@
 /*--------------------------------------------------------------
-# Print
---------------------------------------------------------------*/
-
-@media print {
-  body {
-    overflow: visible;
-  }
-  .result-heading, .x-icon {
-    display: none;
-  }
-  .result-row {
-    /* placeholder */
-  }
-}
-
-/*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 @media screen and (max-width: 249px) {
-  * {
-    background-color: var(--mainbg);
-  }
   body {
     display: none;
   }
@@ -37,12 +18,12 @@
 }
 
 * {
-  background-color: var(--mainbg);
   font-family: Roboto-Thin, sans-serif;
   color: var(--mainfc);
 }
 
 body {
+  background-color: var(--mainbg) !important;
   --mainbg: hsl(220, 13%, 18%);
   --secondarybg: hsl(223, 11%, 13%);
   --mainfc: hsl(0, 0%, 100%);
@@ -139,13 +120,13 @@ ul li {
 }
 
 .changetheme {
+  background: var(--mainbg);
   font-size: 32px;
   border: 0;
   transition: all 0.3s;
 }
 
 .changetheme i {
-  background: transparent;
   transition: all 0.3s;
 }
 
@@ -351,6 +332,7 @@ ul li {
 }
 
 .copy-button {
+  background: var(--mainbg);
   font-size: 25px;
   border: 0;
   transition: all 0.3s;
@@ -903,10 +885,38 @@ ul li {
   display: flex;
 }
 
+.result-print-header {
+  min-height: 10vh;
+  display: none;
+}
+
+
 .result-header-row {
   width: 100%;
   display: flex;
   flex-grow: 1;
+}
+
+.result-header-col-1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.result-download {
+  color: var(--buttonfc);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 6px 10px;
+  background: var(--buttonbg);
+  height: 48px;
+  border: 0;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+ 
+.result-download:hover {
+  background: var(--buttonhoverbg);
 }
 
 .result-header-col-2 {
@@ -953,6 +963,7 @@ ul li {
   height: 300px;
   width: 70%;
   border: 5px solid transparent;
+  overflow: hidden;
   background: var(--secondarybg);
   padding: 0 1% 0 1%;
   margin-bottom: 1em;
@@ -962,18 +973,20 @@ ul li {
 }
 
 .result-box {
-  display: flex;
   max-height: 95%;
+  display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
 }
 
 .result-question {
+  max-width: 100%;
   color: var(--secondaryfc);
   padding-top: 1em;
   font-weight: bold;
   font-size: 20px;
+  word-break: keep-all;
 }
 
 .submitamount {
