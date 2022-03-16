@@ -87,7 +87,7 @@ if ($queryamount > 0) { // amount
                     <h1>Here are your results!</h1>
                     <h2>(Code: <?php echo $code ?>)</h2>
                     <h3>Below you can see the average valuation and a pie chart for your questions</h2>
-                    <h4>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
+                        <h4>Scroll down to see all results <i class="fa-solid fa-arrow-down"></i></h2>
                 </div>
             </div>
 
@@ -136,7 +136,7 @@ if ($queryamount > 0) { // amount
 
                     $question = $encryption_class->decryptString($question_hashed);
 
-                    echo "<div class='row result-row " . " _" . $questionid . "'>";
+                    echo "<div class='row result-row" . " _" . $questionid . " '>";
                     echo "<div class='col-md-6 result-box'>";
                     echo "<p class='result-question'> " . $question;
                     echo "<p class='submitamount'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
@@ -216,43 +216,12 @@ if ($queryamount > 0) { // amount
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
-    </script>
-    <script>
-            var themebtn = document.getElementById("themebtn");
-
-            if(localStorage.getItem("theme") == null) {
-                localStorage.setItem("theme", "light");
+        themeSetter(document.body.classList);
+        document.onkeydown = function goBack(i) {
+            if (window.event.keyCode == 27) {
+                window.location.href = "../index.php";
             }
-
-            let localData = localStorage.getItem("theme");
-
-            if(localData == "light") {
-                document.body.classList.remove("dark-theme");
-                document.getElementById("theme-icon").classList.add("fa-moon");
-            } else if(localData == "dark-theme") {
-                document.body.classList.add("dark-theme");
-                document.getElementById("theme-icon").classList.add("fa-sun");
-            }
-
-            function changeTheme(){
-                document.body.classList.toggle("dark-theme");
-                if(document.body.classList.contains("dark-theme")){
-                    localStorage.setItem("theme", "dark-theme");
-                    document.getElementById("theme-icon").classList.remove("fa-moon");
-                    document.getElementById("theme-icon").classList.add("fa-sun");
-                } else {
-                    localStorage.setItem("theme", "light");
-                    document.getElementById("theme-icon").classList.remove("fa-sun");
-                    document.getElementById("theme-icon").classList.add("fa-moon");
-                }
-            }
-            document.onkeydown = function shortcutCreate(i) {
-            i = i || window.event;
-            keycode = i.which || i.keyCode;
-            if (keycode == 27 || keycode == "Escape") {
-                goBack();
-            }
-            }
+        }
     </script>
 
 </body>

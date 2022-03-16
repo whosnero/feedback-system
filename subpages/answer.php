@@ -5,7 +5,9 @@ $code = $_POST["code"];
 
 /* checks post got an code */
 if (!isset($code) || $code == null || !isset($_POST['btnEnter'])) {
-  header('Location: ../index.php');
+  if (!isset($_POST['btnSubmit'])) {
+    header('Location: ../index.php');
+  }
 }
 
 /* connection to db */
@@ -31,6 +33,7 @@ if ($surveyamount > 0) { // amount
 $postconn = openDB();
 
 if (isset($_POST['btnSubmit'])) {
+  $checkboolean = false;
   foreach ($_POST as $qid => $valuation) {
     /* search vars from form */
     if (substr($qid, 0, 4) === "star") {
@@ -41,15 +44,17 @@ if (isset($_POST['btnSubmit'])) {
       $postquery->bind_param("iis", $code, $qid, $encryptvaluation);
       $postquery->execute();
 
-      if ($postquery->affected_rows < 0) {
+      if ($postquery->affected_rows > 0) {
         /* failed to insert data */
-        header('Location: index.php');
+        $checkboolean = true;
       }
       $postquery->close();
     }
   }
 
-  header('Location: notification.php?answer');
+  if ($checkboolean) {
+    header('Location: notification.php?answer');
+  }
 }
 
 closeDB($postconn);
@@ -142,7 +147,7 @@ if ($disallow->num_rows() < 1) { // amount
           $question_survey = $encryption_class->decryptString($question_survey_hashed);
           /* creates form to answer */
         ?>
-          <div  class="answer-box">
+          <div class="answer-box">
             <label for="<?php echo $questionid_survey; ?>">
               <p border-radius="25px" class="answer-question word-break"><?php echo $question_survey; ?></p>
             </label><br>
@@ -165,7 +170,7 @@ if ($disallow->num_rows() < 1) { // amount
 
         <br>
         <input type="hidden" name="code" value="<?php echo $code_survey; ?>">
-        <button type= sumbit class="answer-submit" name="btnSubmit">Submit!</button>
+        <button type=sumbit class="answer-submit" name="btnSubmit">Submit!</button>
 
       </form>
 
@@ -187,36 +192,12 @@ if ($disallow->num_rows() < 1) { // amount
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
-  </script>
-  <script>
-        var themebtn = document.getElementById("themebtn");
-
-        if(localStorage.getItem("theme") == null) {
-            localStorage.setItem("theme", "light");
-        }
-
-        let localData = localStorage.getItem("theme");
-
-        if(localData == "light") {
-            document.body.classList.remove("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-moon");
-        } else if(localData == "dark-theme") {
-            document.body.classList.add("dark-theme");
-            document.getElementById("theme-icon").classList.add("fa-sun");
-        }
-
-        function changeTheme(){
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains("dark-theme")){
-                localStorage.setItem("theme", "dark-theme");
-                document.getElementById("theme-icon").classList.remove("fa-moon");
-                document.getElementById("theme-icon").classList.add("fa-sun");
-            } else {
-                localStorage.setItem("theme", "light");
-                document.getElementById("theme-icon").classList.remove("fa-sun");
-                document.getElementById("theme-icon").classList.add("fa-moon");
-            }
-        }
+    themeSetter(document.body.classList);
+    document.onkeydown = function goBack(i) {
+      if (window.event.keyCode == 27) {
+        window.location.href = "../index.php";
+      }
+    }
   </script>
 
 </body>
