@@ -161,14 +161,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
-    themeSetter(document.body.classList);
+            
 
     var addcounter = <?php echo ($additionalquestions + $sampleamount) ?>;
+    var normalcounter = <?php echo ($additionalquestions + $sampleamount) ?>;
     var addqbtn = document.getElementById('addqbtn');
     var form = document.getElementById('create-form');
     var br = document.createElement("br");
 
+    if (addcounter == normalcounter) {
+      document.getElementById("removeqbtn").classList.add("invisible");
+    }
+
     function createNewField() {
+      document.getElementById("removeqbtn").classList.remove("invisible");
       addcounter++;
 
       var input = document.createElement("input");
@@ -197,27 +203,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' and isset($_POST['btnSubmit'])) {
         inputfield.remove();
       }
 
-      if (addcounter >= 5) {
+      if (addcounter > normalcounter) {
         addcounter--;
       }
+      if (addcounter == normalcounter) {
+      document.getElementById("removeqbtn").classList.add("invisible");
+    }
     };
 
-    document.onkeydown = function keyPress(i) {
+    document.onkeydown = function keyPress() {
       e = window.event;
       if (e.keyCode == 27) { // keycode for escape
         window.location.href = "../index.php";
       }
 
-      if (e.keyCode == 187 || e.keyCode == 107) { // keycodes for "+"
+      if (e.keyCode == 187 || e.keyCode == 107 && addcounter <= 10) { // keycodes for "+"
         e.preventDefault();
         createNewField();
       }
 
-      if (e.keyCode == 189 || e.keyCode == 109) { // keycodes for "-"
+      if (e.keyCode == 189 || e.keyCode == 109 && addcounter > normalcounter) { // keycodes for "-"
         e.preventDefault();
         removeNewField();
       }
     }
+    themeSetter(document.body.classList);
   </script>
 
 </body>

@@ -22,7 +22,7 @@ function confPie(one, two, three, four, five, questionid) {
                 Math.round((four / all * 100)),
                 Math.round((five / all * 100))
                 ],
-                backgroundColor: (localStorage.getItem("theme") == "dark-theme") ? ['#1F363D', '#40798C', '#70A9A1', '#9EC1A3', '#CFE0C3'] : ['#DE6B48', '#E5B181', '#F4B9B2', '#DAEDBD', '#8ECED6'],
+                backgroundColor: (localStorage.getItem("theme") == "light-theme") ? ['#F4B9B2', '#E5B181', '#DE6B48', '#A4486F', '#7A4EB0'] : ['#CFE0C3', '#9EC1A3', '#70A9A1', '#40798C', '#1F363D'],
                 borderWidth: 1,
             }],
         },

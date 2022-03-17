@@ -700,12 +700,13 @@ ul li {
 
 .answer-heading h1 {
   margin: 2.5% 0 0 0;
+  color: var(--mainfc);
   font-size: 36px;
   font-weight: bold;
 }
 
 .answer-heading h2 {
-  color: var(--secondaryfc);
+  color: var(--mainfc);
   font-size: 18px;
   font-weight: bold;
   margin-top: 15px;
@@ -721,8 +722,6 @@ ul li {
 .answer-box, .answer-box > *, .answer-question, .valuation > * {
   background: var(--secondarybg);
 }
-
-
 
 .answer-box {
   max-width: 100%;
@@ -943,6 +942,7 @@ ul li {
   color: var(--mainfc);
   margin: 15px 0 15px 0;
   font-size: 48px;
+  font-weight: bold;
   line-height: 56px;
 }
 
@@ -990,8 +990,10 @@ ul li {
   padding-top: 1em;
   font-weight: bold;
   font-size: 20px;
-  word-break: keep-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+
 
 .submitamount {
   color:var(--secondaryfc);

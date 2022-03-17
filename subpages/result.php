@@ -95,12 +95,13 @@ if ($queryamount > 0) { // amount
             $questionid_array = array();
             /* getting average amount of valuations (connected with the questionid and code) */
 
-            $testquery = $conn->prepare("SELECT code FROM surveys WHERE code = ?"); // prepare db (against injection)
+            $testquery = $conn->prepare("SELECT COUNT(code) FROM surveys WHERE code = ?"); // prepare db (against injection)
             $testquery->bind_param("i", $code); // replace integer (code) to var ($code)
             $testquery->execute();
             $testquery->store_result(); // returns a buffered result object from surveyquery
-            $testamount = $testquery->num_rows();
-            
+            $testquery->bind_result($testamount);
+            $testquery->fetch();
+
             $countwhile = 1;
             while ($query->fetch()) { // while page can use this variables
                 /* creates array, which knows all the questionid´s and run them just one time */
@@ -146,7 +147,7 @@ if ($queryamount > 0) { // amount
                     echo "<div class='row result-row" . " _" . $questionid . " '>";
                     echo "<div class='col-md-6 result-box'>";
                     echo "<p class='question'>Question " . $questionid . "</p>";
-                    echo "<p class='result-question'> " . $question;
+                    echo "<p class='result-question'> " . $question . "</p>";
                     echo "<p class='submitamount'> (submitted " . ($one + $two + $three + $four + $five) . "x) </p>";
                     echo "<ul class='star-list'>";
 
@@ -173,7 +174,7 @@ if ($queryamount > 0) { // amount
                             confPie(" .  $one . "," . $two . ",". $three . "," . $four . "," . $five . "," . $questionid . ");
                             </script></div>";
 
-                    
+
                     if ($countwhile < $testamount){
                         if ($questionid % 2 == 0) {
                             echo "<div class='result-print-header container-fluid'>
@@ -192,6 +193,8 @@ if ($queryamount > 0) { // amount
                                     </div>
                                 </div>";
                         }
+                    } else if ($countwhile = $testamount && $questionid % 2 !== 0) {
+                        $fillpage = "<div class='fill'></div>";
                     }
                     $countwhile ++;
             ?>
@@ -216,6 +219,7 @@ if ($queryamount > 0) { // amount
             <script>
                 document.write(date());
             </script>
+            <?php echo $fillpage; ?>
         </footer>
     </section>
 
@@ -227,12 +231,12 @@ if ($queryamount > 0) { // amount
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init();
-        themeSetter(document.body.classList);
-        document.onkeydown = function goBack(i) {
+        document.onkeydown = function goBack() {
             if (window.event.keyCode == 27) {
                 window.location.href = "../index.php";
             }
         }
+        themeSetter(document.body.classList);
     </script>
 
 </body>

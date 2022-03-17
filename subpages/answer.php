@@ -192,12 +192,12 @@ if ($disallow->num_rows() < 1) { // amount
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
     AOS.init();
-    themeSetter(document.body.classList);
-    document.onkeydown = function goBack(i) {
+    document.onkeydown = function goBack() {
       if (window.event.keyCode == 27) {
         window.location.href = "../index.php";
       }
     }
+    themeSetter(document.body.classList);
   </script>
 
 </body>

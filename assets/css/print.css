@@ -1,9 +1,11 @@
 
 html, body {
+    width: 100%;
+    height: 100%;
     margin-bottom: 0;
 }
 
-.result-heading, .x-icon, .result-download, .result-footer {
+.result-heading, .x-icon, .result-download {
     display: none;
 }
 
@@ -23,12 +25,23 @@ html, body {
 }
 
 .question {
+    color: var(--mainfc);
     display: block;
+}
+
+.result-footer {
+    margin-top: -0.4%;
+}
+
+.fill {
+    display: block;
+    page-break-inside: avoid;
+    height: 352px;
 }
 
 ._2, ._4, ._6 ._8 {
     display: block;
-    page-break-after: always;
+    page-break-after: auto;
 }
 
 @page {
