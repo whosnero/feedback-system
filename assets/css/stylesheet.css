@@ -1061,11 +1061,11 @@ ul li {
   .result-heading h1 {
     margin: 10px 0 10px 0;
   }
-  .answer-header-col-1 {
+  .result-header-col-1 {
     justify-content: center;
     margin: 2.5% 0 0 0 !important;
   }
-  .answer-header-col-2 {
+  .result-header-col-2 {
     margin: 2.5% 0 0 0 !important;
   }
   .result-header-col-3 {
