@@ -46,6 +46,7 @@ closeDB($conn);
     <!-- custom meta tags -->
     <meta name="description" content="Feedo is a Feedback-System for students!" />
     <meta name="keywords" content="feedo, students, feedback-system" />
+    <meta name="theme-color" content="#2891d7">
 
     <!-- favicon -->
     <link rel="icon" href="assets/img/feedo.png" />
