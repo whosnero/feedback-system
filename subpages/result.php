@@ -70,7 +70,7 @@ if ($queryamount > 0) { // amount
         <div class="result-header container-fluid">
             <div class="row result-header-row">
                 <div class="col-md-4 result-header-col-1">
-                    <button class="result-download" onClick="print()"name="btnSubmit">Download!</button>
+                    <button class="result-download" onClick="print()"name="btnSubmit">Print!</button>
                 </div>
                 <div class="col-md-4 result-header-col-2">
                     <img data-aos="zoom-in" class="icon icon-result" src="../assets/img/feedologo2.png" alt="Feedo Logo">
